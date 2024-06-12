@@ -1,4 +1,4 @@
-﻿namespace GeradorDeTestesWinApp.ModuloCompartilhado;
+﻿namespace GeradorDeTestesWinApp.Compartilhado;
 
 public abstract class ControladorBase
 {
