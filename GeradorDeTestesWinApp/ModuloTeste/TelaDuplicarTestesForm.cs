@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
-    public partial class TelaTestesForm : Form
+    public partial class TelaDuplicarTestesForm : Form
     {
-        public TelaTestesForm()
+        public TelaDuplicarTestesForm()
         {
             InitializeComponent();
-        }
-
-        private void TelaTestesForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -86,7 +86,6 @@
             label1.Size = new Size(57, 23);
             label1.TabIndex = 14;
             label1.Text = "Título:";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -191,6 +190,7 @@
             Controls.Add(btnGravar);
             Name = "TelaTestesForm";
             Text = "Cadastro de Testes";
+            Load += TelaTestesForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
