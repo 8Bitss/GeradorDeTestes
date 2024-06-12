@@ -1,4 +1,4 @@
-﻿using GeradorDeTestesWinApp.ModuloCompartilhado;
+﻿using GeradorDeTestesWinApp.Compartilhado;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
