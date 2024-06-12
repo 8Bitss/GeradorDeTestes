@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GeradorDeTestesWinApp.Compartilhado;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -15,6 +16,16 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         public TelaDisciplinaForm()
         {
             InitializeComponent();
+        }
+
+        private void TelaDisciplinaForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

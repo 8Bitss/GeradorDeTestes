@@ -16,5 +16,10 @@ namespace GeradorDeTestesWinApp.ModuloQuestoes
         {
             InitializeComponent();
         }
+
+        private void TelaQuestoesForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

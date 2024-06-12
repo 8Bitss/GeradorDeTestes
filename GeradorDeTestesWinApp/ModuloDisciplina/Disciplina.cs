@@ -37,8 +37,6 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             erros.Add("A Disciplina precisa ser preenchida corretamente");
 
             return erros;
-
-        }
-        
+        }        
     }
 }
