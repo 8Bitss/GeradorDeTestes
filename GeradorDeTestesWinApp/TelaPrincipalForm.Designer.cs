@@ -48,11 +48,12 @@
             // menuStrip1
             // 
             menuStrip1.Font = new Font("Segoe UI", 12F);
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 3, 0, 3);
-            menuStrip1.Size = new Size(1029, 31);
+            menuStrip1.Size = new Size(1029, 38);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -60,23 +61,24 @@
             // 
             cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            cadastrosToolStripMenuItem.Size = new Size(91, 25);
+            cadastrosToolStripMenuItem.Size = new Size(112, 32);
             cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // disciplinasToolStripMenuItem
             // 
             disciplinasToolStripMenuItem.Name = "disciplinasToolStripMenuItem";
-            disciplinasToolStripMenuItem.Size = new Size(180, 26);
+            disciplinasToolStripMenuItem.Size = new Size(190, 32);
             disciplinasToolStripMenuItem.Text = "Disciplinas";
             disciplinasToolStripMenuItem.Click += disciplinasToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator3, lblTipoCadastro });
-            toolStrip1.Location = new Point(0, 31);
+            toolStrip1.Location = new Point(0, 38);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1029, 33);
+            toolStrip1.Size = new Size(1029, 37);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -88,8 +90,7 @@
             btnAdicionar.ImageTransparentColor = Color.Magenta;
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Padding = new Padding(5);
-            btnAdicionar.Size = new Size(30, 30);
-            btnAdicionar.Click += btnAdicionar_Click;
+            btnAdicionar.Size = new Size(34, 34);
             // 
             // btnEditar
             // 
@@ -99,8 +100,7 @@
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
             btnEditar.Padding = new Padding(5);
-            btnEditar.Size = new Size(30, 30);
-            btnEditar.Click += btnEditar_Click;
+            btnEditar.Size = new Size(34, 34);
             // 
             // btnExcluir
             // 
@@ -110,18 +110,17 @@
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Padding = new Padding(5);
-            btnExcluir.Size = new Size(30, 30);
-            btnExcluir.Click += btnExcluir_Click;
+            btnExcluir.Size = new Size(34, 34);
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 33);
+            toolStripSeparator3.Size = new Size(6, 37);
             // 
             // lblTipoCadastro
             // 
             lblTipoCadastro.Name = "lblTipoCadastro";
-            lblTipoCadastro.Size = new Size(127, 30);
+            lblTipoCadastro.Size = new Size(161, 34);
             lblTipoCadastro.Text = "Tipo de Cadastro";
             // 
             // pnlRegistros
@@ -133,10 +132,11 @@
             // 
             // statusStrip1
             // 
+            statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
-            statusStrip1.Location = new Point(0, 604);
+            statusStrip1.Location = new Point(0, 596);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1029, 26);
+            statusStrip1.Size = new Size(1029, 34);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -144,12 +144,12 @@
             // 
             statusLabelPrincipal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             statusLabelPrincipal.Name = "statusLabelPrincipal";
-            statusLabelPrincipal.Size = new Size(195, 21);
+            statusLabelPrincipal.Size = new Size(243, 28);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
             // 
             // TelaPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
             Controls.Add(statusStrip1);
