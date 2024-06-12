@@ -38,25 +38,29 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(94, 39);
+            txtId.Enabled = false;
+            txtId.Location = new Point(82, 29);
+            txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
-            txtId.Size = new Size(58, 27);
+            txtId.Size = new Size(51, 23);
             txtId.TabIndex = 2;
+            txtId.Text = "0";
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(94, 88);
+            txtNome.Location = new Point(82, 66);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(384, 27);
+            txtNome.Size = new Size(336, 23);
             txtNome.TabIndex = 3;
             // 
             // lblId
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblId.Location = new Point(55, 38);
+            lblId.Location = new Point(48, 28);
             lblId.Name = "lblId";
-            lblId.Size = new Size(33, 28);
+            lblId.Size = new Size(26, 21);
             lblId.TabIndex = 4;
             lblId.Text = "Id:";
             // 
@@ -64,9 +68,9 @@
             // 
             lblNome.AutoSize = true;
             lblNome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNome.Location = new Point(18, 84);
+            lblNome.Location = new Point(16, 63);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(70, 28);
+            lblNome.Size = new Size(56, 21);
             lblNome.TabIndex = 5;
             lblNome.Text = "Nome:";
             // 
@@ -74,9 +78,10 @@
             // 
             btnCancelar.AutoSize = true;
             btnCancelar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(384, 175);
+            btnCancelar.Location = new Point(336, 131);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(94, 33);
+            btnCancelar.Size = new Size(82, 29);
             btnCancelar.TabIndex = 8;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -85,25 +90,31 @@
             // 
             btnGravar.AutoSize = true;
             btnGravar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGravar.Location = new Point(284, 175);
+            btnGravar.Location = new Point(248, 131);
+            btnGravar.Margin = new Padding(3, 2, 3, 2);
             btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(94, 33);
+            btnGravar.Size = new Size(82, 29);
             btnGravar.TabIndex = 7;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             // 
             // TelaDisciplinaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(513, 246);
+            ClientSize = new Size(449, 184);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(lblNome);
             Controls.Add(lblId);
             Controls.Add(txtNome);
             Controls.Add(txtId);
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TelaDisciplinaForm";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Disciplinas";
             Load += TelaDisciplinaForm_Load;
             ResumeLayout(false);
