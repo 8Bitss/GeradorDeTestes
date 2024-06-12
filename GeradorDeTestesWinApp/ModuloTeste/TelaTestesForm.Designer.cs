@@ -49,7 +49,7 @@
             // 
             btnCancelar.AutoSize = true;
             btnCancelar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(467, 602);
+            btnCancelar.Location = new Point(467, 528);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 33);
             btnCancelar.TabIndex = 8;
@@ -60,7 +60,7 @@
             // 
             btnGravar.AutoSize = true;
             btnGravar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGravar.Location = new Point(367, 602);
+            btnGravar.Location = new Point(367, 528);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 33);
             btnGravar.TabIndex = 7;
@@ -186,7 +186,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(603, 661);
+            ClientSize = new Size(603, 593);
             Controls.Add(domainUpQtdQuestoes);
             Controls.Add(textBox1);
             Controls.Add(groupBox1);
