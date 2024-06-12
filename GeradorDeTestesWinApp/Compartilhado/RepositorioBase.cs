@@ -1,4 +1,4 @@
-﻿namespace FestasInfantis.WinApp.Compartilhado
+﻿namespace GeradorDeTestesWinApp.Compartilhado
 {
     public abstract class RepositorioBase<T> where T : EntidadeBase
     {

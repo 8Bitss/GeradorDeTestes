@@ -1,68 +1,67 @@
-﻿namespace FestasInfantis.WinApp.Compartilhado
+﻿namespace GeradorDeTestesWinApp.Compartilhado;
+
+public static class DataGridViewExtensions
 {
-    public static class DataGridViewExtensions
+    public static void ConfigurarGridZebrado(this DataGridView grid)
     {
-        public static void ConfigurarGridZebrado(this DataGridView grid)
+        Font font = new Font("Segoe UI", 9.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+
+        DataGridViewCellStyle linhaEscura = new DataGridViewCellStyle
         {
-            Font font = new Font("Segoe UI", 9.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BackColor = Color.LightGray,
+            Font = font,
+            ForeColor = Color.Black,
+            SelectionBackColor = Color.LightYellow,
+            SelectionForeColor = Color.Black
+        };
 
-            DataGridViewCellStyle linhaEscura = new DataGridViewCellStyle
-            {
-                BackColor = Color.LightGray,
-                Font = font,
-                ForeColor = Color.Black,
-                SelectionBackColor = Color.LightYellow,
-                SelectionForeColor = Color.Black
-            };
+        grid.AlternatingRowsDefaultCellStyle = linhaEscura;
 
-            grid.AlternatingRowsDefaultCellStyle = linhaEscura;
-
-            DataGridViewCellStyle linhaClara = new DataGridViewCellStyle
-            {
-                BackColor = Color.White,
-                Font = font,
-                SelectionBackColor = Color.LightYellow,
-                SelectionForeColor = Color.Black
-            };
-
-            grid.RowsDefaultCellStyle = linhaClara;
-        }
-
-        public static void ConfigurarGridSomenteLeitura(this DataGridView grid)
+        DataGridViewCellStyle linhaClara = new DataGridViewCellStyle
         {
-            grid.AllowUserToAddRows = false;
-            grid.AllowUserToDeleteRows = false;
+            BackColor = Color.White,
+            Font = font,
+            SelectionBackColor = Color.LightYellow,
+            SelectionForeColor = Color.Black
+        };
 
-            grid.BorderStyle = BorderStyle.None;
+        grid.RowsDefaultCellStyle = linhaClara;
+    }
 
-            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+    public static void ConfigurarGridSomenteLeitura(this DataGridView grid)
+    {
+        grid.AllowUserToAddRows = false;
+        grid.AllowUserToDeleteRows = false;
 
-            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        grid.BorderStyle = BorderStyle.None;
 
-            grid.MultiSelect = false;
-            grid.ReadOnly = true;
+        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grid.AutoGenerateColumns = false;
+        grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            grid.AllowUserToResizeRows = false;
-            grid.RowHeadersVisible = false;
-        }
+        grid.MultiSelect = false;
+        grid.ReadOnly = true;
 
-        public static int SelecionarId(this DataGridView grid)
-        {
-            if (grid.SelectedRows.Count == 0)
-                return -1;
+        grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        grid.AutoGenerateColumns = false;
 
-            object valorSelecionado = grid
-                .SelectedRows[0]
-                .Cells[0]
-                .Value;
+        grid.AllowUserToResizeRows = false;
+        grid.RowHeadersVisible = false;
+    }
 
-            if (valorSelecionado == null)
-                return -1;
+    public static int SelecionarId(this DataGridView grid)
+    {
+        if (grid.SelectedRows.Count == 0)
+            return -1;
 
-            return (int)valorSelecionado;
-        }
+        object valorSelecionado = grid
+            .SelectedRows[0]
+            .Cells[0]
+            .Value;
+
+        if (valorSelecionado == null)
+            return -1;
+
+        return (int)valorSelecionado;
     }
 }
