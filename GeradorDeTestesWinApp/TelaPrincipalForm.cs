@@ -34,16 +34,19 @@ namespace GeradorDeTestesWinApp
         #region Botoes Adicionar, Editar e Excluir
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            controlador.Adicionar();
 
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            controlador.Editar();
 
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            controlador.Excluir();
 
         }
         #endregion
