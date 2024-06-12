@@ -39,10 +39,10 @@
             cmbMateria = new ComboBox();
             txtEnunciado = new TextBox();
             groupBox1 = new GroupBox();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox3 = new CheckBox();
             checkBox4 = new CheckBox();
+            checkBox3 = new CheckBox();
+            checkBox2 = new CheckBox();
+            checkBox1 = new CheckBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -164,25 +164,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Alternativas";
             // 
-            // checkBox1
+            // checkBox4
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(11, 75);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(53, 27);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "(A)";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(11, 108);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(52, 27);
-            checkBox2.TabIndex = 13;
-            checkBox2.Text = "(B)";
-            checkBox2.UseVisualStyleBackColor = true;
+            checkBox4.AutoSize = true;
+            checkBox4.Location = new Point(11, 174);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(54, 27);
+            checkBox4.TabIndex = 15;
+            checkBox4.Text = "(D)";
+            checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
@@ -194,15 +184,25 @@
             checkBox3.Text = "(C)";
             checkBox3.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkBox2
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(11, 174);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(54, 27);
-            checkBox4.TabIndex = 15;
-            checkBox4.Text = "(D)";
-            checkBox4.UseVisualStyleBackColor = true;
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(11, 108);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(52, 27);
+            checkBox2.TabIndex = 13;
+            checkBox2.Text = "(B)";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(11, 75);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(53, 27);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "(A)";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // TelaQuestoesForm
             // 
@@ -219,7 +219,10 @@
             Controls.Add(btnAdicionar);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TelaQuestoesForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Questões";
             Load += TelaQuestoesForm_Load;
             groupBox1.ResumeLayout(false);

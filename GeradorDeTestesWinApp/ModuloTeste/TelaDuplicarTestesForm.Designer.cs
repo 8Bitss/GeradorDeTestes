@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             domainUpQtdQuestoes = new DomainUpDown();
-            txttituloDuplicarTestes = new TextBox();
+            txtTituloDuplicarTestes = new TextBox();
             groupBox1 = new GroupBox();
+            listBoxDuplicarTestes = new ListBox();
             btnSortearQuestoes = new Button();
             lblQtdQuestoesDuplicar = new Label();
             chBProvaRecuperacaoDuplicar = new CheckBox();
@@ -52,23 +53,33 @@
             domainUpQtdQuestoes.Size = new Size(54, 30);
             domainUpQtdQuestoes.TabIndex = 37;
             // 
-            // txttituloDuplicarTestes
+            // txtTituloDuplicarTestes
             // 
-            txttituloDuplicarTestes.Location = new Point(106, 32);
-            txttituloDuplicarTestes.Name = "txttituloDuplicarTestes";
-            txttituloDuplicarTestes.Size = new Size(450, 27);
-            txttituloDuplicarTestes.TabIndex = 36;
+            txtTituloDuplicarTestes.Location = new Point(106, 32);
+            txtTituloDuplicarTestes.Name = "txtTituloDuplicarTestes";
+            txtTituloDuplicarTestes.Size = new Size(450, 27);
+            txtTituloDuplicarTestes.TabIndex = 36;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(listBoxDuplicarTestes);
             groupBox1.Controls.Add(btnSortearQuestoes);
             groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(45, 238);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(518, 321);
+            groupBox1.Size = new Size(518, 273);
             groupBox1.TabIndex = 35;
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas";
+            // 
+            // listBoxDuplicarTestes
+            // 
+            listBoxDuplicarTestes.FormattingEnabled = true;
+            listBoxDuplicarTestes.ItemHeight = 23;
+            listBoxDuplicarTestes.Location = new Point(3, 62);
+            listBoxDuplicarTestes.Name = "listBoxDuplicarTestes";
+            listBoxDuplicarTestes.Size = new Size(511, 211);
+            listBoxDuplicarTestes.TabIndex = 14;
             // 
             // btnSortearQuestoes
             // 
@@ -153,7 +164,7 @@
             // 
             btnCancelar.AutoSize = true;
             btnCancelar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(469, 585);
+            btnCancelar.Location = new Point(469, 539);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 33);
             btnCancelar.TabIndex = 27;
@@ -164,7 +175,7 @@
             // 
             btnGravar.AutoSize = true;
             btnGravar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGravar.Location = new Point(369, 585);
+            btnGravar.Location = new Point(369, 539);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 33);
             btnGravar.TabIndex = 26;
@@ -175,9 +186,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(606, 638);
+            ClientSize = new Size(606, 600);
             Controls.Add(domainUpQtdQuestoes);
-            Controls.Add(txttituloDuplicarTestes);
+            Controls.Add(txtTituloDuplicarTestes);
             Controls.Add(groupBox1);
             Controls.Add(lblQtdQuestoesDuplicar);
             Controls.Add(chBProvaRecuperacaoDuplicar);
@@ -188,7 +199,10 @@
             Controls.Add(label1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TelaDuplicarTestesForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Duplicação de Testes";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -199,7 +213,7 @@
         #endregion
 
         private DomainUpDown domainUpQtdQuestoes;
-        private TextBox txttituloDuplicarTestes;
+        private TextBox txtTituloDuplicarTestes;
         private GroupBox groupBox1;
         private Button btnSortearQuestoes;
         private Label lblQtdQuestoesDuplicar;
@@ -211,5 +225,6 @@
         private Label label1;
         private Button btnCancelar;
         private Button btnGravar;
+        private ListBox listBoxDuplicarTestes;
     }
 }

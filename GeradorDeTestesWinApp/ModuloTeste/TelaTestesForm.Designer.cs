@@ -39,6 +39,7 @@
             chBProvaRecuperacao = new CheckBox();
             label4 = new Label();
             groupBox1 = new GroupBox();
+            listBoxCadastrarTestes = new ListBox();
             textBox1 = new TextBox();
             domainUpQtdQuestoes = new DomainUpDown();
             groupBox1.SuspendLayout();
@@ -147,14 +148,24 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(listBoxCadastrarTestes);
             groupBox1.Controls.Add(btnSortearQuestoes);
             groupBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(43, 255);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(518, 321);
+            groupBox1.Size = new Size(518, 250);
             groupBox1.TabIndex = 23;
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas";
+            // 
+            // listBoxCadastrarTestes
+            // 
+            listBoxCadastrarTestes.FormattingEnabled = true;
+            listBoxCadastrarTestes.ItemHeight = 23;
+            listBoxCadastrarTestes.Location = new Point(6, 60);
+            listBoxCadastrarTestes.Name = "listBoxCadastrarTestes";
+            listBoxCadastrarTestes.Size = new Size(512, 188);
+            listBoxCadastrarTestes.TabIndex = 14;
             // 
             // textBox1
             // 
@@ -188,7 +199,10 @@
             Controls.Add(label1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TelaTestesForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Testes";
             Load += TelaTestesForm_Load;
             groupBox1.ResumeLayout(false);
@@ -212,5 +226,6 @@
         private GroupBox groupBox1;
         private TextBox textBox1;
         private DomainUpDown domainUpQtdQuestoes;
+        private ListBox listBoxCadastrarTestes;
     }
 }
