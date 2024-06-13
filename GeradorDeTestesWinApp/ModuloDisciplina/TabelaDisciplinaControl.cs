@@ -8,23 +8,23 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         {
             InitializeComponent();
 
-            dataGridViewDisciplina.Columns.AddRange(ObterColunas());
+            grid.Columns.AddRange(ObterColunas());
 
-            dataGridViewDisciplina.ConfigurarGridSomenteLeitura();
-            dataGridViewDisciplina.ConfigurarGridZebrado();
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
         }
 
         public void AtualizarRegistros(List<Disciplina> disciplinas)
         {
-            dataGridViewDisciplina.Rows.Clear();
+            grid.Rows.Clear();
 
             foreach (Disciplina d in disciplinas)
-                dataGridViewDisciplina.Rows.Add(d.Nome);
+                grid.Rows.Add(d.Nome);
         }
 
         public int ObterRegistroSelecionado()
         {
-            return dataGridViewDisciplina.SelecionarId();
+            return grid.SelecionarId();
         }
 
         private DataGridViewColumn[] ObterColunas()

@@ -4,6 +4,8 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
     public partial class TelaDisciplinaForm : Form
     {
+        public Disciplina Disciplina { get; internal set; }
+
         public TelaDisciplinaForm()
         {
             InitializeComponent();
