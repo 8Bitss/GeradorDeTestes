@@ -53,7 +53,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 3, 0, 3);
-            menuStrip1.Size = new Size(1029, 31);
+            menuStrip1.Size = new Size(1029, 38);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -61,13 +61,13 @@
             // 
             cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            cadastrosToolStripMenuItem.Size = new Size(91, 25);
+            cadastrosToolStripMenuItem.Size = new Size(112, 32);
             cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // disciplinasToolStripMenuItem
             // 
             disciplinasToolStripMenuItem.Name = "disciplinasToolStripMenuItem";
-            disciplinasToolStripMenuItem.Size = new Size(154, 26);
+            disciplinasToolStripMenuItem.Size = new Size(190, 32);
             disciplinasToolStripMenuItem.Text = "Disciplinas";
             disciplinasToolStripMenuItem.Click += disciplinasToolStripMenuItem_Click;
             // 
@@ -76,9 +76,9 @@
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator3, lblTipoCadastro });
-            toolStrip1.Location = new Point(0, 31);
+            toolStrip1.Location = new Point(0, 38);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1029, 37);
+            toolStrip1.Size = new Size(1029, 41);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -87,40 +87,43 @@
             btnAdicionar.BackgroundImageLayout = ImageLayout.None;
             btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnAdicionar.Image = Properties.Resources.btnAdicionar;
+            btnAdicionar.ImageScaling = ToolStripItemImageScaling.None;
             btnAdicionar.ImageTransparentColor = Color.Magenta;
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Padding = new Padding(5);
-            btnAdicionar.Size = new Size(34, 34);
+            btnAdicionar.Size = new Size(38, 38);
             // 
             // btnEditar
             // 
             btnEditar.BackgroundImageLayout = ImageLayout.None;
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnEditar.Image = Properties.Resources.btnEditar;
+            btnEditar.ImageScaling = ToolStripItemImageScaling.None;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
             btnEditar.Padding = new Padding(5);
-            btnEditar.Size = new Size(34, 34);
+            btnEditar.Size = new Size(38, 38);
             // 
             // btnExcluir
             // 
             btnExcluir.BackgroundImageLayout = ImageLayout.None;
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnExcluir.Image = Properties.Resources.btnExcluir;
+            btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Padding = new Padding(5);
-            btnExcluir.Size = new Size(34, 34);
+            btnExcluir.Size = new Size(38, 38);
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 37);
+            toolStripSeparator3.Size = new Size(6, 41);
             // 
             // lblTipoCadastro
             // 
             lblTipoCadastro.Name = "lblTipoCadastro";
-            lblTipoCadastro.Size = new Size(127, 34);
+            lblTipoCadastro.Size = new Size(161, 38);
             lblTipoCadastro.Text = "Tipo de Cadastro";
             // 
             // pnlRegistros
@@ -134,9 +137,9 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
-            statusStrip1.Location = new Point(0, 604);
+            statusStrip1.Location = new Point(0, 596);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1029, 26);
+            statusStrip1.Size = new Size(1029, 34);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -144,12 +147,12 @@
             // 
             statusLabelPrincipal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             statusLabelPrincipal.Name = "statusLabelPrincipal";
-            statusLabelPrincipal.Size = new Size(195, 21);
+            statusLabelPrincipal.Size = new Size(243, 28);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
             // 
             // TelaPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
             Controls.Add(statusStrip1);
