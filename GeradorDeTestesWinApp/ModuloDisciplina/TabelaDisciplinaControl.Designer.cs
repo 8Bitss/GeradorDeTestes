@@ -35,19 +35,22 @@
             // grid
             // 
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);
+            grid.Margin = new Padding(3, 2, 3, 2);
             grid.Name = "grid";
             grid.RowHeadersWidth = 51;
-            grid.Size = new Size(514, 347);
+            grid.Size = new Size(452, 262);
             grid.TabIndex = 0;
             // 
             // TabelaDisciplinaControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "TabelaDisciplinaControl";
-            Size = new Size(517, 350);
+            Size = new Size(452, 262);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

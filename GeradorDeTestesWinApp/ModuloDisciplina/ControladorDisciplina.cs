@@ -7,6 +7,11 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         RepositorioDisciplina repositorioDisciplina;
 
         public TabelaDisciplinaControl tabelaDisciplina;
+
+        public ControladorDisciplina(RepositorioDisciplina repositorio)
+        {
+            repositorioDisciplina = repositorio;
+        }
         
         public override string TipoCadastro { get { return "Disciplinas"; } }
 
@@ -17,41 +22,32 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         public override string ToolTipExcluir { get { return "Excluir uma disciplina existente"; } }
 
 
-        public ControladorDisciplina(RepositorioDisciplina repositorio)
-        {
-            repositorioDisciplina = repositorio;
-        }
-
         public override void Adicionar()
         {
-            TelaDisciplinaForm telaDisciplinaForm = new TelaDisciplinaForm();
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm();
 
-            DialogResult resultado = telaDisciplinaForm.ShowDialog();
+            DialogResult resultado = telaDisciplina.ShowDialog();
 
             if (resultado != DialogResult.OK)
                 return;
 
-            Disciplina novoDisciplina = telaDisciplinaForm.Disciplina;
+            Disciplina novoDisciplina = telaDisciplina.Disciplina;
 
             repositorioDisciplina.Cadastrar(novoDisciplina);
-            CarregarDisciplina();
+            CarregarDisciplinas();
 
             TelaPrincipalForm
                 .Instancia
                 .AtualizarRodape(($"O registro \"{novoDisciplina.Nome}\" foi criado com sucesso!"));
         }
 
-        private void CarregarDisciplina()
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Editar()
         {
 
-            TelaDisciplinaForm teladisciplina = new TelaDisciplinaForm();
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm();
 
-            int idSelecionado = teladisciplina.ObterRegistroSelecionado();
+            int idSelecionado = tabelaDisciplina.ObterRegistroSelecionado();
 
             Disciplina disciplinaSelecionada =
                 repositorioDisciplina.SelecionarPorId(idSelecionado);
@@ -67,14 +63,14 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
                 return;
             }
 
-            teladisciplina.Disciplina = disciplinaSelecionada;
+            telaDisciplina.Disciplina = disciplinaSelecionada;
 
-            DialogResult resultado = teladisciplina.ShowDialog();
+            DialogResult resultado = telaDisciplina.ShowDialog();
 
             if (resultado != DialogResult.OK)
                 return;
 
-            Disciplina disciplinaEditada = teladisciplina.Disciplina;
+            Disciplina disciplinaEditada = telaDisciplina.Disciplina;
 
             repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
             CarregarDisciplinas();

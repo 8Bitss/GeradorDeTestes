@@ -19,7 +19,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             grid.Rows.Clear();
 
             foreach (Disciplina d in disciplinas)
-                grid.Rows.Add(d.Nome);
+                grid.Rows.Add(d.Id, d.Nome);
         }
 
         public int ObterRegistroSelecionado()
@@ -31,7 +31,8 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         {
             return new DataGridViewColumn[]
                         {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" }
              };
         }
     }

@@ -1,5 +1,4 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
-using GeradorDeTestesWinApp.ModuloMateria;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -23,15 +22,10 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         {
              List<string> erros = new List<string>();
 
-            if (string.IsNullOrEmpty(Nome.Trim()));
-            erros.Add("O Nome precisa ser preenchido corretamente");
+            if (string.IsNullOrEmpty(Nome.Trim()))
+                erros.Add("O Nome precisa ser preenchido corretamente");
 
             return erros;
-        }
-
-        public static explicit operator Disciplina(ListBox.SelectedObjectCollection v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
