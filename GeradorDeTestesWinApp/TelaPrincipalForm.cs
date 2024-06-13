@@ -1,5 +1,4 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
-using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
 
 namespace GeradorDeTestesWinApp
@@ -9,7 +8,6 @@ namespace GeradorDeTestesWinApp
         ControladorBase controlador;
 
         #region Repositorios
-        RepositorioDisciplina repositorioDisciplina;
         RepositorioMateria repositorioMateria;
         #endregion
 
@@ -23,7 +21,6 @@ namespace GeradorDeTestesWinApp
             Instancia = this;
 
             #region Repositorios
-            repositorioDisciplina = new RepositorioDisciplina();
             repositorioMateria = new RepositorioMateria();
             #endregion
         }
@@ -53,9 +50,6 @@ namespace GeradorDeTestesWinApp
         #region Botoes do MenuStrip
         private void disciplinasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDisciplina(repositorioDisciplina);
-
-            ConfigurarTelaPrincipal(controlador);
         }
 
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)

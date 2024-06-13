@@ -1,4 +1,4 @@
-﻿using GeradorDeTestesWinApp.ModuloDisciplina;
+﻿//using GeradorDeTestesWinApp.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,10 +36,9 @@ namespace GeradorDeTestesWinApp.ModuloMateria
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            Disciplina disciplinaTeste = new Disciplina("DisciplinaTeste");
-            string serie = "teste";
+            SerieMateriaEnum serie = SerieMateriaEnum.PrimeiraSerie;
 
-            materia = new Materia(nome, disciplinaTeste, serie);
+            materia = new Materia(nome, serie);
 
             List<string> erros = materia.Validar();
 
