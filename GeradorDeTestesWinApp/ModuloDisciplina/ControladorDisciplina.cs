@@ -6,8 +6,8 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
     {
         RepositorioDisciplina repositorioDisciplina;
 
-        public TabelaDisciplinaControl tabelaDisciplinaControl;
-
+        public TabelaDisciplinaControl tabelaDisciplina;
+        
         public override string TipoCadastro { get { return "Disciplinas"; } }
 
         public override string ToolTipAdicionar { get { return "Cadastrar uma nova disciplina"; } }
@@ -36,8 +36,9 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             repositorioDisciplina.Cadastrar(novoDisciplina);
             CarregarDisciplina();
 
-            TelaPrincipalForm.Instancia;
-            TelaPrincipalForm.AtalizarRodape(($"O registro \"{novoContato.Nome}\" foi criado com sucesso!"));
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape(($"O registro \"{novoDisciplina.Nome}\" foi criado com sucesso!"));
         }
 
         private void CarregarDisciplina()
@@ -85,7 +86,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 
         public override void Excluir()
         {
-            int idSelecionado = TabelaDisciplinaControl.ObterRegistroSelecionado();
+            int idSelecionado = tabelaDisciplina.ObterRegistroSelecionado();
 
             Disciplina disciplinaSelecionada =
                 repositorioDisciplina.SelecionarPorId(idSelecionado);
@@ -124,7 +125,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         private void CarregarDisciplinas()
         {
             List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
-            TabelaDisciplinaControl.AtualizarRegistros(disciplinas);
+            tabelaDisciplina.AtualizarRegistros(disciplinas);
         }
 
         public override UserControl ObterListagem()
@@ -134,14 +135,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 
             CarregarDisciplinas();
 
-            return TabelaDisciplinaControl.AtualizarRegistros;
+            return tabelaDisciplina;
         }
     }
 }
-
-
-
-
-
-
-

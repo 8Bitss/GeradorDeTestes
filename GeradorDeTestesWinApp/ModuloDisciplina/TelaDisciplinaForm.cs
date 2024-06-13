@@ -20,5 +20,10 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         {
 
         }
+
+        internal int ObterRegistroSelecionado()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

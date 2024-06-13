@@ -54,11 +54,6 @@ namespace GeradorDeTestesWinApp
 
             ConfigurarTelaPrincipal(controlador);
         }
-
-
-
-             
-        
         #endregion
 
 
