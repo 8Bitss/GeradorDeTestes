@@ -27,6 +27,11 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             erros.Add("O Nome precisa ser preenchido corretamente");
 
             return erros;
-        }        
+        }
+
+        public static explicit operator Disciplina(ListBox.SelectedObjectCollection v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

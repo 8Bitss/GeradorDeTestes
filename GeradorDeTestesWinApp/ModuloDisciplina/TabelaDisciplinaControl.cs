@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using GeradorDeTestesWinApp.Compartilhado;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -15,11 +7,32 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         public TabelaDisciplinaControl()
         {
             InitializeComponent();
+
+            dataGridViewDisciplina.Columns.AddRange(ObterColunas());
+
+            dataGridViewDisciplina.ConfigurarGridSomenteLeitura();
+            dataGridViewDisciplina.ConfigurarGridZebrado();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void AtualizarRegistros(List<Disciplina> disciplinas)
         {
+            dataGridViewDisciplina.Rows.Clear();
 
+            foreach (Disciplina d in disciplinas)
+                dataGridViewDisciplina.Rows.Add(d.Nome);
+        }
+
+        public int ObterRegistroSelecionado()
+        {
+            return dataGridViewDisciplina.SelecionarId();
+        }
+
+        private DataGridViewColumn[] ObterColunas()
+        {
+            return new DataGridViewColumn[]
+                        {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
+             };
         }
     }
 }
