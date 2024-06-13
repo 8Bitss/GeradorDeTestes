@@ -136,6 +136,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             CarregarDisciplinas();
 
             return tabelaDisciplina;
+
         }
     }
 }
