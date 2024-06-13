@@ -35,9 +35,27 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            
             string nome = txtNome.Text;
-            SerieMateriaEnum serie = SerieMateriaEnum.PrimeiraSerie;
+            SerieMateriaEnum serie;
 
+            if (!rdb1Serie.Checked && !rdb2Serie.Checked)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma serie selecionada",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                    );
+
+                serie = 0;
+            }
+
+            else if (rdb1Serie.Checked)
+                serie = SerieMateriaEnum.PrimeiraSerie;
+            else
+                serie = SerieMateriaEnum.SegundaSerie;
+                             
             materia = new Materia(nome, serie);
 
             List<string> erros = materia.Validar();
@@ -48,6 +66,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
                 DialogResult = DialogResult.None;
             }
+
         }
     }
 }

@@ -35,9 +35,9 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             //if (Disciplina == null)
             //erros.Add("A Disciplina precisa ser informada corretamente");
 
-            //if (string.IsNullOrEmpty(Serie.Trim()))
-            //erros.Add("A Série precisa ser informada corretamente");
-            
+            if (SerieMateria == 0)
+                erros.Add("A Série precisa ser informada corretamente");
+
             return erros;
         }
     }

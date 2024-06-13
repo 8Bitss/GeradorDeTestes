@@ -35,6 +35,22 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
             Materia novaMateria = telaMateria.Materia;
 
+            List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
+
+            foreach(Materia materias in materiasCadastradas)
+            {
+                if(materias.Nome == novaMateria.Nome)
+                {
+                    MessageBox.Show(
+                        "Não é possível realizar esta pois já existe uma máteria com este nome",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+            }
+
             repositorioMateria.Cadastrar(novaMateria);
 
             CarregarMaterias();
