@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             disciplinasToolStripMenuItem = new ToolStripMenuItem();
+            materiasToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -40,7 +41,6 @@
             pnlRegistros = new Panel();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
-            materiasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -67,9 +67,16 @@
             // disciplinasToolStripMenuItem
             // 
             disciplinasToolStripMenuItem.Name = "disciplinasToolStripMenuItem";
-            disciplinasToolStripMenuItem.Size = new Size(180, 26);
+            disciplinasToolStripMenuItem.Size = new Size(154, 26);
             disciplinasToolStripMenuItem.Text = "Disciplinas";
             disciplinasToolStripMenuItem.Click += disciplinasToolStripMenuItem_Click;
+            // 
+            // materiasToolStripMenuItem
+            // 
+            materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
+            materiasToolStripMenuItem.Size = new Size(154, 26);
+            materiasToolStripMenuItem.Text = "Matérias";
+            materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
@@ -85,6 +92,7 @@
             // 
             btnAdicionar.BackgroundImageLayout = ImageLayout.None;
             btnAdicionar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAdicionar.Enabled = false;
             btnAdicionar.Image = Properties.Resources.btnAdicionar;
             btnAdicionar.ImageTransparentColor = Color.Magenta;
             btnAdicionar.Name = "btnAdicionar";
@@ -96,6 +104,7 @@
             // 
             btnEditar.BackgroundImageLayout = ImageLayout.None;
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnEditar.Enabled = false;
             btnEditar.Image = Properties.Resources.btnEditar;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
@@ -107,6 +116,7 @@
             // 
             btnExcluir.BackgroundImageLayout = ImageLayout.None;
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnExcluir.Enabled = false;
             btnExcluir.Image = Properties.Resources.btnExcluir;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
@@ -147,13 +157,6 @@
             statusLabelPrincipal.Name = "statusLabelPrincipal";
             statusLabelPrincipal.Size = new Size(195, 21);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
-            // 
-            // materiasToolStripMenuItem
-            // 
-            materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(180, 26);
-            materiasToolStripMenuItem.Text = "Matérias";
-            materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 

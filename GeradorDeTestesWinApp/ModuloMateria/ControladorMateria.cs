@@ -35,23 +35,15 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
             Materia novaMateria = telaMateria.Materia;
 
-            List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
+            //Metodo para Verificar se nome existe
+            bool nomeExiste = VerificaNomeExisente(novaMateria);
 
-            foreach(Materia materias in materiasCadastradas)
+            if (nomeExiste)
             {
-                if(materias.Nome == novaMateria.Nome)
-                {
-                    MessageBox.Show(
-                        "Não é possível realizar esta pois já existe uma máteria com este nome",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return;
-                }
+                repositorioMateria.Cadastrar(novaMateria);
             }
-
-            repositorioMateria.Cadastrar(novaMateria);
+            else
+                return;
 
             CarregarMaterias();
 
@@ -89,7 +81,15 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
             Materia materiaEditado = telaMateria.Materia;
 
-            repositorioMateria.Editar(materiaSelecionado.Id, materiaEditado);
+            //Metodo para Verificar se nome existe
+            bool nomeExiste = VerificaNomeExisente(materiaEditado);
+
+            if (nomeExiste)
+            {
+                repositorioMateria.Editar(materiaSelecionado.Id, materiaEditado);
+            }
+            else
+                return;
 
             CarregarMaterias();
 
@@ -150,6 +150,27 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             List<Materia> materias = repositorioMateria.SelecionarTodos();
 
             tabelaMateria.AtualizarRegistros(materias);
+        }
+
+        private bool VerificaNomeExisente(Materia novaMateria)
+        {
+            List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
+
+            foreach (Materia materias in materiasCadastradas)
+            {
+                if (materias.Nome == novaMateria.Nome)
+                {
+                    MessageBox.Show(
+                        "Não é possível realizar esta pois já existe uma máteria com este nome",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
