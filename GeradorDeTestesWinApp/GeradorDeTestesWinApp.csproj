@@ -10,8 +10,14 @@
 
   <ItemGroup>
     <Compile Remove="ModuloDisciplina\**" />
+    <Compile Remove="ModuloQuestoes\**" />
+    <Compile Remove="ModuloTeste\**" />
     <EmbeddedResource Remove="ModuloDisciplina\**" />
+    <EmbeddedResource Remove="ModuloQuestoes\**" />
+    <EmbeddedResource Remove="ModuloTeste\**" />
     <None Remove="ModuloDisciplina\**" />
+    <None Remove="ModuloQuestoes\**" />
+    <None Remove="ModuloTeste\**" />
   </ItemGroup>
 
   <ItemGroup>

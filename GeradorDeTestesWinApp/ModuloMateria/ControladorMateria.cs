@@ -46,12 +46,77 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaMateriaForm telaMateria = new TelaMateriaForm();
+
+            int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
+
+            Materia materiaSelecionado =
+                repositorioMateria.SelecionarPorId(idSelecionado);
+
+            if (materiaSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaMateria.Materia = materiaSelecionado;
+
+            DialogResult resultado = telaMateria.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Materia materiaEditado = telaMateria.Materia;
+
+            repositorioMateria.Editar(materiaSelecionado.Id, materiaEditado);
+
+            CarregarMaterias();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{materiaEditado.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
+
+            Materia materiaSelecionada =
+                repositorioMateria.SelecionarPorId(idSelecionado);
+
+            if (materiaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir o registro \"{materiaSelecionada.Nome}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioMateria.Excluir(materiaSelecionada.Id);
+
+            CarregarMaterias();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{materiaSelecionada.Nome}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
