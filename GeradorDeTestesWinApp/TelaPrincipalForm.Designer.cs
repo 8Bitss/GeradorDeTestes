@@ -40,6 +40,7 @@
             pnlRegistros = new Panel();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
+            materiasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasToolStripMenuItem, materiasToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(91, 25);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -147,6 +148,13 @@
             statusLabelPrincipal.Size = new Size(195, 21);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
             // 
+            // materiasToolStripMenuItem
+            // 
+            materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
+            materiasToolStripMenuItem.Size = new Size(180, 26);
+            materiasToolStripMenuItem.Text = "Matérias";
+            materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -187,5 +195,6 @@
         private Panel pnlRegistros;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabelPrincipal;
+        private ToolStripMenuItem materiasToolStripMenuItem;
     }
 }

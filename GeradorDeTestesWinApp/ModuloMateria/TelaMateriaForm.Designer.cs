@@ -36,18 +36,18 @@
             btnGravar = new Button();
             txtId = new TextBox();
             txtNome = new TextBox();
-            txtDisciplina = new TextBox();
             rdb1Serie = new RadioButton();
             rdb2Serie = new RadioButton();
+            cmbDisciplinas = new ComboBox();
             SuspendLayout();
             // 
             // lblId
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblId.Location = new Point(93, 27);
+            lblId.Location = new Point(104, 30);
             lblId.Name = "lblId";
-            lblId.Size = new Size(33, 28);
+            lblId.Size = new Size(26, 21);
             lblId.TabIndex = 0;
             lblId.Text = "Id:";
             // 
@@ -55,9 +55,9 @@
             // 
             lblNome.AutoSize = true;
             lblNome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNome.Location = new Point(56, 75);
+            lblNome.Location = new Point(74, 60);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(70, 28);
+            lblNome.Size = new Size(56, 21);
             lblNome.TabIndex = 1;
             lblNome.Text = "Nome:";
             // 
@@ -65,9 +65,9 @@
             // 
             lblDisciplina.AutoSize = true;
             lblDisciplina.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDisciplina.Location = new Point(26, 118);
+            lblDisciplina.Location = new Point(50, 90);
             lblDisciplina.Name = "lblDisciplina";
-            lblDisciplina.Size = new Size(100, 28);
+            lblDisciplina.Size = new Size(80, 21);
             lblDisciplina.TabIndex = 2;
             lblDisciplina.Text = "Disciplina:";
             // 
@@ -75,19 +75,21 @@
             // 
             lblSerie.AutoSize = true;
             lblSerie.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSerie.Location = new Point(67, 168);
+            lblSerie.Location = new Point(82, 118);
             lblSerie.Name = "lblSerie";
-            lblSerie.Size = new Size(59, 28);
+            lblSerie.Size = new Size(48, 21);
             lblSerie.TabIndex = 3;
             lblSerie.Text = "Série:";
             // 
             // btnCancelar
             // 
             btnCancelar.AutoSize = true;
-            btnCancelar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(399, 247);
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Font = new Font("Segoe UI", 12F);
+            btnCancelar.Location = new Point(367, 195);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(94, 33);
+            btnCancelar.Size = new Size(82, 31);
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -95,42 +97,43 @@
             // btnGravar
             // 
             btnGravar.AutoSize = true;
-            btnGravar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGravar.Location = new Point(299, 247);
+            btnGravar.DialogResult = DialogResult.OK;
+            btnGravar.Font = new Font("Segoe UI", 12F);
+            btnGravar.Location = new Point(280, 195);
+            btnGravar.Margin = new Padding(3, 2, 3, 2);
             btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(94, 33);
+            btnGravar.Size = new Size(82, 31);
             btnGravar.TabIndex = 5;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // txtId
             // 
-            txtId.Location = new Point(132, 31);
+            txtId.Enabled = false;
+            txtId.Location = new Point(136, 32);
+            txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
-            txtId.Size = new Size(60, 27);
+            txtId.Size = new Size(53, 23);
             txtId.TabIndex = 7;
+            txtId.Text = "0";
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(132, 76);
+            txtNome.Location = new Point(136, 62);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(361, 27);
+            txtNome.Size = new Size(316, 23);
             txtNome.TabIndex = 8;
-            // 
-            // txtDisciplina
-            // 
-            txtDisciplina.Location = new Point(132, 122);
-            txtDisciplina.Name = "txtDisciplina";
-            txtDisciplina.Size = new Size(361, 27);
-            txtDisciplina.TabIndex = 9;
             // 
             // rdb1Serie
             // 
             rdb1Serie.AutoSize = true;
             rdb1Serie.Font = new Font("Segoe UI", 10.2F);
-            rdb1Serie.Location = new Point(132, 169);
+            rdb1Serie.Location = new Point(136, 118);
+            rdb1Serie.Margin = new Padding(3, 2, 3, 2);
             rdb1Serie.Name = "rdb1Serie";
-            rdb1Serie.Size = new Size(89, 27);
+            rdb1Serie.Size = new Size(73, 23);
             rdb1Serie.TabIndex = 11;
             rdb1Serie.TabStop = true;
             rdb1Serie.Text = "1ª Série";
@@ -140,22 +143,31 @@
             // 
             rdb2Serie.AutoSize = true;
             rdb2Serie.Font = new Font("Segoe UI", 10.2F);
-            rdb2Serie.Location = new Point(228, 169);
+            rdb2Serie.Location = new Point(215, 118);
+            rdb2Serie.Margin = new Padding(3, 2, 3, 2);
             rdb2Serie.Name = "rdb2Serie";
-            rdb2Serie.Size = new Size(89, 27);
+            rdb2Serie.Size = new Size(73, 23);
             rdb2Serie.TabIndex = 12;
             rdb2Serie.TabStop = true;
             rdb2Serie.Text = "2ª Série";
             rdb2Serie.UseVisualStyleBackColor = true;
             // 
+            // cmbDisciplinas
+            // 
+            cmbDisciplinas.FormattingEnabled = true;
+            cmbDisciplinas.Location = new Point(136, 90);
+            cmbDisciplinas.Name = "cmbDisciplinas";
+            cmbDisciplinas.Size = new Size(157, 23);
+            cmbDisciplinas.TabIndex = 13;
+            // 
             // TelaMateriaForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(545, 329);
+            ClientSize = new Size(461, 235);
+            Controls.Add(cmbDisciplinas);
             Controls.Add(rdb2Serie);
             Controls.Add(rdb1Serie);
-            Controls.Add(txtDisciplina);
             Controls.Add(txtNome);
             Controls.Add(txtId);
             Controls.Add(btnCancelar);
@@ -164,7 +176,13 @@
             Controls.Add(lblDisciplina);
             Controls.Add(lblNome);
             Controls.Add(lblId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TelaMateriaForm";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Matérias";
             ResumeLayout(false);
             PerformLayout();
@@ -180,8 +198,8 @@
         private Button btnGravar;
         private TextBox txtId;
         private TextBox txtNome;
-        private TextBox txtDisciplina;
         private RadioButton rdb1Serie;
         private RadioButton rdb2Serie;
+        private ComboBox cmbDisciplinas;
     }
 }

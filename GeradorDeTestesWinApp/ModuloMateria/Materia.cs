@@ -6,10 +6,10 @@ namespace GeradorDeTestesWinApp.ModuloMateria
     public class Materia : EntidadeBase
     {
         public string Nome { get; set; } 
-        public string Disciplina { get; set; }
+        public Disciplina Disciplina { get; set; }
         public string Serie { get; set; }
 
-        public Materia( string nome, string disciplina, string serie) 
+        public Materia( string nome, Disciplina disciplina, string serie) 
         {
             Nome = nome;
             Disciplina = disciplina;
@@ -18,22 +18,24 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Materia novoMateria = (Materia)novoRegistro;
+            Materia novaMateria = (Materia)novoRegistro;
 
-            Nome = novoMateria.Nome;
+            Nome = novaMateria.Nome;
+            Disciplina = novaMateria.Disciplina;
+            Serie = novaMateria.Serie;
         }
 
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();
 
-            if (string.IsNullOrEmpty(Nome.Trim())) ;
+            if (string.IsNullOrEmpty(Nome.Trim()))
             erros.Add("O Nome da matéria precisa ser preenchido corretamente");
 
-            if (string.IsNullOrEmpty(Disciplina.Trim())) ;
+            if (Disciplina == null)
             erros.Add("A Disciplina precisa ser informada corretamente");
 
-            if (string.IsNullOrEmpty(Serie.Trim())) ;
+            if (string.IsNullOrEmpty(Serie.Trim()))
             erros.Add("A Série precisa ser informada corretamente");
             
             return erros;

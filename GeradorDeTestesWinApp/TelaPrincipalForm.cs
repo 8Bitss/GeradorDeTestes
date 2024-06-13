@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloDisciplina;
+using GeradorDeTestesWinApp.ModuloMateria;
 
 namespace GeradorDeTestesWinApp
 {
@@ -9,6 +10,7 @@ namespace GeradorDeTestesWinApp
 
         #region Repositorios
         RepositorioDisciplina repositorioDisciplina;
+        RepositorioMateria repositorioMateria;
         #endregion
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -22,9 +24,9 @@ namespace GeradorDeTestesWinApp
 
             #region Repositorios
             repositorioDisciplina = new RepositorioDisciplina();
+            repositorioMateria = new RepositorioMateria();
             #endregion
         }
-
 
         public void AtualizarRodape(string texto)
         {
@@ -35,19 +37,16 @@ namespace GeradorDeTestesWinApp
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             controlador.Adicionar();
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             controlador.Editar();
-
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             controlador.Excluir();
-
         }
         #endregion
 
@@ -55,6 +54,13 @@ namespace GeradorDeTestesWinApp
         private void disciplinasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorDisciplina(repositorioDisciplina);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorMateria(repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);
         }
