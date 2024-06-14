@@ -1,4 +1,5 @@
 ﻿//using GeradorDeTestesWinApp.ModuloDisciplina;
+using GeradorDeTestesWinApp.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,8 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             {
                 txtId.Text = value.Id.ToString();
                 txtNome.Text = value.Nome;
+
+                cmbDisciplinas.SelectedItem = value.Disciplina;
             }
             get
             {
@@ -33,10 +36,19 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             InitializeComponent();
         }
 
+        public void CarregarDisciplinas(List<Disciplina> disciplinas)
+        {
+            cmbDisciplinas.Items.Clear();
+
+            foreach(Disciplina d in disciplinas)
+                cmbDisciplinas.Items.Add(d);
+        }
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
             
             string nome = txtNome.Text;
+            Disciplina disciplinaSelecionada = cmbDisciplinas.SelectedItem as Disciplina;
             SerieMateriaEnum serie;
 
             if (!rdb1Serie.Checked && !rdb2Serie.Checked)
@@ -56,7 +68,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             else
                 serie = SerieMateriaEnum.SegundaSerie;
                              
-            materia = new Materia(nome, serie);
+            materia = new Materia(nome, disciplinaSelecionada, serie);
 
             List<string> erros = materia.Validar();
 

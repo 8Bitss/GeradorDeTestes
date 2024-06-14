@@ -68,14 +68,14 @@
             // disciplinasToolStripMenuItem
             // 
             disciplinasToolStripMenuItem.Name = "disciplinasToolStripMenuItem";
-            disciplinasToolStripMenuItem.Size = new Size(154, 26);
+            disciplinasToolStripMenuItem.Size = new Size(180, 26);
             disciplinasToolStripMenuItem.Text = "Disciplinas";
             disciplinasToolStripMenuItem.Click += disciplinasToolStripMenuItem_Click;
             // 
             // materiasToolStripMenuItem
             // 
             materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(154, 26);
+            materiasToolStripMenuItem.Size = new Size(180, 26);
             materiasToolStripMenuItem.Text = "Matérias";
             materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
@@ -142,6 +142,7 @@
             // 
             // pnlRegistros
             // 
+            pnlRegistros.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlRegistros.Location = new Point(0, 75);
             pnlRegistros.Name = "pnlRegistros";
             pnlRegistros.Size = new Size(1029, 526);

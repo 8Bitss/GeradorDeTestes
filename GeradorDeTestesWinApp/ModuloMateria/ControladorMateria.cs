@@ -1,16 +1,19 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloDisciplina;
 
 namespace GeradorDeTestesWinApp.ModuloMateria
 {
     public class ControladorMateria : ControladorBase
     {
         private RepositorioMateria repositorioMateria;
+        private RepositorioDisciplina repositorioDisciplina;
 
         private TabelaMateriaControl tabelaMateria;
 
-        public ControladorMateria(RepositorioMateria repositorio)
+        public ControladorMateria(RepositorioMateria repositorio, RepositorioDisciplina repositorioDisciplina)
         {
             repositorioMateria = repositorio;
+            this.repositorioDisciplina = repositorioDisciplina;
         }
 
         #region ToolTips
@@ -27,6 +30,10 @@ namespace GeradorDeTestesWinApp.ModuloMateria
         {
             TelaMateriaForm telaMateria = new TelaMateriaForm();
 
+            List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
+
+            telaMateria.CarregarDisciplinas(disciplinasCadastradas);
+
             DialogResult resultado = telaMateria.ShowDialog();
 
             // guardas = bloquear momentos em que a aplicação toma um "caminho triste"
@@ -39,9 +46,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             bool nomeExiste = VerificaNomeExisente(novaMateria);
 
             if (nomeExiste)
-            {
                 repositorioMateria.Cadastrar(novaMateria);
-            }
             else
                 return;
 
@@ -55,6 +60,10 @@ namespace GeradorDeTestesWinApp.ModuloMateria
         public override void Editar()
         {
             TelaMateriaForm telaMateria = new TelaMateriaForm();
+
+            List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
+
+            telaMateria.CarregarDisciplinas(disciplinasCadastradas);
 
             int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
 

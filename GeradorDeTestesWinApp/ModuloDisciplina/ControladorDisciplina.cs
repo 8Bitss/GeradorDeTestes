@@ -1,4 +1,5 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloMateria;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -31,14 +32,21 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             if (resultado != DialogResult.OK)
                 return;
 
-            Disciplina novoDisciplina = telaDisciplina.Disciplina;
+            Disciplina novaDisciplina = telaDisciplina.Disciplina;
 
-            repositorioDisciplina.Cadastrar(novoDisciplina);
+            //Metodo para Verificar se nome existe
+            bool nomeExiste = VerificaNomeExisente(novaDisciplina);
+
+            if (nomeExiste)
+                repositorioDisciplina.Cadastrar(novaDisciplina);
+            else
+                return;
+
             CarregarDisciplinas();
 
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape(($"O registro \"{novoDisciplina.Nome}\" foi criado com sucesso!"));
+                .AtualizarRodape(($"O registro \"{novaDisciplina.Nome}\" foi criado com sucesso!"));
         }
 
 
@@ -118,12 +126,6 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
                 .AtualizarRodape($"O registro \"{disciplinaSelecionada.Nome}\" foi excluído com sucesso!");
         }
 
-        private void CarregarDisciplinas()
-        {
-            List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
-            tabelaDisciplina.AtualizarRegistros(disciplinas);
-        }
-
         public override UserControl ObterListagem()
         {
             if (tabelaDisciplina == null)
@@ -133,6 +135,33 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 
             return tabelaDisciplina;
 
+        }
+
+        private void CarregarDisciplinas()
+        {
+            List<Disciplina> disciplinas = repositorioDisciplina.SelecionarTodos();
+            tabelaDisciplina.AtualizarRegistros(disciplinas);
+        }
+
+        private bool VerificaNomeExisente(Disciplina novaDisciplina)
+        {
+            List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
+
+            foreach (Disciplina discplinas in disciplinasCadastradas)
+            {
+                if (discplinas.Nome == novaDisciplina.Nome)
+                {
+                    MessageBox.Show(
+                        "Não é possível realizar esta pois já existe uma Disciplina com este nome",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

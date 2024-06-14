@@ -45,7 +45,7 @@
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblId.Location = new Point(104, 30);
+            lblId.Location = new Point(87, 26);
             lblId.Name = "lblId";
             lblId.Size = new Size(26, 21);
             lblId.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             lblNome.AutoSize = true;
             lblNome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNome.Location = new Point(74, 60);
+            lblNome.Location = new Point(57, 56);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(56, 21);
             lblNome.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             lblDisciplina.AutoSize = true;
             lblDisciplina.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDisciplina.Location = new Point(50, 90);
+            lblDisciplina.Location = new Point(33, 86);
             lblDisciplina.Name = "lblDisciplina";
             lblDisciplina.Size = new Size(80, 21);
             lblDisciplina.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             lblSerie.AutoSize = true;
             lblSerie.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSerie.Location = new Point(82, 118);
+            lblSerie.Location = new Point(65, 114);
             lblSerie.Name = "lblSerie";
             lblSerie.Size = new Size(48, 21);
             lblSerie.TabIndex = 3;
@@ -111,7 +111,7 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(136, 32);
+            txtId.Location = new Point(119, 28);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.Size = new Size(53, 23);
@@ -120,7 +120,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(136, 62);
+            txtNome.Location = new Point(119, 58);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(316, 23);
@@ -130,7 +130,7 @@
             // 
             rdb1Serie.AutoSize = true;
             rdb1Serie.Font = new Font("Segoe UI", 10.2F);
-            rdb1Serie.Location = new Point(136, 118);
+            rdb1Serie.Location = new Point(119, 114);
             rdb1Serie.Margin = new Padding(3, 2, 3, 2);
             rdb1Serie.Name = "rdb1Serie";
             rdb1Serie.Size = new Size(73, 23);
@@ -143,7 +143,7 @@
             // 
             rdb2Serie.AutoSize = true;
             rdb2Serie.Font = new Font("Segoe UI", 10.2F);
-            rdb2Serie.Location = new Point(215, 118);
+            rdb2Serie.Location = new Point(198, 114);
             rdb2Serie.Margin = new Padding(3, 2, 3, 2);
             rdb2Serie.Name = "rdb2Serie";
             rdb2Serie.Size = new Size(73, 23);
@@ -154,10 +154,11 @@
             // 
             // cmbDisciplinas
             // 
+            cmbDisciplinas.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDisciplinas.FormattingEnabled = true;
-            cmbDisciplinas.Location = new Point(136, 90);
+            cmbDisciplinas.Location = new Point(119, 86);
             cmbDisciplinas.Name = "cmbDisciplinas";
-            cmbDisciplinas.Size = new Size(157, 23);
+            cmbDisciplinas.Size = new Size(152, 23);
             cmbDisciplinas.TabIndex = 13;
             // 
             // TelaMateriaForm

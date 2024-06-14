@@ -19,7 +19,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             grid.Rows.Clear();
 
             foreach (Materia materia in materias)
-                grid.Rows.Add(materia.Id, materia.Nome, materia.SerieMateria);
+                grid.Rows.Add(materia.Id, materia.Nome, materia.Disciplina.Nome, materia.SerieMateria);
         }
 
         public int ObterRegistroSelecionado()
@@ -33,7 +33,8 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Serie", HeaderText = "Serie" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Disciplina", HeaderText = "Disciplina" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Serie", HeaderText = "Série" }
             };
         }
     }

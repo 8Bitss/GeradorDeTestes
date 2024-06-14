@@ -1,18 +1,18 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
-//using GeradorDeTestesWinApp.ModuloDisciplina;
+using GeradorDeTestesWinApp.ModuloDisciplina;
 
 namespace GeradorDeTestesWinApp.ModuloMateria
 {
     public class Materia : EntidadeBase
     {
-        public string Nome { get; set; } 
-        //public Disciplina Disciplina { get; set; }
+        public string Nome { get; set; }
+        public Disciplina Disciplina { get; set; }
         public SerieMateriaEnum SerieMateria { get; set; }
 
-        public Materia( string nome, SerieMateriaEnum serie) 
+        public Materia(string nome, Disciplina disciplina, SerieMateriaEnum serie) 
         {
             Nome = nome;
-            //Disciplina = disciplina;
+            Disciplina = disciplina;
             SerieMateria = serie;
         }
 
@@ -21,7 +21,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             Materia novaMateria = (Materia)novoRegistro;
 
             Nome = novaMateria.Nome;
-            //Disciplina = novaMateria.Disciplina;
+            Disciplina = novaMateria.Disciplina;
             SerieMateria = novaMateria.SerieMateria;
         }
 
@@ -32,8 +32,8 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             if (string.IsNullOrEmpty(Nome.Trim()))
             erros.Add("O Nome da matéria precisa ser preenchido corretamente");
 
-            //if (Disciplina == null)
-            //erros.Add("A Disciplina precisa ser informada corretamente");
+            if (Disciplina == null)
+                erros.Add("A Disciplina precisa ser informada corretamente");
 
             if (SerieMateria == 0)
                 erros.Add("A Série precisa ser informada corretamente");

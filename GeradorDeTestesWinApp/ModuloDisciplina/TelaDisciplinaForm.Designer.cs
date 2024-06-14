@@ -48,7 +48,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(82, 66);
+            txtNome.Location = new Point(82, 61);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(336, 23);
@@ -79,7 +79,7 @@
             btnCancelar.AutoSize = true;
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(336, 131);
+            btnCancelar.Location = new Point(337, 107);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 29);
@@ -92,7 +92,7 @@
             btnGravar.AutoSize = true;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGravar.Location = new Point(248, 131);
+            btnGravar.Location = new Point(249, 107);
             btnGravar.Margin = new Padding(3, 2, 3, 2);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(82, 29);
@@ -105,7 +105,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(449, 184);
+            ClientSize = new Size(425, 147);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(lblNome);
