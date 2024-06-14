@@ -34,8 +34,19 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             Disciplina novoDisciplina = telaDisciplina.Disciplina;
 
             repositorioDisciplina.Cadastrar(novoDisciplina);
-            CarregarDisciplinas();
 
+            //if (CarregarDisciplinas == repositorioDisciplina.Cadastrar); VALIDAÇÃO DE CADASTRO DUPLICADO (em construção)!!!
+
+            //MessageBox.Show(
+            //   "Disciplina já Cadastrada!",
+            //   "Aviso",
+            //   MessageBoxButtons.OK,
+            //   MessageBoxIcon.Warning
+            //   );
+            //return;
+
+            CarregarDisciplinas();
+            
             TelaPrincipalForm
                 .Instancia
                 .AtualizarRodape(($"O registro \"{novoDisciplina.Nome}\" foi criado com sucesso!"));
