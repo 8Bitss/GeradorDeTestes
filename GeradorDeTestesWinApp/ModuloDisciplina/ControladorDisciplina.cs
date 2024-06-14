@@ -12,7 +12,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         {
             repositorioDisciplina = repositorio;
         }
-        
+
         public override string TipoCadastro { get { return "Disciplinas"; } }
 
         public override string ToolTipAdicionar { get { return "Cadastrar uma nova disciplina"; } }
@@ -34,19 +34,8 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             Disciplina novoDisciplina = telaDisciplina.Disciplina;
 
             repositorioDisciplina.Cadastrar(novoDisciplina);
-
-            //if (CarregarDisciplinas == repositorioDisciplina.Cadastrar); VALIDAÇÃO DE CADASTRO DUPLICADO (em construção)!!!
-
-            //MessageBox.Show(
-            //   "Disciplina já Cadastrada!",
-            //   "Aviso",
-            //   MessageBoxButtons.OK,
-            //   MessageBoxIcon.Warning
-            //   );
-            //return;
-
             CarregarDisciplinas();
-            
+
             TelaPrincipalForm
                 .Instancia
                 .AtualizarRodape(($"O registro \"{novoDisciplina.Nome}\" foi criado com sucesso!"));

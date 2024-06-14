@@ -142,9 +142,9 @@
             // 
             // pnlRegistros
             // 
-            pnlRegistros.Location = new Point(0, 71);
+            pnlRegistros.Location = new Point(0, 75);
             pnlRegistros.Name = "pnlRegistros";
-            pnlRegistros.Size = new Size(1029, 530);
+            pnlRegistros.Size = new Size(1029, 526);
             pnlRegistros.TabIndex = 2;
             // 
             // statusStrip1

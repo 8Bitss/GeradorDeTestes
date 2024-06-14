@@ -79,7 +79,7 @@
             btnCancelar.AutoSize = true;
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(350, 144);
+            btnCancelar.Location = new Point(336, 131);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 29);
@@ -92,7 +92,7 @@
             btnGravar.AutoSize = true;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnGravar.Location = new Point(262, 144);
+            btnGravar.Location = new Point(248, 131);
             btnGravar.Margin = new Padding(3, 2, 3, 2);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(82, 29);

@@ -40,7 +40,7 @@
             grid.Margin = new Padding(3, 2, 3, 2);
             grid.Name = "grid";
             grid.RowHeadersWidth = 51;
-            grid.Size = new Size(452, 262);
+            grid.Size = new Size(592, 346);
             grid.TabIndex = 0;
             // 
             // TabelaDisciplinaControl
@@ -50,7 +50,7 @@
             Controls.Add(grid);
             Margin = new Padding(3, 2, 3, 2);
             Name = "TabelaDisciplinaControl";
-            Size = new Size(452, 262);
+            Size = new Size(592, 346);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

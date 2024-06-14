@@ -13,14 +13,14 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Disciplina novoDisciplina = (Disciplina)novoRegistro; 
-            
+            Disciplina novoDisciplina = (Disciplina)novoRegistro;
+
             Nome = novoDisciplina.Nome;
         }
-        
+
         public override List<string> Validar()
         {
-             List<string> erros = new List<string>();
+            List<string> erros = new List<string>();
 
             if (string.IsNullOrEmpty(Nome.Trim()))
                 erros.Add("O Nome precisa ser preenchido corretamente");

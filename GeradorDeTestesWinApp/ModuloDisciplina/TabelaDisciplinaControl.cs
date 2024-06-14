@@ -30,10 +30,10 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         private DataGridViewColumn[] ObterColunas()
         {
             return new DataGridViewColumn[]
-            {
+                        {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" }
-            };
+             };
         }
     }
 }
