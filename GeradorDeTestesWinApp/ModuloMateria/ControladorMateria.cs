@@ -50,6 +50,8 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             else
                 return;
 
+            novaMateria.Disciplina.AdicionarMaterias(novaMateria);
+
             CarregarMaterias();
 
             TelaPrincipalForm
@@ -167,7 +169,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
             foreach (Materia materias in materiasCadastradas)
             {
-                if (materias.Nome == novaMateria.Nome)
+                if (materias.Nome.ToUpper() == novaMateria.Nome.ToUpper())
                 {
                     MessageBox.Show(
                         "Não é possível realizar esta pois já existe uma máteria com este nome",

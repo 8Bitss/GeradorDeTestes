@@ -26,6 +26,8 @@ namespace GeradorDeTestesWinApp
             repositorioDisciplina = new RepositorioDisciplina();
             repositorioMateria = new RepositorioMateria();
             #endregion
+
+            CadastrarRegistrosTeste();
         }
 
         public void AtualizarRodape(string texto)
@@ -101,5 +103,27 @@ namespace GeradorDeTestesWinApp
             pnlRegistros.Controls.Add(listagem);
         }
         #endregion
+
+
+        private void CadastrarRegistrosTeste()
+        {
+            List<Disciplina> disciplinas = new List<Disciplina>()
+            {
+                new("Matemática"),
+                new("Português"),
+                new("Quimica"),
+                new("Artes"),
+                new("História")
+            };
+
+            repositorioDisciplina.CadastrarVarios(disciplinas);
+
+            List<Materia> materias = new List<Materia>()
+            {
+                new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie)
+            };
+
+            repositorioMateria.CadastrarVarios(materias);
+        }
     }
 }

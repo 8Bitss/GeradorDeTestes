@@ -32,10 +32,14 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             return erros;
         }
 
-
         public override string ToString()
         {
             return Nome;
+        }
+
+        public void AdicionarMaterias(Materia materiaSelecionada)
+        {
+            Materias.Add(materiaSelecionada);
         }
     }
 }

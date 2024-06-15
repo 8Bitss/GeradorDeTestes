@@ -80,6 +80,14 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 
             Disciplina disciplinaEditada = telaDisciplina.Disciplina;
 
+            //Metodo para Verificar se nome existe
+            bool nomeExiste = VerificaNomeExisente(disciplinaEditada);
+
+            if (nomeExiste)
+                repositorioDisciplina.Cadastrar(disciplinaEditada);
+            else
+                return;
+
             repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
             CarregarDisciplinas();
 
@@ -147,9 +155,9 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         {
             List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
 
-            foreach (Disciplina discplinas in disciplinasCadastradas)
+            foreach (Disciplina discplina in disciplinasCadastradas)
             {
-                if (discplinas.Nome == novaDisciplina.Nome)
+                if (discplina.Nome.ToUpper() == novaDisciplina.Nome.ToUpper())
                 {
                     MessageBox.Show(
                         "Não é possível realizar esta pois já existe uma Disciplina com este nome",
