@@ -1,5 +1,3 @@
-
-
 namespace GeradorDeTestesWinApp
 {
     internal static class Program

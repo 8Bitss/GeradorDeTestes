@@ -1,6 +1,7 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
+using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp
 {
@@ -11,6 +12,7 @@ namespace GeradorDeTestesWinApp
         #region Repositorios
         RepositorioDisciplina repositorioDisciplina;
         RepositorioMateria repositorioMateria;
+        RepositorioQuestao repositorioQuestao;
         #endregion
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -25,6 +27,7 @@ namespace GeradorDeTestesWinApp
             #region Repositorios
             repositorioDisciplina = new RepositorioDisciplina();
             repositorioMateria = new RepositorioMateria();
+            repositorioQuestao = new RepositorioQuestao();
             #endregion
 
             CadastrarRegistrosTeste();
@@ -63,6 +66,13 @@ namespace GeradorDeTestesWinApp
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorQuestao(repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
