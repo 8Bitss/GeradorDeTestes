@@ -58,14 +58,14 @@ namespace GeradorDeTestesWinApp
         #region Botoes do MenuStrip
         private void disciplinasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDisciplina(repositorioDisciplina);
+            controlador = new ControladorDisciplina(repositorioDisciplina, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -128,6 +128,7 @@ namespace GeradorDeTestesWinApp
 
             repositorioDisciplina.CadastrarVarios(disciplinas);
 
+
             List<Materia> materias = new List<Materia>()
             {
                 new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie),
@@ -135,6 +136,10 @@ namespace GeradorDeTestesWinApp
             };
 
             repositorioMateria.CadastrarVarios(materias);
+
+
+            disciplinas[0].AdicionarMaterias(materias[0]);
+            disciplinas[1].AdicionarMaterias(materias[1]);
         }
     }
 }

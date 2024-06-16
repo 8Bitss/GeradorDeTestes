@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloMateria;
+using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -7,12 +8,14 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
     {
         public string Nome { get; set; }
         public List<Materia> Materias { get; set; }
+        public List<Questao> Questoes { get; set; }
 
         public Disciplina(string nome)
         {
             Nome = nome;
 
             Materias = new List<Materia>();
+            Questoes = new List<Questao>();
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
@@ -40,6 +43,28 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         public void AdicionarMaterias(Materia materiaSelecionada)
         {
             Materias.Add(materiaSelecionada);
+        }
+
+        public void AdicionarQuestao(Questao questaoSelecionada)
+        {
+            Questoes.Add(questaoSelecionada);
+        }
+
+        public List<Questao> PegarQuestoes(RepositorioQuestao repositorioQuestao)
+        {
+            var questoes = repositorioQuestao.SelecionarTodos();
+            foreach (var questao in questoes)
+            {
+                foreach (var materia in Materias)
+                {
+                    if (questao.Materia == materia)
+                    {
+                        AdicionarQuestao(questao);
+                    }
+                }
+            }
+
+            return Questoes;
         }
     }
 }

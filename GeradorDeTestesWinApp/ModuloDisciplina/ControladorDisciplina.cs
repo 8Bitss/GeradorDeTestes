@@ -1,18 +1,20 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
-using GeradorDeTestesWinApp.ModuloMateria;
-using System.Windows.Forms.VisualStyles;
+using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
     public class ControladorDisciplina : ControladorBase
     {
-        RepositorioDisciplina repositorioDisciplina;
+        private RepositorioDisciplina repositorioDisciplina;
+        private RepositorioQuestao repositorioQuestao;
 
         public TabelaDisciplinaControl tabelaDisciplina;
 
-        public ControladorDisciplina(RepositorioDisciplina repositorio)
+        public ControladorDisciplina(RepositorioDisciplina repositorio, RepositorioQuestao repositorioQuestao)
         {
             repositorioDisciplina = repositorio;
+            this.repositorioQuestao = repositorioQuestao;
+            PegarQuestoes();
         }
 
         public override string TipoCadastro { get { return "Disciplinas"; } }
@@ -186,6 +188,17 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             }
 
             return true;
+        }
+
+        private void PegarQuestoes()
+        {
+            var idSelecionado = 1;
+
+            Disciplina dis = repositorioDisciplina.SelecionarPorId(idSelecionado);
+
+            var e = dis.PegarQuestoes(this.repositorioQuestao);
+
+            Console.WriteLine( e );
         }
     }
 }

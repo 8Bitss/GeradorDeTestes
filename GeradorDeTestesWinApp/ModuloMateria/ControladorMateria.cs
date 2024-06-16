@@ -8,13 +8,15 @@ namespace GeradorDeTestesWinApp.ModuloMateria
     {
         private RepositorioMateria repositorioMateria;
         private RepositorioDisciplina repositorioDisciplina;
+        private RepositorioQuestao repositorioQuestao;
 
         private TabelaMateriaControl tabelaMateria;
 
-        public ControladorMateria(RepositorioMateria repositorio, RepositorioDisciplina repositorioDisciplina)
+        public ControladorMateria(RepositorioMateria repositorio, RepositorioDisciplina repositorioDisciplina, RepositorioQuestao repositorioQuestao)
         {
             repositorioMateria = repositorio;
             this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioQuestao = repositorioQuestao;
         }
 
         #region ToolTips
@@ -70,10 +72,10 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
             int idSelecionado = tabelaMateria.ObterRegistroSelecionado();
 
-            Materia materiaSelecionado =
+            Materia materiaSelecionada =
                 repositorioMateria.SelecionarPorId(idSelecionado);
 
-            if (materiaSelecionado == null)
+            if (materiaSelecionada == null)
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -84,7 +86,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
                 return;
             }
 
-            telaMateria.Materia = materiaSelecionado;
+            telaMateria.Materia = materiaSelecionada;
 
             DialogResult resultado = telaMateria.ShowDialog();
 
@@ -98,7 +100,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
             if (nomeExiste)
             {
-                repositorioMateria.Editar(materiaSelecionado.Id, materiaEditado);
+                repositorioMateria.Editar(materiaSelecionada.Id, materiaEditado);
             }
             else
                 return;
@@ -134,6 +136,23 @@ namespace GeradorDeTestesWinApp.ModuloMateria
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
+
+            List<Questao> questoesCadastradas = repositorioQuestao.SelecionarTodos();
+
+            foreach (Questao questao in questoesCadastradas)
+            {
+                if (materiaSelecionada.Nome == questao.Materia.Nome)
+                {
+                    MessageBox.Show(
+                        "Não é possível realizar esta ação pois o registro selecionado é usado em questões.",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
+            }
 
             if (resposta != DialogResult.Yes)
                 return;
