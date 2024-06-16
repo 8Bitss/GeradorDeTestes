@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloDisciplina;
+using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloMateria
 {
@@ -43,7 +44,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             Materia novaMateria = telaMateria.Materia;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExisente(novaMateria);
+            bool nomeExiste = VerificaNomeExistente(novaMateria);
 
             if (nomeExiste)
                 repositorioMateria.Cadastrar(novaMateria);
@@ -93,7 +94,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             Materia materiaEditado = telaMateria.Materia;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExisente(materiaEditado);
+            bool nomeExiste = VerificaNomeExistente(materiaEditado, idSelecionado);
 
             if (nomeExiste)
             {
@@ -163,21 +164,37 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             tabelaMateria.AtualizarRegistros(materias);
         }
 
-        private bool VerificaNomeExisente(Materia novaMateria)
+        private bool VerificaNomeExistente(Materia novaMateria, int idSelecionado = 0)
         {
             List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
 
             foreach (Materia materias in materiasCadastradas)
             {
-                if (materias.Nome.ToUpper() == novaMateria.Nome.ToUpper())
+                if (idSelecionado == 0)
                 {
-                    MessageBox.Show(
-                        "Não é possível realizar esta pois já existe uma máteria com este nome",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return false;
+                    if (materias.Nome.ToUpper() == novaMateria.Nome.ToUpper())
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe uma materia com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (materias.Nome.ToUpper() == novaMateria.Nome.ToUpper() && materias.Id != idSelecionado)
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe uma questao com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
                 }
             }
 

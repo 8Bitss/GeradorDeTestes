@@ -19,7 +19,9 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             grid.Rows.Clear();
 
             foreach (Questao questao in questoes)
-                grid.Rows.Add(questao.Id, questao.Enunciado);
+                grid.Rows.Add(questao.Id, questao.Materia, questao.Enunciado, questao.RespostasCorretas());
+
+
         }
 
         public int ObterRegistroSelecionado()
@@ -32,7 +34,9 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Enunciado", HeaderText = "Enunciado" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Materia", HeaderText = "Matéria" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Enunciado", HeaderText = "Enunciado" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Alternativas", HeaderText = "Alternativas Corretas" }
             };
         }
     }

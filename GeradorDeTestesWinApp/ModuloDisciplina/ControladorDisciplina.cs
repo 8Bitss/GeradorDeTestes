@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloMateria;
+using System.Windows.Forms.VisualStyles;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -81,14 +82,13 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             Disciplina disciplinaEditada = telaDisciplina.Disciplina;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExisente(disciplinaEditada);
+            bool nomeExiste = VerificaNomeExisente(disciplinaEditada, idSelecionado);
 
             if (nomeExiste)
-                repositorioDisciplina.Cadastrar(disciplinaEditada);
+                repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
             else
                 return;
 
-            repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
             CarregarDisciplinas();
 
             TelaPrincipalForm
@@ -151,21 +151,37 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             tabelaDisciplina.AtualizarRegistros(disciplinas);
         }
 
-        private bool VerificaNomeExisente(Disciplina novaDisciplina)
+        private bool VerificaNomeExisente(Disciplina novaDisciplina, int idSelecionado = 0)
         {
             List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
 
-            foreach (Disciplina discplina in disciplinasCadastradas)
+            foreach (Disciplina disciplina in disciplinasCadastradas)
             {
-                if (discplina.Nome.ToUpper() == novaDisciplina.Nome.ToUpper())
+                if (idSelecionado == 0)
                 {
-                    MessageBox.Show(
-                        "Não é possível realizar esta pois já existe uma Disciplina com este nome",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return false;
+                    if (disciplina.Nome.ToUpper() == novaDisciplina.Nome.ToUpper())
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe uma materia com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (disciplina.Nome.ToUpper() == novaDisciplina.Nome.ToUpper() && disciplina.Id != idSelecionado)
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe uma questao com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
                 }
             }
 

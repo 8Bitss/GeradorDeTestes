@@ -32,16 +32,18 @@
             lblMaterias = new Label();
             label1 = new Label();
             txtEnunciado = new TextBox();
-            label2 = new Label();
-            txtResposta = new TextBox();
-            btnAdicionar = new Button();
             gpbAlternativas = new GroupBox();
+            txtAlternativaD = new TextBox();
+            txtAlternativaC = new TextBox();
+            txtAlternativaB = new TextBox();
+            txtAlternativaA = new TextBox();
             checkAlternativaD = new CheckBox();
             checkAlternativaC = new CheckBox();
             checkAlternativaB = new CheckBox();
             checkAlternativaA = new CheckBox();
             btnCancelar = new Button();
             btnGravar = new Button();
+            txtId = new TextBox();
             gpbAlternativas.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,48 +81,57 @@
             txtEnunciado.Location = new Point(91, 40);
             txtEnunciado.Multiline = true;
             txtEnunciado.Name = "txtEnunciado";
-            txtEnunciado.Size = new Size(364, 108);
+            txtEnunciado.Size = new Size(371, 108);
             txtEnunciado.TabIndex = 17;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 170);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 20);
-            label2.TabIndex = 18;
-            label2.Text = "Resposta:";
-            // 
-            // txtResposta
-            // 
-            txtResposta.Location = new Point(91, 154);
-            txtResposta.Multiline = true;
-            txtResposta.Name = "txtResposta";
-            txtResposta.Size = new Size(364, 50);
-            txtResposta.TabIndex = 19;
-            // 
-            // btnAdicionar
-            // 
-            btnAdicionar.Location = new Point(91, 210);
-            btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(364, 32);
-            btnAdicionar.TabIndex = 20;
-            btnAdicionar.Text = "Adicionar";
-            btnAdicionar.UseVisualStyleBackColor = true;
             // 
             // gpbAlternativas
             // 
+            gpbAlternativas.Controls.Add(txtAlternativaD);
+            gpbAlternativas.Controls.Add(txtAlternativaC);
+            gpbAlternativas.Controls.Add(txtAlternativaB);
+            gpbAlternativas.Controls.Add(txtAlternativaA);
             gpbAlternativas.Controls.Add(checkAlternativaD);
             gpbAlternativas.Controls.Add(checkAlternativaC);
             gpbAlternativas.Controls.Add(checkAlternativaB);
             gpbAlternativas.Controls.Add(checkAlternativaA);
-            gpbAlternativas.Location = new Point(91, 261);
+            gpbAlternativas.Location = new Point(12, 154);
             gpbAlternativas.Name = "gpbAlternativas";
-            gpbAlternativas.Size = new Size(364, 125);
+            gpbAlternativas.Size = new Size(450, 126);
             gpbAlternativas.TabIndex = 21;
             gpbAlternativas.TabStop = false;
             gpbAlternativas.Text = "Alternativas";
+            // 
+            // txtAlternativaD
+            // 
+            txtAlternativaD.Location = new Point(69, 95);
+            txtAlternativaD.Multiline = true;
+            txtAlternativaD.Name = "txtAlternativaD";
+            txtAlternativaD.Size = new Size(373, 23);
+            txtAlternativaD.TabIndex = 7;
+            // 
+            // txtAlternativaC
+            // 
+            txtAlternativaC.Location = new Point(69, 70);
+            txtAlternativaC.Multiline = true;
+            txtAlternativaC.Name = "txtAlternativaC";
+            txtAlternativaC.Size = new Size(373, 23);
+            txtAlternativaC.TabIndex = 6;
+            // 
+            // txtAlternativaB
+            // 
+            txtAlternativaB.Location = new Point(69, 45);
+            txtAlternativaB.Multiline = true;
+            txtAlternativaB.Name = "txtAlternativaB";
+            txtAlternativaB.Size = new Size(373, 23);
+            txtAlternativaB.TabIndex = 5;
+            // 
+            // txtAlternativaA
+            // 
+            txtAlternativaA.Location = new Point(69, 20);
+            txtAlternativaA.Multiline = true;
+            txtAlternativaA.Name = "txtAlternativaA";
+            txtAlternativaA.Size = new Size(373, 23);
+            txtAlternativaA.TabIndex = 4;
             // 
             // checkAlternativaD
             // 
@@ -189,17 +200,24 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
+            // txtId
+            // 
+            txtId.Enabled = false;
+            txtId.Location = new Point(249, 12);
+            txtId.Margin = new Padding(3, 2, 3, 2);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(53, 23);
+            txtId.TabIndex = 25;
+            // 
             // TelaQuestaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(544, 475);
+            Controls.Add(txtId);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(gpbAlternativas);
-            Controls.Add(btnAdicionar);
-            Controls.Add(txtResposta);
-            Controls.Add(label2);
             Controls.Add(txtEnunciado);
             Controls.Add(label1);
             Controls.Add(cmbMaterias);
@@ -222,9 +240,6 @@
         private Label lblMaterias;
         private Label label1;
         private TextBox txtEnunciado;
-        private Label label2;
-        private TextBox txtResposta;
-        private Button btnAdicionar;
         private GroupBox gpbAlternativas;
         private CheckBox checkAlternativaD;
         private CheckBox checkAlternativaC;
@@ -232,5 +247,10 @@
         private CheckBox checkAlternativaA;
         private Button btnCancelar;
         private Button btnGravar;
+        private TextBox txtAlternativaD;
+        private TextBox txtAlternativaC;
+        private TextBox txtAlternativaB;
+        private TextBox txtAlternativaA;
+        private TextBox txtId;
     }
 }

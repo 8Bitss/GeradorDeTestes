@@ -40,13 +40,13 @@ namespace GeradorDeTestesWinApp.ModuloMateria
         {
             cmbDisciplinas.Items.Clear();
 
-            foreach(Disciplina d in disciplinas)
+            foreach (Disciplina d in disciplinas)
                 cmbDisciplinas.Items.Add(d);
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            
+
             string nome = txtNome.Text;
             Disciplina disciplinaSelecionada = cmbDisciplinas.SelectedItem as Disciplina;
             SerieMateriaEnum serie;
@@ -67,7 +67,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
                 serie = SerieMateriaEnum.PrimeiraSerie;
             else
                 serie = SerieMateriaEnum.SegundaSerie;
-                             
+
             materia = new Materia(nome, disciplinaSelecionada, serie);
 
             List<string> erros = materia.Validar();

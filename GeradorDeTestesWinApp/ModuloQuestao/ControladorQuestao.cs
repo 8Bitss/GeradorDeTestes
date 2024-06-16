@@ -40,7 +40,14 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
 
             Questao novaQuestao = telaQuestao.Questao;
 
-            repositorioQuestao.Cadastrar(novaQuestao);
+            bool enunciadoExiste = VerificaEnunciadoExistente(novaQuestao);
+
+            if (enunciadoExiste)
+            {
+                repositorioQuestao.Cadastrar(novaQuestao);
+            }
+            else
+                return;
 
             CarregarQuestoes();
 
@@ -51,12 +58,88 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm();
+
+            List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
+
+            telaQuestao.CarregarMaterias(materiasCadastradas);
+
+            int idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
+
+            Questao questaoSelecionada =
+                repositorioQuestao.SelecionarPorId(idSelecionado);
+
+            if (questaoSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaQuestao.Questao = questaoSelecionada;
+
+            DialogResult resultado = telaQuestao.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Questao questaoEditada = telaQuestao.Questao;
+
+            //Metodo para Verificar se enunciado existe
+            bool enunciadoExiste = VerificaEnunciadoExistente(questaoEditada,idSelecionado);
+
+            if (enunciadoExiste)
+            {
+                repositorioQuestao.Editar(questaoSelecionada.Id, questaoEditada);
+            }
+            else
+                return;
+
+            CarregarQuestoes();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro { questaoEditada.Enunciado} foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
+            Questao questaoSelecionada =
+            repositorioQuestao.SelecionarPorId(idSelecionado);
+
+            if (questaoSelecionada == null)
+            {
+                MessageBox.Show(
+                "Não é possível realizar esta ação sem um registro selecionado.",
+                "Aviso",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+            $"Você deseja realmente excluir o registro \"{questaoSelecionada.Enunciado}\"?",
+            "Confirmar Exclusão",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioQuestao.Excluir(questaoSelecionada.Id);
+
+            CarregarQuestoes();
+
+            TelaPrincipalForm
+            .Instancia
+            .AtualizarRodape($"O registro \"{questaoSelecionada.Enunciado}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
@@ -74,6 +157,45 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             List<Questao> questao = repositorioQuestao.SelecionarTodos();
 
             tabelaQuestao.AtualizarRegistros(questao);
+        }
+
+
+        private bool VerificaEnunciadoExistente(Questao novaQuestao, int idSelecionado = 0)
+        {
+            List<Questao> questoesCadastradas = repositorioQuestao.SelecionarTodos();
+
+            foreach (Questao questao in questoesCadastradas)
+            {
+                if (idSelecionado == 0)
+                {
+                    if (questao.Enunciado.ToUpper() == novaQuestao.Enunciado.ToUpper())
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe uma questao com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (questao.Enunciado.ToUpper() == novaQuestao.Enunciado.ToUpper() && questao.Id != idSelecionado)
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe uma questao com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
+                }
+
+            }
+
+            return true;
         }
     }
 }
