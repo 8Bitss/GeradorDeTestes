@@ -72,7 +72,7 @@ namespace GeradorDeTestesWinApp
 
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorQuestao(repositorioQuestao);
+            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -130,7 +130,8 @@ namespace GeradorDeTestesWinApp
 
             List<Materia> materias = new List<Materia>()
             {
-                new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie)
+                new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie),
+                new("Alfabeto", disciplinas[1], SerieMateriaEnum.SegundaSerie)
             };
 
             repositorioMateria.CadastrarVarios(materias);

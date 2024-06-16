@@ -1,4 +1,5 @@
-﻿using GeradorDeTestesWinApp.ModuloMateria;
+﻿using GeradorDeTestesWinApp.ModuloDisciplina;
+using GeradorDeTestesWinApp.ModuloMateria;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,14 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
         public TelaQuestaoForm()
         {
             InitializeComponent();
+        }
+
+        public void CarregarMaterias(List<Materia> materias)
+        {
+            cmbMaterias.Items.Clear();
+
+            foreach (Materia m in materias)
+                cmbMaterias.Items.Add(m);
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
