@@ -1,26 +1,28 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloDisciplina;
 
 namespace GeradorDeTestesWinApp.ModuloMateria
 {
-    internal class Materia : EntidadeBase  
+    public class Materia : EntidadeBase
     {
         public string Nome { get; set; }
-        public string Disciplina { get; set; }
-        public string Serie { get; set; }
-     
-     public Materia(string nome, string disciplina, string serie)
-     {
+        public Disciplina Disciplina { get; set; }
+        public SerieMateriaEnum SerieMateria { get; set; }
+
+        public Materia(string nome, Disciplina disciplina, SerieMateriaEnum serie) 
+        {
             Nome = nome;
             Disciplina = disciplina;
-            Serie = serie;
-     }
+            SerieMateria = serie;
+        }
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Materia novaMateria = (Materia) novoRegistro;
+            Materia novaMateria = (Materia)novoRegistro;
 
             Nome = novaMateria.Nome;
-            Disciplina = novaMateria.Disciplina;    
-            Serie = novaMateria.Serie;
+            Disciplina = novaMateria.Disciplina;
+            SerieMateria = novaMateria.SerieMateria;
         }
 
         public override List<string> Validar()
@@ -28,15 +30,29 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             List<string> erros = new List<string>();
 
             if (string.IsNullOrEmpty(Nome.Trim()))
-                erros.Add("O Campo Nome precisa ser preenchido corretamente");
+            erros.Add("O Nome da matéria precisa ser preenchido corretamente");
 
-            if (string.IsNullOrEmpty(Disciplina.Trim()))
-                erros.Add("O Campo Disciplina precisa ser preenchido corretamente");
+            if (Disciplina == null)
+                erros.Add("A Disciplina precisa ser informada corretamente");
 
-            if (string.IsNullOrEmpty(Serie.Trim()))
-                erros.Add("O campo série precisa ser prenchido corretamente");
+            if (SerieMateria == 0)
+                erros.Add("A Série precisa ser informada corretamente");
 
             return erros;
+        }
+
+        public override string ToString()
+        {
+            string serie = "";
+
+            //Essa verificação não deveria estar aqui
+            if (SerieMateria == SerieMateriaEnum.PrimeiraSerie)
+                serie = "1ª Série";
+            else
+                serie = "2ª Série";
+
+
+            return $"{Nome}, {serie}";
         }
     }
 }

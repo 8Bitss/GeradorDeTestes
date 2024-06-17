@@ -1,4 +1,4 @@
-﻿namespace GeradorDeTestesWinApp.ModuloCompartilhado;
+﻿namespace GeradorDeTestesWinApp.Compartilhado;
 
 public abstract class ControladorBase
 {
@@ -9,6 +9,8 @@ public abstract class ControladorBase
     public abstract string ToolTipExcluir { get; }
 
     public abstract UserControl ObterListagem();
+
+    public abstract bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0);
 
     public abstract void Adicionar();
     public abstract void Editar();

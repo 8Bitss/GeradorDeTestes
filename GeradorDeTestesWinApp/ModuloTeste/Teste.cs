@@ -1,22 +1,27 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloDisciplina;
+using GeradorDeTestesWinApp.ModuloMateria;
+using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
-    public class Teste : EntidadeBase   
+    public class Teste : EntidadeBase
     {
-        public string Titulo {  get; set; }
-        public string Disciplina { get; set;}
-        public string Materia { get; set;}
-        public string Serie { get; set;}
-        public string QuantidadeDeQuestoes { get; set;}
+        public string Titulo { get; set; }
+        public Disciplina Disciplina { get; set; }
+        public Materia Materia { get; set; }
+        public int QtdQuestoes { get; set; }
 
-        public Teste(string titulo, string disciplina, string materia, string serie, string quantidadedequestoes)
+        public List<Questao> QuestoesSelecionadas { get; set; }
+
+        public Teste(string titulo, Disciplina disciplina, Materia materia, int qtdQuestoes, List<Questao> questoesSelecinadas)
         {
             Titulo = titulo;
             Disciplina = disciplina;
             Materia = materia;
-            Serie = serie;
-            QuantidadeDeQuestoes = quantidadedequestoes;
+            QtdQuestoes = qtdQuestoes;
+
+            QuestoesSelecionadas = questoesSelecinadas;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
@@ -25,31 +30,43 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
             Titulo = novoTeste.Titulo;
             Disciplina = novoTeste.Disciplina;
-            Materia= novoTeste.Materia; 
-            Serie= novoTeste.Serie;
-            QuantidadeDeQuestoes = novoTeste.QuantidadeDeQuestoes;
+            Materia = novoTeste.Materia;
+            QtdQuestoes = novoTeste.QtdQuestoes;
         }
+
+        //public void AdicionarDuplicata()
+        //{
+        //    Teste novoTeste = (Teste)novoRegistro;
+
+        //    Titulo = novoTeste.Titulo;
+        //    Disciplina = novoTeste.Disciplina;
+        //    Materia = novoTeste.Materia;
+        //    QtdQuestoes = novoTeste.QtdQuestoes;
+        //}
 
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();
 
             if (string.IsNullOrEmpty(Titulo.Trim()))
-                erros.Add("O titulo deve ser preenchido corretamente");
+                erros.Add("O campo \"Título\" é obrigatório");
+            
+            if (Disciplina == null)
+                erros.Add("O campo \"Disciplina\" é obrigatório");
+            
+            if (Materia == null)
+                erros.Add("O campo \"Matéria\" é obrigatório");
 
-            if (string.IsNullOrEmpty(Disciplina.Trim()))
-                erros.Add("O campo Disciplina deve ser preenchido corretamente");
+            if(QtdQuestoes <= 0)
+                erros.Add("O campo \"Qtd. Questões\" é obrigatório");
 
-            if (string.IsNullOrEmpty(Materia.Trim()))
-                erros.Add("O campo Materia deve ser preenchido corretamente");
+            if(QuestoesSelecionadas.Count == 0)
+                erros.Add("É necessário gerar questões antes de cadastrar");
 
-            if (string.IsNullOrEmpty(Serie.Trim()))
-                erros.Add("A Serie deve ser preenchida corretamente");
 
-            if (string.IsNullOrEmpty(QuantidadeDeQuestoes.Trim()))
-                erros.Add("A Quantidade de Questões precisa ser preenchida corretamente");
-                
+
+
             return erros;
-        }     
+        }
     }
 }

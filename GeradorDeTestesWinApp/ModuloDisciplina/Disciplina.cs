@@ -1,44 +1,71 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloMateria;
+using GeradorDeTestesWinApp.ModuloQuestao;
+using GeradorDeTestesWinApp.ModuloTeste;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
     public class Disciplina : EntidadeBase
     {
-        public string Id { get; set; }
         public string Nome { get; set; }
-        public string Disciplina { get; set; }
+        public List<Materia> Materias { get; set; }
+        public List<Questao> Questoes { get; set; }   
 
-        public Disciplina(string id, string nome, string disciplina)
+        public Disciplina(string nome)
         {
-            Id = id;
             Nome = nome;
-            Disciplina = disciplina;
+
+            Materias = new List<Materia>();
+            Questoes = new List<Questao>();
         }
-        
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
-            Disciplina novoDisciplina = (Disciplina)novoRegistro;   
-            Id = novoDisciplina.Id;
+            Disciplina novoDisciplina = (Disciplina)novoRegistro;
+
             Nome = novoDisciplina.Nome;
-            Disciplina = novoDisciplina.Disciplina;
         }
-        
+
         public override List<string> Validar()
         {
-         List<string> erros = new List<string>();
+            List<string> erros = new List<string>();
 
-            if (string.IsNullOrEmpty(Id.Trim()));
-            erros.Add("O Id precisa ser preenchido corretamente");
-
-            if (string.IsNullOrEmpty(Nome.Trim()));
-            erros.Add("O Nome precisa ser preenchido corretamente");
-
-            if (string.IsNullOrEmpty(Disciplina.Trim()));
-            erros.Add("A Disciplina precisa ser preenchida corretamente");
+            if (string.IsNullOrEmpty(Nome.Trim()))
+                erros.Add("O Nome precisa ser preenchido corretamente");
 
             return erros;
-
         }
-        
+
+        public override string ToString()
+        {
+            return Nome;
+        }
+
+        public void AdicionarMaterias(Materia materiaSelecionada)
+        {
+            Materias.Add(materiaSelecionada);
+        }
+
+        public void AdicionarQuestao(Questao questaoSelecionada)
+        {
+            Questoes.Add(questaoSelecionada);
+        }
+
+        public List<Questao> PegarQuestoes(RepositorioQuestao repositorioQuestao)
+        {
+            var questoes = repositorioQuestao.SelecionarTodos();
+            foreach (var questao in questoes)
+            {
+                foreach (var materia in Materias)
+                {
+                    if (questao.Materia == materia)
+                    {
+                        AdicionarQuestao(questao);
+                    }
+                }
+            }
+
+            return Questoes;
+        }
     }
 }

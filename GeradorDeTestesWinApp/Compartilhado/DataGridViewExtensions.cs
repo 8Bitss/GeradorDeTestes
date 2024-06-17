@@ -39,8 +39,12 @@ public static class DataGridViewExtensions
 
         grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
+        grid.EditMode = DataGridViewEditMode.EditProgrammatically;
+
         grid.MultiSelect = false;
         grid.ReadOnly = true;
+
+        grid.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
 
         grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         grid.AutoGenerateColumns = false;

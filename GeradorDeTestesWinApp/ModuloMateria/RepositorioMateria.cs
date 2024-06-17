@@ -2,7 +2,7 @@
 
 namespace GeradorDeTestesWinApp.ModuloMateria
 {
-    internal class RepositorioMateria : RepositorioBase<Materia>
+    public class RepositorioMateria : RepositorioBase<Materia> 
     {
 
     }
