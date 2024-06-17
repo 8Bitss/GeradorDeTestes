@@ -7,10 +7,10 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
     {
         private TabelaQuestaoControl tabelaQuestao;
 
-        private RepositorioQuestao repositorioQuestao;
-        private RepositorioMateria repositorioMateria;
+        private IRepositorioQuestao repositorioQuestao;
+        private IRepositorioMateria repositorioMateria;
 
-        public ControladorQuestao(RepositorioQuestao repositorio, RepositorioMateria repositorioMateria)
+        public ControladorQuestao(IRepositorioQuestao repositorio, IRepositorioMateria repositorioMateria)
         {
             repositorioQuestao = repositorio;
             this.repositorioMateria = repositorioMateria;

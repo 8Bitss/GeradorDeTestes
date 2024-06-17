@@ -2,7 +2,7 @@
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
-    public class RepositorioDisciplina : RepositorioBase<Disciplina>
+    public class RepositorioDisciplinaEmMemoria : RepositorioBaseEmMemoria<Disciplina>, IRepositorioDisciplina
     {
 
     }

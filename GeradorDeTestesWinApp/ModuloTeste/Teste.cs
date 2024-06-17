@@ -14,6 +14,11 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
         public List<Questao> QuestoesSelecionadas { get; set; }
 
+        public Teste()
+        {
+            
+        }
+
         public Teste(string titulo, Disciplina disciplina, Materia materia, int qtdQuestoes, List<Questao> questoesSelecinadas)
         {
             Titulo = titulo;

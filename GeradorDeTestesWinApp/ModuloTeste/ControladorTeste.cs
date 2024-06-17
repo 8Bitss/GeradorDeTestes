@@ -9,11 +9,11 @@ namespace GeradorDeTestesWinApp.ModuloTeste
     {
         private TabelaTesteControl tabelaTeste;
 
-        private RepositorioTeste repositorioTeste;
-        private RepositorioMateria repositorioMateria;
-        private RepositorioDisciplina repositorioDisciplina;
+        private IRepositorioTeste repositorioTeste;
+        private IRepositorioMateria repositorioMateria;
+        private IRepositorioDisciplina repositorioDisciplina;
 
-        public ControladorTeste(RepositorioTeste repositorio, RepositorioMateria repositorioMateria, RepositorioDisciplina repositorioDisciplina)
+        public ControladorTeste(IRepositorioTeste repositorio, IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
         {
             repositorioTeste = repositorio;
             this.repositorioMateria = repositorioMateria;

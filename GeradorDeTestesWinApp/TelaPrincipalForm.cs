@@ -11,10 +11,10 @@ namespace GeradorDeTestesWinApp
         ControladorBase controlador;
 
         #region Repositorios
-        RepositorioDisciplina repositorioDisciplina;
-        RepositorioMateria repositorioMateria;
-        RepositorioQuestao repositorioQuestao;
-        RepositorioTeste repositorioTeste;
+        IRepositorioDisciplina repositorioDisciplina;
+        IRepositorioMateria repositorioMateria;
+        IRepositorioQuestao repositorioQuestao;
+        IRepositorioTeste repositorioTeste;
         #endregion
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -27,13 +27,13 @@ namespace GeradorDeTestesWinApp
             Instancia = this;
 
             #region Repositorios
-            repositorioDisciplina = new RepositorioDisciplina();
-            repositorioMateria = new RepositorioMateria();
-            repositorioQuestao = new RepositorioQuestao();
-            repositorioTeste = new RepositorioTeste();
+            repositorioDisciplina = new RepositorioDisciplinaEmArquivo();
+            repositorioMateria = new RepositorioMateriaEmArquivo();
+            repositorioQuestao = new RepositorioQuestaoEmArquivo();
+            repositorioTeste = new RepositorioTesteEmArquivo();
             #endregion
 
-            CadastrarRegistrosTeste();
+            //CadastrarRegistrosTeste();
         }
 
         public void AtualizarRodape(string texto)
@@ -137,74 +137,5 @@ namespace GeradorDeTestesWinApp
             pnlRegistros.Controls.Add(listagem);
         }
         #endregion
-
-
-        private void CadastrarRegistrosTeste()
-        {
-            List<Disciplina> disciplinas = new List<Disciplina>()
-            {
-                new("Matemática"),
-                new("Português"),
-                new("Quimica"),
-                new("Artes"),
-                new("História")
-            };
-
-            repositorioDisciplina.CadastrarVarios(disciplinas);
-
-            List<Materia> materias = new List<Materia>()
-            {
-                new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie),
-                new("Alfabeto", disciplinas[1], SerieMateriaEnum.SegundaSerie)
-            };
-
-            repositorioMateria.CadastrarVarios(materias);
-
-            disciplinas[0].AdicionarMaterias(materias[0]);
-            disciplinas[1].AdicionarMaterias(materias[1]);
-
-            List<Alternativa> alternativas = new List<Alternativa>()
-            {
-                new ("teste", false),
-                new ("teste2", false),
-                new ("test3", false),
-                new ("teste4", true)
-            };
-
-            List<Questao> questoes = new List<Questao>
-            {
-                new(materias[0], "teste de questao 1", alternativas),
-                new(materias[0], "teste de questao 2", alternativas),
-                new(materias[0], "teste de questao 3", alternativas),
-                new(materias[0], "teste de questao 4", alternativas),
-                new(materias[0], "teste de questao 5", alternativas),
-                new(materias[0], "teste de questao 6", alternativas),
-                new(materias[0], "teste de questao 7", alternativas),
-                new(materias[0], "teste de questao 8", alternativas),
-                new(materias[0], "teste de questao 9", alternativas),
-                new(materias[0], "teste de questao 10", alternativas),
-                new(materias[0], "teste de questao 11", alternativas),
-                new(materias[0], "teste de questao 12", alternativas),
-                new(materias[0], "teste de questao 13", alternativas),
-                new(materias[0], "teste de questao 14", alternativas),
-            };
-
-            repositorioQuestao.CadastrarVarios(questoes);
-
-            disciplinas[0].AdicionarQuestao(questoes[0]);
-            disciplinas[0].AdicionarQuestao(questoes[1]);
-            disciplinas[0].AdicionarQuestao(questoes[2]);
-            disciplinas[0].AdicionarQuestao(questoes[3]);
-            disciplinas[0].AdicionarQuestao(questoes[4]);
-            disciplinas[0].AdicionarQuestao(questoes[5]);
-            disciplinas[0].AdicionarQuestao(questoes[6]);
-            disciplinas[0].AdicionarQuestao(questoes[7]);
-            disciplinas[0].AdicionarQuestao(questoes[8]);
-            disciplinas[0].AdicionarQuestao(questoes[9]);
-            disciplinas[0].AdicionarQuestao(questoes[10]);
-            disciplinas[0].AdicionarQuestao(questoes[11]);
-            disciplinas[0].AdicionarQuestao(questoes[12]);
-            disciplinas[0].AdicionarQuestao(questoes[13]);
-        }
     }
 }

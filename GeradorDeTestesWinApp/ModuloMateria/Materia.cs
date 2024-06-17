@@ -9,6 +9,10 @@ namespace GeradorDeTestesWinApp.ModuloMateria
         public Disciplina Disciplina { get; set; }
         public SerieMateriaEnum SerieMateria { get; set; }
 
+        public Materia()
+        {
+            
+        }
         public Materia(string nome, Disciplina disciplina, SerieMateriaEnum serie) 
         {
             Nome = nome;

@@ -8,18 +8,17 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
     public class ControladorDisciplina : ControladorBase
     {
-        private RepositorioDisciplina repositorioDisciplina;
-        private RepositorioQuestao repositorioQuestao;
-        private RepositorioTeste repositorioTeste;
+        private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioQuestao repositorioQuestao;
+        private IRepositorioTeste repositorioTeste;
 
         public TabelaDisciplinaControl tabelaDisciplina;
 
-        public ControladorDisciplina(RepositorioDisciplina repositorio, RepositorioQuestao repositorioQuestao, RepositorioTeste repositorioTeste)
+        public ControladorDisciplina(IRepositorioDisciplina repositorio, IRepositorioQuestao repositorioQuestao, IRepositorioTeste repositorioTeste)
         {
             repositorioDisciplina = repositorio;
             this.repositorioQuestao = repositorioQuestao;
             this.repositorioTeste = repositorioTeste;
-            PegarQuestoes();
         }
 
         public override string TipoCadastro { get { return "Disciplinas"; } }
@@ -223,17 +222,6 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             }
 
             return true;
-        }
-
-        private void PegarQuestoes()
-        {
-            var idSelecionado = 1;
-
-            Disciplina dis = repositorioDisciplina.SelecionarPorId(idSelecionado);
-
-            var e = dis.PegarQuestoes(this.repositorioQuestao);
-
-            Console.WriteLine( e );
         }
     }
 }

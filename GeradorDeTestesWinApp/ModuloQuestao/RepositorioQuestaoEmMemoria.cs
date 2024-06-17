@@ -2,7 +2,7 @@
 
 namespace GeradorDeTestesWinApp.ModuloQuestao
 {
-    public class RepositorioQuestao : RepositorioBase<Questao>
+    public class RepositorioQuestaoEmMemoria : RepositorioBaseEmMemoria<Questao>, IRepositorioQuestao
     {
 
     }

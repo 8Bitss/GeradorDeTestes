@@ -2,6 +2,7 @@
 using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
 using GeradorDeTestesWinApp.ModuloTeste;
+using System.Text.Json.Serialization;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -9,7 +10,13 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
     {
         public string Nome { get; set; }
         public List<Materia> Materias { get; set; }
-        public List<Questao> Questoes { get; set; }   
+        public List<Questao> Questoes { get; set; }
+
+        public Disciplina()
+        {
+            
+
+        }
 
         public Disciplina(string nome)
         {
@@ -51,7 +58,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             Questoes.Add(questaoSelecionada);
         }
 
-        public List<Questao> PegarQuestoes(RepositorioQuestao repositorioQuestao)
+        public List<Questao> PegarQuestoes(RepositorioQuestaoEmMemoria repositorioQuestao)
         {
             var questoes = repositorioQuestao.SelecionarTodos();
             foreach (var questao in questoes)

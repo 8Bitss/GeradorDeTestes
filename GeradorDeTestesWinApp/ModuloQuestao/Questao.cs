@@ -9,6 +9,11 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
         public string Enunciado { get; set; }
         public List<Alternativa> Alternativas { get; set; }
 
+        public Questao()
+        {
+            
+        }
+
         public Questao(Materia materia, string enunciado, List<Alternativa> alternativas)
         {
             Materia = materia;
