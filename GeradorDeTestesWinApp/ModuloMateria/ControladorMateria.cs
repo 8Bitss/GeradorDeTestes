@@ -46,7 +46,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             Materia novaMateria = telaMateria.Materia;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExistente(novaMateria);
+            bool nomeExiste = VerificaEntidadeDuplicada(novaMateria);
 
             if (nomeExiste)
                 repositorioMateria.Cadastrar(novaMateria);
@@ -96,7 +96,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             Materia materiaEditado = telaMateria.Materia;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExistente(materiaEditado, idSelecionado);
+            bool nomeExiste = VerificaEntidadeDuplicada(materiaEditado, idSelecionado);
 
             if (nomeExiste)
             {
@@ -183,8 +183,10 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             tabelaMateria.AtualizarRegistros(materias);
         }
 
-        private bool VerificaNomeExistente(Materia novaMateria, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
         {
+            Materia novaMateria = (Materia)entidade;
+
             List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
 
             foreach (Materia materias in materiasCadastradas)

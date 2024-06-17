@@ -44,6 +44,8 @@ public static class DataGridViewExtensions
         grid.MultiSelect = false;
         grid.ReadOnly = true;
 
+        grid.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
+
         grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         grid.AutoGenerateColumns = false;
 

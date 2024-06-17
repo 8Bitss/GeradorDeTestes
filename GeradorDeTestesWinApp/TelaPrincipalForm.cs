@@ -2,6 +2,7 @@
 using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
+using GeradorDeTestesWinApp.ModuloTeste;
 
 namespace GeradorDeTestesWinApp
 {
@@ -13,6 +14,7 @@ namespace GeradorDeTestesWinApp
         RepositorioDisciplina repositorioDisciplina;
         RepositorioMateria repositorioMateria;
         RepositorioQuestao repositorioQuestao;
+        RepositorioTeste repositorioTeste;
         #endregion
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -28,6 +30,7 @@ namespace GeradorDeTestesWinApp
             repositorioDisciplina = new RepositorioDisciplina();
             repositorioMateria = new RepositorioMateria();
             repositorioQuestao = new RepositorioQuestao();
+            repositorioTeste = new RepositorioTeste();
             #endregion
 
             CadastrarRegistrosTeste();
@@ -73,6 +76,13 @@ namespace GeradorDeTestesWinApp
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void testesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -128,7 +138,6 @@ namespace GeradorDeTestesWinApp
 
             repositorioDisciplina.CadastrarVarios(disciplinas);
 
-
             List<Materia> materias = new List<Materia>()
             {
                 new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie),
@@ -136,7 +145,6 @@ namespace GeradorDeTestesWinApp
             };
 
             repositorioMateria.CadastrarVarios(materias);
-
 
             disciplinas[0].AdicionarMaterias(materias[0]);
             disciplinas[1].AdicionarMaterias(materias[1]);

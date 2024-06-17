@@ -32,6 +32,7 @@
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             disciplinasToolStripMenuItem = new ToolStripMenuItem();
             materiasToolStripMenuItem = new ToolStripMenuItem();
+            questõesToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -41,7 +42,7 @@
             pnlRegistros = new Panel();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
-            questõesToolStripMenuItem = new ToolStripMenuItem();
+            testesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -61,7 +62,7 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasToolStripMenuItem, materiasToolStripMenuItem, questõesToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { disciplinasToolStripMenuItem, materiasToolStripMenuItem, questõesToolStripMenuItem, testesToolStripMenuItem });
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             cadastrosToolStripMenuItem.Size = new Size(91, 25);
             cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -79,6 +80,13 @@
             materiasToolStripMenuItem.Size = new Size(180, 26);
             materiasToolStripMenuItem.Text = "Matérias";
             materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
+            // 
+            // questõesToolStripMenuItem
+            // 
+            questõesToolStripMenuItem.Name = "questõesToolStripMenuItem";
+            questõesToolStripMenuItem.Size = new Size(180, 26);
+            questõesToolStripMenuItem.Text = "Questões";
+            questõesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
@@ -166,12 +174,12 @@
             statusLabelPrincipal.Size = new Size(195, 21);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
             // 
-            // questõesToolStripMenuItem
+            // testesToolStripMenuItem
             // 
-            questõesToolStripMenuItem.Name = "questõesToolStripMenuItem";
-            questõesToolStripMenuItem.Size = new Size(180, 26);
-            questõesToolStripMenuItem.Text = "Questões";
-            questõesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
+            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
+            testesToolStripMenuItem.Size = new Size(180, 26);
+            testesToolStripMenuItem.Text = "Testes";
+            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 
@@ -215,5 +223,6 @@
         private ToolStripStatusLabel statusLabelPrincipal;
         private ToolStripMenuItem materiasToolStripMenuItem;
         private ToolStripMenuItem questõesToolStripMenuItem;
+        private ToolStripMenuItem testesToolStripMenuItem;
     }
 }

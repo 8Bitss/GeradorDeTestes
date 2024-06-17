@@ -40,7 +40,7 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
 
             Questao novaQuestao = telaQuestao.Questao;
 
-            bool enunciadoExiste = VerificaEnunciadoExistente(novaQuestao);
+            bool enunciadoExiste = VerificaEntidadeDuplicada(novaQuestao);
 
             if (enunciadoExiste)
             {
@@ -90,7 +90,7 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             Questao questaoEditada = telaQuestao.Questao;
 
             //Metodo para Verificar se enunciado existe
-            bool enunciadoExiste = VerificaEnunciadoExistente(questaoEditada,idSelecionado);
+            bool enunciadoExiste = VerificaEntidadeDuplicada(questaoEditada,idSelecionado);
 
             if (enunciadoExiste)
             {
@@ -160,8 +160,10 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
         }
 
 
-        private bool VerificaEnunciadoExistente(Questao novaQuestao, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
         {
+            Questao novaQuestao = (Questao)entidade;
+
             List<Questao> questoesCadastradas = repositorioQuestao.SelecionarTodos();
 
             foreach (Questao questao in questoesCadastradas)

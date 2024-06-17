@@ -38,7 +38,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             Disciplina novaDisciplina = telaDisciplina.Disciplina;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExisente(novaDisciplina);
+            bool nomeExiste = VerificaEntidadeDuplicada(novaDisciplina);
 
             if (nomeExiste)
                 repositorioDisciplina.Cadastrar(novaDisciplina);
@@ -84,7 +84,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             Disciplina disciplinaEditada = telaDisciplina.Disciplina;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaNomeExisente(disciplinaEditada, idSelecionado);
+            bool nomeExiste = VerificaEntidadeDuplicada(disciplinaEditada, idSelecionado);
 
             if (nomeExiste)
                 repositorioDisciplina.Editar(disciplinaSelecionada.Id, disciplinaEditada);
@@ -153,8 +153,10 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             tabelaDisciplina.AtualizarRegistros(disciplinas);
         }
 
-        private bool VerificaNomeExisente(Disciplina novaDisciplina, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
         {
+            Disciplina novaDisciplina = (Disciplina)entidade;
+
             List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
 
             foreach (Disciplina disciplina in disciplinasCadastradas)
