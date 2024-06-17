@@ -1,5 +1,8 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
+using GeradorDeTestesWinApp.ModuloTeste;
+using System.Runtime.CompilerServices;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -7,13 +10,15 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
     {
         private RepositorioDisciplina repositorioDisciplina;
         private RepositorioQuestao repositorioQuestao;
+        private RepositorioTeste repositorioTeste;
 
         public TabelaDisciplinaControl tabelaDisciplina;
 
-        public ControladorDisciplina(RepositorioDisciplina repositorio, RepositorioQuestao repositorioQuestao)
+        public ControladorDisciplina(RepositorioDisciplina repositorio, RepositorioQuestao repositorioQuestao, RepositorioTeste repositorioTeste)
         {
             repositorioDisciplina = repositorio;
             this.repositorioQuestao = repositorioQuestao;
+            this.repositorioTeste = repositorioTeste;
             PegarQuestoes();
         }
 
@@ -106,7 +111,6 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
                 repositorioDisciplina.SelecionarPorId(idSelecionado);
 
             if (disciplinaSelecionada == null)
-
             {
                 MessageBox.Show(
                     "Não é possível realizar esta ação sem um registro selecionado.",
@@ -117,12 +121,41 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
                 return;
             }
 
+            if (disciplinaSelecionada.Materias.Count > 0)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação pois o registro possui vínculo com uma matéria",
+                    "Aviso",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Warning
+                  );
+
+                return;
+            }
+
+            List<Teste> testesCadastrados = repositorioTeste.SelecionarTodos();
+
+            foreach (Teste teste in testesCadastrados)
+            {
+                if (disciplinaSelecionada.Nome == teste.Disciplina.Nome)
+                {
+                    MessageBox.Show(
+                        "Não é possível realizar esta ação pois o registro possui vínculo com um teste",
+                        "Aviso",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Warning
+                      );
+                    return;
+                }
+            }
+
             DialogResult resposta = MessageBox.Show(
                $"Você deseja realmente excluir o registro \"{disciplinaSelecionada.Nome}\"?",
                 "Confirmar Exclusão",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning
              );
+
 
             if (resposta != DialogResult.Yes)
                 return;

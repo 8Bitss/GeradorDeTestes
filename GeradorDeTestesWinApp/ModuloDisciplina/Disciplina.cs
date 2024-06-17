@@ -1,6 +1,7 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
+using GeradorDeTestesWinApp.ModuloTeste;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -8,7 +9,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
     {
         public string Nome { get; set; }
         public List<Materia> Materias { get; set; }
-        public List<Questao> Questoes { get; set; }
+        public List<Questao> Questoes { get; set; }   
 
         public Disciplina(string nome)
         {

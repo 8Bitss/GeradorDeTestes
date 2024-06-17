@@ -43,7 +43,16 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 
         public override string ToString()
         {
-            return Nome;
+            string serie = "";
+
+            //Essa verificação não deveria estar aqui
+            if (SerieMateria == SerieMateriaEnum.PrimeiraSerie)
+                serie = "1ª Série";
+            else
+                serie = "2ª Série";
+
+
+            return $"{Nome}, {serie}";
         }
     }
 }

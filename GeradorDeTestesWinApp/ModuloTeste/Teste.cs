@@ -35,6 +35,13 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
             if (string.IsNullOrEmpty(Titulo.Trim()))
                 erros.Add("O campo \"Título\" é obrigatório");
+            
+            if (Disciplina == null)
+                erros.Add("O campo \"Disciplina\" é obrigatório");
+            
+            if (Materia == null)
+                erros.Add("O campo \"Matéria\" é obrigatório");
+
 
             return erros;
         }

@@ -61,7 +61,7 @@ namespace GeradorDeTestesWinApp
         #region Botoes do MenuStrip
         private void disciplinasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDisciplina(repositorioDisciplina, repositorioQuestao);
+            controlador = new ControladorDisciplina(repositorioDisciplina, repositorioQuestao, repositorioTeste);
 
             ConfigurarTelaPrincipal(controlador);
         }

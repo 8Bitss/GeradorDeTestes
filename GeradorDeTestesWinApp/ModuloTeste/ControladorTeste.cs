@@ -28,16 +28,12 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
         public override string ToolTipExcluir { get { return "Excluir uma teste existente"; } }
 
-
         public override void Adicionar()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm(repositorioMateria);
+            TelaTesteForm telaTeste = new TelaTesteForm();
 
             List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
             telaTeste.CarregarDisciplinas(disciplinasCadastradas);
-
-            List<Materia> materiasCadastradas = repositorioMateria.SelecionarTodos();
-            telaTeste.CarregarMaterias(materiasCadastradas);
 
             DialogResult resultado = telaTeste.ShowDialog();
 
@@ -64,12 +60,89 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaTesteForm telaTeste = new TelaTesteForm();
+
+            List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
+
+            telaTeste.CarregarDisciplinas(disciplinasCadastradas);
+
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaTeste.Teste = testeSelecionado;
+
+            DialogResult resultado = telaTeste.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Teste testeEditado = telaTeste.Teste;
+
+            //Metodo para Verificar se nome existe
+            bool nomeExiste = VerificaEntidadeDuplicada(testeEditado, idSelecionado);
+
+            if (nomeExiste)
+            {
+                repositorioTeste.Editar(testeSelecionado.Id, testeEditado);
+            }
+            else
+                return;
+
+            CarregarTestes();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{testeEditado.Titulo}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir o registro \"{testeSelecionado.Titulo}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioTeste.Excluir(testeSelecionado.Id);
+
+            CarregarTestes();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{testeSelecionado.Titulo}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()
@@ -95,7 +168,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                     if (teste.Titulo.ToUpper() == novoTeste.Titulo.ToUpper())
                     {
                         MessageBox.Show(
-                            "Não é possível realizar esta pois já existe uma questao com este nome",
+                            "Não é possível realizar esta pois já existe um teste com este nome",
                             "Aviso",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning
@@ -108,7 +181,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                     if (teste.Titulo.ToUpper() == novoTeste.Titulo.ToUpper() && teste.Id != idSelecionado)
                     {
                         MessageBox.Show(
-                            "Não é possível realizar esta pois já existe uma questao com este nome",
+                            "Não é possível realizar esta pois já existe um teste com este nome",
                             "Aviso",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning

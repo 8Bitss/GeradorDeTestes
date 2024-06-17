@@ -73,6 +73,7 @@
             cmbDisciplinas.Name = "cmbDisciplinas";
             cmbDisciplinas.Size = new Size(152, 23);
             cmbDisciplinas.TabIndex = 15;
+            cmbDisciplinas.SelectedIndexChanged += cmbDisciplinas_SelectedIndexChanged;
             // 
             // lblDisciplina
             // 
@@ -87,6 +88,7 @@
             // cmbMaterias
             // 
             cmbMaterias.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMaterias.Enabled = false;
             cmbMaterias.FormattingEnabled = true;
             cmbMaterias.Location = new Point(98, 120);
             cmbMaterias.Name = "cmbMaterias";
@@ -219,6 +221,7 @@
             MinimizeBox = false;
             Name = "TelaTesteForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Testes";
             ((System.ComponentModel.ISupportInitialize)txtQtdQuestoes).EndInit();
             groupBox1.ResumeLayout(false);
