@@ -28,6 +28,8 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
         public override string ToolTipExcluir { get { return "Excluir uma teste existente"; } }
 
+        public string ToolTipDuplicar { get { return "Duplicar um teste existente"; } }
+
         public override void Adicionar()
         {
             TelaTesteForm telaTeste = new TelaTesteForm();
@@ -106,6 +108,57 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             TelaPrincipalForm
                 .Instancia
                 .AtualizarRodape($"O registro \"{testeEditado.Titulo}\" foi editado com sucesso!");
+        }
+
+        public void DuplicarTeste()
+        {
+            TelaTesteForm telaTeste = new TelaTesteForm();
+
+            List<Disciplina> disciplinasCadastradas = repositorioDisciplina.SelecionarTodos();
+
+            telaTeste.CarregarDisciplinas(disciplinasCadastradas);
+
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaTeste.Teste = testeSelecionado;
+
+            DialogResult resultado = telaTeste.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            Teste testeDuplicado = telaTeste.Teste;
+            testeDuplicado.Id = idSelecionado;
+
+            //Metodo para Verificar se nome existe
+            bool nomeExiste = VerificaEntidadeDuplicada(testeDuplicado, idSelecionado);
+
+            if (nomeExiste)
+            {
+                repositorioTeste.DuplicarRegistro(idSelecionado, testeDuplicado);
+            }
+            else
+                return;
+
+            CarregarTestes();
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{testeDuplicado.Titulo}\" foi duplicado com sucesso!");
         }
 
         public override void Excluir()
@@ -198,9 +251,9 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
         private void CarregarTestes()
         {
-            List<Teste> teste = repositorioTeste.SelecionarTodos();
+            List<Teste> testes = repositorioTeste.SelecionarTodos();
 
-            tabelaTeste.AtualizarRegistros(teste);
+            tabelaTeste.AtualizarRegistros(testes);
 
         }
     }

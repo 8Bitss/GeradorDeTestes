@@ -49,6 +49,8 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             else
                 return;
 
+            novaQuestao.Materia.Disciplina.AdicionarQuestao(novaQuestao);
+
             CarregarQuestoes();
 
             TelaPrincipalForm

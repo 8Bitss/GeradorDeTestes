@@ -20,8 +20,6 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
 
             foreach (Questao questao in questoes)
                 grid.Rows.Add(questao.Id, questao.Materia, questao.Enunciado, questao.RespostasCorretas());
-
-
         }
 
         public int ObterRegistroSelecionado()

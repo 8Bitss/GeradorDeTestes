@@ -33,16 +33,17 @@
             disciplinasToolStripMenuItem = new ToolStripMenuItem();
             materiasToolStripMenuItem = new ToolStripMenuItem();
             questõesToolStripMenuItem = new ToolStripMenuItem();
+            testesToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
+            btnDuplicarTeste = new ToolStripButton();
             lblTipoCadastro = new ToolStripLabel();
             pnlRegistros = new Panel();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
-            testesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -70,29 +71,36 @@
             // disciplinasToolStripMenuItem
             // 
             disciplinasToolStripMenuItem.Name = "disciplinasToolStripMenuItem";
-            disciplinasToolStripMenuItem.Size = new Size(180, 26);
+            disciplinasToolStripMenuItem.Size = new Size(154, 26);
             disciplinasToolStripMenuItem.Text = "Disciplinas";
             disciplinasToolStripMenuItem.Click += disciplinasToolStripMenuItem_Click;
             // 
             // materiasToolStripMenuItem
             // 
             materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(180, 26);
+            materiasToolStripMenuItem.Size = new Size(154, 26);
             materiasToolStripMenuItem.Text = "Matérias";
             materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
             // 
             // questõesToolStripMenuItem
             // 
             questõesToolStripMenuItem.Name = "questõesToolStripMenuItem";
-            questõesToolStripMenuItem.Size = new Size(180, 26);
+            questõesToolStripMenuItem.Size = new Size(154, 26);
             questõesToolStripMenuItem.Text = "Questões";
             questõesToolStripMenuItem.Click += questoesToolStripMenuItem_Click;
+            // 
+            // testesToolStripMenuItem
+            // 
+            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
+            testesToolStripMenuItem.Size = new Size(154, 26);
+            testesToolStripMenuItem.Text = "Testes";
+            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator3, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator3, btnDuplicarTeste, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 31);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1029, 41);
@@ -143,6 +151,19 @@
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 41);
             // 
+            // btnDuplicarTeste
+            // 
+            btnDuplicarTeste.BackgroundImageLayout = ImageLayout.None;
+            btnDuplicarTeste.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDuplicarTeste.Enabled = false;
+            btnDuplicarTeste.Image = Properties.Resources.btnDuplicarTeste;
+            btnDuplicarTeste.ImageScaling = ToolStripItemImageScaling.None;
+            btnDuplicarTeste.ImageTransparentColor = Color.Magenta;
+            btnDuplicarTeste.Name = "btnDuplicarTeste";
+            btnDuplicarTeste.Padding = new Padding(5);
+            btnDuplicarTeste.Size = new Size(38, 38);
+            btnDuplicarTeste.Click += btnDuplicarTeste_Click;
+            // 
             // lblTipoCadastro
             // 
             lblTipoCadastro.Name = "lblTipoCadastro";
@@ -173,13 +194,6 @@
             statusLabelPrincipal.Name = "statusLabelPrincipal";
             statusLabelPrincipal.Size = new Size(195, 21);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
-            // 
-            // testesToolStripMenuItem
-            // 
-            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
-            testesToolStripMenuItem.Size = new Size(180, 26);
-            testesToolStripMenuItem.Text = "Testes";
-            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
             // TelaPrincipalForm
             // 
@@ -224,5 +238,6 @@
         private ToolStripMenuItem materiasToolStripMenuItem;
         private ToolStripMenuItem questõesToolStripMenuItem;
         private ToolStripMenuItem testesToolStripMenuItem;
+        private ToolStripButton btnDuplicarTeste;
     }
 }

@@ -88,6 +88,15 @@ namespace GeradorDeTestesWinApp
         }
         #endregion
 
+        private void btnDuplicarTeste_Click(object sender, EventArgs e)
+        {
+            ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina);
+
+            ConfigurarTelaPrincipal(controladorTeste);
+
+            controladorTeste.DuplicarTeste();
+        }
+
 
         #region Configurações
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
@@ -104,6 +113,8 @@ namespace GeradorDeTestesWinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
+            btnDuplicarTeste.Enabled = controladorSelecionado is ControladorTeste;
+
             ConfigurarToolTips(controladorSelecionado);
         }
 
@@ -112,6 +123,9 @@ namespace GeradorDeTestesWinApp
             btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
+
+            if (controladorSelecionado is ControladorTeste controladorTeste)
+                btnDuplicarTeste.ToolTipText = controladorTeste.ToolTipDuplicar;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -148,6 +162,49 @@ namespace GeradorDeTestesWinApp
 
             disciplinas[0].AdicionarMaterias(materias[0]);
             disciplinas[1].AdicionarMaterias(materias[1]);
+
+            List<Alternativa> alternativas = new List<Alternativa>()
+            {
+                new ("teste", false),
+                new ("teste2", false),
+                new ("test3", false),
+                new ("teste4", true)
+            };
+
+            List<Questao> questoes = new List<Questao>
+            {
+                new(materias[0], "teste de questao 1", alternativas),
+                new(materias[0], "teste de questao 2", alternativas),
+                new(materias[0], "teste de questao 3", alternativas),
+                new(materias[0], "teste de questao 4", alternativas),
+                new(materias[0], "teste de questao 5", alternativas),
+                new(materias[0], "teste de questao 6", alternativas),
+                new(materias[0], "teste de questao 7", alternativas),
+                new(materias[0], "teste de questao 8", alternativas),
+                new(materias[0], "teste de questao 9", alternativas),
+                new(materias[0], "teste de questao 10", alternativas),
+                new(materias[0], "teste de questao 11", alternativas),
+                new(materias[0], "teste de questao 12", alternativas),
+                new(materias[0], "teste de questao 13", alternativas),
+                new(materias[0], "teste de questao 14", alternativas),
+            };
+
+            repositorioQuestao.CadastrarVarios(questoes);
+
+            disciplinas[0].AdicionarQuestao(questoes[0]);
+            disciplinas[0].AdicionarQuestao(questoes[1]);
+            disciplinas[0].AdicionarQuestao(questoes[2]);
+            disciplinas[0].AdicionarQuestao(questoes[3]);
+            disciplinas[0].AdicionarQuestao(questoes[4]);
+            disciplinas[0].AdicionarQuestao(questoes[5]);
+            disciplinas[0].AdicionarQuestao(questoes[6]);
+            disciplinas[0].AdicionarQuestao(questoes[7]);
+            disciplinas[0].AdicionarQuestao(questoes[8]);
+            disciplinas[0].AdicionarQuestao(questoes[9]);
+            disciplinas[0].AdicionarQuestao(questoes[10]);
+            disciplinas[0].AdicionarQuestao(questoes[11]);
+            disciplinas[0].AdicionarQuestao(questoes[12]);
+            disciplinas[0].AdicionarQuestao(questoes[13]);
         }
     }
 }

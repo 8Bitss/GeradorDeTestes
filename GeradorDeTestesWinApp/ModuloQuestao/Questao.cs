@@ -46,5 +46,10 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
 
             return respostas;
         }
+
+        public override string ToString()
+        {
+            return Enunciado;
+        }
     }
 }

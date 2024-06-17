@@ -1,6 +1,7 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
+using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
@@ -11,12 +12,16 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         public Materia Materia { get; set; }
         public int QtdQuestoes { get; set; }
 
-        public Teste(string titulo, Disciplina disciplina, Materia materia, int qtdQuestoes)
+        public List<Questao> QuestoesSelecionadas { get; set; }
+
+        public Teste(string titulo, Disciplina disciplina, Materia materia, int qtdQuestoes, List<Questao> questoesSelecinadas)
         {
             Titulo = titulo;
             Disciplina = disciplina;
             Materia = materia;
             QtdQuestoes = qtdQuestoes;
+
+            QuestoesSelecionadas = questoesSelecinadas;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
@@ -28,6 +33,16 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             Materia = novoTeste.Materia;
             QtdQuestoes = novoTeste.QtdQuestoes;
         }
+
+        //public void AdicionarDuplicata()
+        //{
+        //    Teste novoTeste = (Teste)novoRegistro;
+
+        //    Titulo = novoTeste.Titulo;
+        //    Disciplina = novoTeste.Disciplina;
+        //    Materia = novoTeste.Materia;
+        //    QtdQuestoes = novoTeste.QtdQuestoes;
+        //}
 
         public override List<string> Validar()
         {
@@ -41,6 +56,14 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             
             if (Materia == null)
                 erros.Add("O campo \"Matéria\" é obrigatório");
+
+            if(QtdQuestoes <= 0)
+                erros.Add("O campo \"Qtd. Questões\" é obrigatório");
+
+            if(QuestoesSelecionadas.Count == 0)
+                erros.Add("É necessário gerar questões antes de cadastrar");
+
+
 
 
             return erros;

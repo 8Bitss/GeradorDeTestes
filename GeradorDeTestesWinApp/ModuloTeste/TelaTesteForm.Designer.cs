@@ -121,6 +121,7 @@
             txtQtdQuestoes.Name = "txtQtdQuestoes";
             txtQtdQuestoes.Size = new Size(59, 23);
             txtQtdQuestoes.TabIndex = 19;
+            txtQtdQuestoes.ValueChanged += txtQtdQuestoes_ValueChanged;
             // 
             // checkRecuperacao
             // 
@@ -156,12 +157,14 @@
             // 
             // btnSortearQuestoes
             // 
+            btnSortearQuestoes.Enabled = false;
             btnSortearQuestoes.Location = new Point(6, 26);
             btnSortearQuestoes.Name = "btnSortearQuestoes";
             btnSortearQuestoes.Size = new Size(160, 42);
             btnSortearQuestoes.TabIndex = 0;
             btnSortearQuestoes.Text = "Sortear Questões";
             btnSortearQuestoes.UseVisualStyleBackColor = true;
+            btnSortearQuestoes.Click += btnSortearQuestoes_Click;
             // 
             // btnCancelar
             // 
