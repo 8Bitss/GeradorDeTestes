@@ -261,13 +261,41 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 }
 
             }
-
             return true;
 
         }
 
         public void VisualizarDetalhesTeste()
         {
+
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            TelaTesteDetalhadoForm telaTesteDetalhado = new TelaTesteDetalhadoForm(testeSelecionado);
+            DialogResult resultado = telaTesteDetalhado.ShowDialog();
+            //telaTesteDetalhado = testeSelecionado;
+
+            //DialogResult resultado = telaTesteDetalhado.ShowDialog();
+
+            //if (resultado != DialogResult.OK)
+            //    return;
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{testeSelecionado.Titulo}\" foi visualizado com sucesso!");
 
         }
 

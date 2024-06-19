@@ -1,6 +1,6 @@
 ﻿namespace GeradorDeTestesWinApp.ModuloTeste
 {
-    partial class TelaDetalheTesteForm
+    partial class TelaTesteDetalhadoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -133,10 +133,11 @@
             lblMateriaSelecionada.TabIndex = 38;
             lblMateriaSelecionada.Text = "[ Materia Selecionada ]";
             // 
-            // TelaDetalheTesteForm
+            // TelaTesteDetalhadoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnFechar;
             ClientSize = new Size(513, 597);
             Controls.Add(lblMateriaSelecionada);
             Controls.Add(lblDisciplinaSelecionada);
@@ -146,9 +147,10 @@
             Controls.Add(lblMaterias);
             Controls.Add(lblDisciplina);
             Controls.Add(lbl);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaDetalheTesteForm";
+            Name = "TelaTesteDetalhadoForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Visualização de Testes";
