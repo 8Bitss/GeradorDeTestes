@@ -9,6 +9,11 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
         public string Enunciado { get; set; }
         public List<Alternativa> Alternativas { get; set; }
 
+        public Questao()
+        {
+            
+        }
+
         public Questao(Materia materia, string enunciado, List<Alternativa> alternativas)
         {
             Materia = materia;
@@ -28,9 +33,27 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
         public override List<string> Validar()
         {
             List<string> erros = new List<string>();
-            
+
+            if(Materia == null)
+                erros.Add("O campo \"Materia\" é obrigatório");
+
             if (string.IsNullOrEmpty(Enunciado.Trim()))
                 erros.Add("O campo \"Enunciado\" é obrigatório");
+
+            foreach (Alternativa alternativa in Alternativas)
+            {
+                if (alternativa.Resposta == "")
+                {
+                    erros.Add("Os campos de \"Alternativas\" escolhidos são obrigatórios");
+                    break;
+                }
+            }
+
+            if(QtdRespostasCorretas() < 1)
+                erros.Add("É obrigatório no mínimo uma resposta correta");
+
+            if(QtdRespostasCorretas() > 1)
+                erros.Add("É permitido o cadastro de somente uma alternativa correta");
 
             return erros;
         }
@@ -45,6 +68,19 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             }
 
             return respostas;
+        }
+
+        public int QtdRespostasCorretas()
+        {
+            int qtdCorretas = 0;
+
+            foreach (var item in Alternativas)
+            {
+                if (item.Status == true)
+                    qtdCorretas++;
+            }
+
+            return qtdCorretas;
         }
 
         public override string ToString()

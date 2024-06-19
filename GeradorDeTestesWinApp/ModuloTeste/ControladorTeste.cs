@@ -5,19 +5,21 @@ using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
-    public class ControladorTeste : ControladorBase
+    public class ControladorTeste : ControladorBase, IControladorFuncoesAdicionais
     {
         private TabelaTesteControl tabelaTeste;
 
-        private RepositorioTeste repositorioTeste;
-        private RepositorioMateria repositorioMateria;
-        private RepositorioDisciplina repositorioDisciplina;
+        private IRepositorioTeste repositorioTeste;
+        private IRepositorioMateria repositorioMateria;
+        private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioQuestao repositorioQuestao;
 
-        public ControladorTeste(RepositorioTeste repositorio, RepositorioMateria repositorioMateria, RepositorioDisciplina repositorioDisciplina)
+        public ControladorTeste(IRepositorioTeste repositorio, IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina, IRepositorioQuestao repositorioQuestao)
         {
             repositorioTeste = repositorio;
             this.repositorioMateria = repositorioMateria;
             this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioQuestao = repositorioQuestao;
         }
 
         public override string TipoCadastro { get { return "Testes"; } }
@@ -29,6 +31,8 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         public override string ToolTipExcluir { get { return "Excluir uma teste existente"; } }
 
         public string ToolTipDuplicar { get { return "Duplicar um teste existente"; } }
+
+        public string ToolTipVisualizarDetalhes { get { return "Visualizar detalhes de um teste existente"; } }
 
         public override void Adicionar()
         {
@@ -145,7 +149,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             testeDuplicado.Id = idSelecionado;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaEntidadeDuplicada(testeDuplicado, idSelecionado);
+            bool nomeExiste = VerificaEntidadeDuplicada(testeDuplicado, idSelecionado, true);
 
             if (nomeExiste)
             {
@@ -208,7 +212,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             return tabelaTeste;
         }
 
-        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0, bool EhDuplicado = false)
         {
             Teste novoTeste = (Teste)entidade;
 
@@ -219,6 +223,19 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 if (idSelecionado == 0)
                 {
                     if (teste.Titulo.ToUpper() == novoTeste.Titulo.ToUpper())
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe um teste com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
+                }
+                else if(EhDuplicado)
+                {
+                    if(teste.Titulo.ToUpper() == novoTeste.Titulo.ToUpper())
                     {
                         MessageBox.Show(
                             "Não é possível realizar esta pois já existe um teste com este nome",
@@ -244,8 +261,41 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 }
 
             }
-
             return true;
+
+        }
+
+        public void VisualizarDetalhesTeste()
+        {
+
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            TelaTesteDetalhadoForm telaTesteDetalhado = new TelaTesteDetalhadoForm(testeSelecionado);
+            DialogResult resultado = telaTesteDetalhado.ShowDialog();
+            //telaTesteDetalhado = testeSelecionado;
+
+            //DialogResult resultado = telaTesteDetalhado.ShowDialog();
+
+            //if (resultado != DialogResult.OK)
+            //    return;
+
+            TelaPrincipalForm
+                .Instancia
+                .AtualizarRodape($"O registro \"{testeSelecionado.Titulo}\" foi visualizado com sucesso!");
 
         }
 
@@ -254,7 +304,6 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             List<Teste> testes = repositorioTeste.SelecionarTodos();
 
             tabelaTeste.AtualizarRegistros(testes);
-
         }
     }
 }

@@ -10,11 +10,13 @@ namespace GeradorDeTestesWinApp
     {
         ControladorBase controlador;
 
+        ContextoDados contexto;
+
         #region Repositorios
-        RepositorioDisciplina repositorioDisciplina;
-        RepositorioMateria repositorioMateria;
-        RepositorioQuestao repositorioQuestao;
-        RepositorioTeste repositorioTeste;
+        IRepositorioDisciplina repositorioDisciplina;
+        IRepositorioMateria repositorioMateria;
+        IRepositorioQuestao repositorioQuestao;
+        IRepositorioTeste repositorioTeste;
         #endregion
 
         public static TelaPrincipalForm Instancia { get; private set; }
@@ -26,14 +28,14 @@ namespace GeradorDeTestesWinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            #region Repositorios
-            repositorioDisciplina = new RepositorioDisciplina();
-            repositorioMateria = new RepositorioMateria();
-            repositorioQuestao = new RepositorioQuestao();
-            repositorioTeste = new RepositorioTeste();
-            #endregion
+            contexto = new ContextoDados(carregarDados: true);
 
-            CadastrarRegistrosTeste();
+            #region Repositorios
+            repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
+            repositorioMateria = new RepositorioMateriaEmArquivo(contexto);
+            repositorioQuestao = new RepositorioQuestaoEmArquivo(contexto);
+            repositorioTeste = new RepositorioTesteEmArquivo(contexto);
+            #endregion
         }
 
         public void AtualizarRodape(string texto)
@@ -75,14 +77,14 @@ namespace GeradorDeTestesWinApp
 
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
+            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria, repositorioDisciplina, repositorioTeste);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void testesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina);
+            controlador = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -90,11 +92,20 @@ namespace GeradorDeTestesWinApp
 
         private void btnDuplicarTeste_Click(object sender, EventArgs e)
         {
-            ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina);
+            //ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
-            ConfigurarTelaPrincipal(controladorTeste);
+            //ConfigurarTelaPrincipal(controladorTeste);
 
-            controladorTeste.DuplicarTeste();
+            //controladorTeste.DuplicarTeste();
+
+            if (controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+                controladorFuncoesAdicionais.DuplicarTeste();
+        }
+
+        private void btnVisualizarDetalhes_Click(object sender, EventArgs e)
+        {
+            if(controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+                controladorFuncoesAdicionais.VisualizarDetalhesTeste();
         }
 
 
@@ -113,7 +124,8 @@ namespace GeradorDeTestesWinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
-            btnDuplicarTeste.Enabled = controladorSelecionado is ControladorTeste;
+            btnDuplicarTeste.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
+            btnVisualizarDetalhes.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -125,7 +137,10 @@ namespace GeradorDeTestesWinApp
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
             if (controladorSelecionado is ControladorTeste controladorTeste)
+            {
                 btnDuplicarTeste.ToolTipText = controladorTeste.ToolTipDuplicar;
+                btnVisualizarDetalhes.ToolTipText = controladorTeste.ToolTipVisualizarDetalhes;
+            }
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -137,74 +152,5 @@ namespace GeradorDeTestesWinApp
             pnlRegistros.Controls.Add(listagem);
         }
         #endregion
-
-
-        private void CadastrarRegistrosTeste()
-        {
-            List<Disciplina> disciplinas = new List<Disciplina>()
-            {
-                new("Matemática"),
-                new("Português"),
-                new("Quimica"),
-                new("Artes"),
-                new("História")
-            };
-
-            repositorioDisciplina.CadastrarVarios(disciplinas);
-
-            List<Materia> materias = new List<Materia>()
-            {
-                new("Algebra", disciplinas[0], SerieMateriaEnum.PrimeiraSerie),
-                new("Alfabeto", disciplinas[1], SerieMateriaEnum.SegundaSerie)
-            };
-
-            repositorioMateria.CadastrarVarios(materias);
-
-            disciplinas[0].AdicionarMaterias(materias[0]);
-            disciplinas[1].AdicionarMaterias(materias[1]);
-
-            List<Alternativa> alternativas = new List<Alternativa>()
-            {
-                new ("teste", false),
-                new ("teste2", false),
-                new ("test3", false),
-                new ("teste4", true)
-            };
-
-            List<Questao> questoes = new List<Questao>
-            {
-                new(materias[0], "teste de questao 1", alternativas),
-                new(materias[0], "teste de questao 2", alternativas),
-                new(materias[0], "teste de questao 3", alternativas),
-                new(materias[0], "teste de questao 4", alternativas),
-                new(materias[0], "teste de questao 5", alternativas),
-                new(materias[0], "teste de questao 6", alternativas),
-                new(materias[0], "teste de questao 7", alternativas),
-                new(materias[0], "teste de questao 8", alternativas),
-                new(materias[0], "teste de questao 9", alternativas),
-                new(materias[0], "teste de questao 10", alternativas),
-                new(materias[0], "teste de questao 11", alternativas),
-                new(materias[0], "teste de questao 12", alternativas),
-                new(materias[0], "teste de questao 13", alternativas),
-                new(materias[0], "teste de questao 14", alternativas),
-            };
-
-            repositorioQuestao.CadastrarVarios(questoes);
-
-            disciplinas[0].AdicionarQuestao(questoes[0]);
-            disciplinas[0].AdicionarQuestao(questoes[1]);
-            disciplinas[0].AdicionarQuestao(questoes[2]);
-            disciplinas[0].AdicionarQuestao(questoes[3]);
-            disciplinas[0].AdicionarQuestao(questoes[4]);
-            disciplinas[0].AdicionarQuestao(questoes[5]);
-            disciplinas[0].AdicionarQuestao(questoes[6]);
-            disciplinas[0].AdicionarQuestao(questoes[7]);
-            disciplinas[0].AdicionarQuestao(questoes[8]);
-            disciplinas[0].AdicionarQuestao(questoes[9]);
-            disciplinas[0].AdicionarQuestao(questoes[10]);
-            disciplinas[0].AdicionarQuestao(questoes[11]);
-            disciplinas[0].AdicionarQuestao(questoes[12]);
-            disciplinas[0].AdicionarQuestao(questoes[13]);
-        }
     }
 }

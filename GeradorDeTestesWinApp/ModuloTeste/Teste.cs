@@ -11,10 +11,16 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         public Disciplina Disciplina { get; set; }
         public Materia Materia { get; set; }
         public int QtdQuestoes { get; set; }
+        public RecuperacaoEnum Recuperacao { get; set; }
 
         public List<Questao> QuestoesSelecionadas { get; set; }
 
-        public Teste(string titulo, Disciplina disciplina, Materia materia, int qtdQuestoes, List<Questao> questoesSelecinadas)
+        public Teste()
+        {
+            
+        }
+
+        public Teste(string titulo, Disciplina disciplina, Materia materia, int qtdQuestoes, List<Questao> questoesSelecinadas, RecuperacaoEnum recuperacao)
         {
             Titulo = titulo;
             Disciplina = disciplina;
@@ -22,6 +28,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             QtdQuestoes = qtdQuestoes;
 
             QuestoesSelecionadas = questoesSelecinadas;
+            Recuperacao = recuperacao;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
@@ -32,6 +39,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             Disciplina = novoTeste.Disciplina;
             Materia = novoTeste.Materia;
             QtdQuestoes = novoTeste.QtdQuestoes;
+            Recuperacao = novoTeste.Recuperacao;
         }
 
         //public void AdicionarDuplicata()
@@ -54,7 +62,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             if (Disciplina == null)
                 erros.Add("O campo \"Disciplina\" é obrigatório");
             
-            if (Materia == null)
+            if (Materia == null && Recuperacao == RecuperacaoEnum.Nao)
                 erros.Add("O campo \"Matéria\" é obrigatório");
 
             if(QtdQuestoes <= 0)

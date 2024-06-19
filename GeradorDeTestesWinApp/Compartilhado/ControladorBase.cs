@@ -10,7 +10,7 @@ public abstract class ControladorBase
 
     public abstract UserControl ObterListagem();
 
-    public abstract bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0);
+    public abstract bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0, bool EhDuplicado = false);
 
     public abstract void Adicionar();
     public abstract void Editar();

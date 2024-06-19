@@ -6,13 +6,13 @@ namespace GeradorDeTestesWinApp.ModuloMateria
 {
     public class ControladorMateria : ControladorBase
     {
-        private RepositorioMateria repositorioMateria;
-        private RepositorioDisciplina repositorioDisciplina;
-        private RepositorioQuestao repositorioQuestao;
+        private IRepositorioMateria repositorioMateria;
+        private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioQuestao repositorioQuestao;
 
         private TabelaMateriaControl tabelaMateria;
 
-        public ControladorMateria(RepositorioMateria repositorio, RepositorioDisciplina repositorioDisciplina, RepositorioQuestao repositorioQuestao)
+        public ControladorMateria(IRepositorioMateria repositorio, IRepositorioDisciplina repositorioDisciplina, IRepositorioQuestao repositorioQuestao)
         {
             repositorioMateria = repositorio;
             this.repositorioDisciplina = repositorioDisciplina;
@@ -53,7 +53,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             else
                 return;
 
-            novaMateria.Disciplina.AdicionarMaterias(novaMateria);
+            repositorioDisciplina.AdicionarNaLista(novaMateria.Disciplina.Materias, novaMateria);
 
             CarregarMaterias();
 
@@ -183,7 +183,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             tabelaMateria.AtualizarRegistros(materias);
         }
 
-        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0, bool EhDuplicado = false)
         {
             Materia novaMateria = (Materia)entidade;
 

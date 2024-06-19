@@ -44,6 +44,7 @@
             pnlRegistros = new Panel();
             statusStrip1 = new StatusStrip();
             statusLabelPrincipal = new ToolStripStatusLabel();
+            btnVisualizarDetalhes = new ToolStripButton();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -100,7 +101,7 @@
             // 
             toolStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator3, btnDuplicarTeste, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator3, btnDuplicarTeste, btnVisualizarDetalhes, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 31);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1029, 41);
@@ -195,6 +196,19 @@
             statusLabelPrincipal.Size = new Size(195, 21);
             statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
             // 
+            // btnVisualizarDetalhes
+            // 
+            btnVisualizarDetalhes.BackgroundImageLayout = ImageLayout.None;
+            btnVisualizarDetalhes.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnVisualizarDetalhes.Enabled = false;
+            btnVisualizarDetalhes.Image = Properties.Resources.btnVisualizarDetalhes;
+            btnVisualizarDetalhes.ImageScaling = ToolStripItemImageScaling.None;
+            btnVisualizarDetalhes.ImageTransparentColor = Color.Magenta;
+            btnVisualizarDetalhes.Name = "btnVisualizarDetalhes";
+            btnVisualizarDetalhes.Padding = new Padding(5);
+            btnVisualizarDetalhes.Size = new Size(38, 38);
+            btnVisualizarDetalhes.Click += btnVisualizarDetalhes_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -239,5 +253,6 @@
         private ToolStripMenuItem questõesToolStripMenuItem;
         private ToolStripMenuItem testesToolStripMenuItem;
         private ToolStripButton btnDuplicarTeste;
+        private ToolStripButton btnVisualizarDetalhes;
     }
 }
