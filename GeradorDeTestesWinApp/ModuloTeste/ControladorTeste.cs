@@ -5,7 +5,7 @@ using GeradorDeTestesWinApp.ModuloQuestao;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
-    public class ControladorTeste : ControladorBase
+    public class ControladorTeste : ControladorBase, IControladorFuncoesAdicionais
     {
         private TabelaTesteControl tabelaTeste;
 
@@ -31,6 +31,8 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         public override string ToolTipExcluir { get { return "Excluir uma teste existente"; } }
 
         public string ToolTipDuplicar { get { return "Duplicar um teste existente"; } }
+
+        public string ToolTipVisualizarDetalhes { get { return "Visualizar detalhes de um teste existente"; } }
 
         public override void Adicionar()
         {
@@ -264,48 +266,16 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
         }
 
+        public void VisualizarDetalhesTeste()
+        {
+
+        }
+
         private void CarregarTestes()
         {
             List<Teste> testes = repositorioTeste.SelecionarTodos();
 
             tabelaTeste.AtualizarRegistros(testes);
-
         }
-
-        //public List<Questao> PegarQuestoes(Materia materiaEscolhida, int qtdQuestoes)
-        //{
-        //    Random rand = new Random();
-
-        //    int indiceAleatorio = 0;
-
-
-        //    List<Questao> questoesCadastradas = repositorioQuestao.SelecionarTodos();
-
-        //    List<Questao> questoesMateria = new List<Questao>();
-
-        //    foreach (Questao questao in questoesCadastradas)
-        //    {
-        //        if (questao.Materia == materiaEscolhida)
-        //        {
-        //            questoesMateria.Add(questao);
-        //        }
-        //    }
-
-        //    foreach (Questao questao in questoesCadastradas)
-        //    {
-        //        indiceAleatorio = rand.Next(0, questoesCadastradas.Count);
-
-        //        if (questoesCadastradas.Count == qtdQuestoes)
-        //        {
-        //            questoesMateria.Add(questao);
-        //        }
-        //        else if (questoesCadastradas.Count < qtdQuestoes)
-        //        {
-        //            questoesMateria.Add(questoesCadastradas[indiceAleatorio]);
-        //        }
-        //    }
-
-        //    return questoesMateria;
-        //}
     }
 }

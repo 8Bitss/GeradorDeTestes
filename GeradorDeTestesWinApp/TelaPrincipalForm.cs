@@ -28,7 +28,7 @@ namespace GeradorDeTestesWinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            contexto = new ContextoDados(carregarDados : true);
+            contexto = new ContextoDados(carregarDados: true);
 
             #region Repositorios
             repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
@@ -92,11 +92,20 @@ namespace GeradorDeTestesWinApp
 
         private void btnDuplicarTeste_Click(object sender, EventArgs e)
         {
-            ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina ,repositorioQuestao);
+            //ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
-            ConfigurarTelaPrincipal(controladorTeste);
+            //ConfigurarTelaPrincipal(controladorTeste);
 
-            controladorTeste.DuplicarTeste();
+            //controladorTeste.DuplicarTeste();
+
+            if (controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+                controladorFuncoesAdicionais.DuplicarTeste();
+        }
+
+        private void btnVisualizarDetalhes_Click(object sender, EventArgs e)
+        {
+            if(controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+                controladorFuncoesAdicionais.VisualizarDetalhesTeste();
         }
 
 
@@ -115,7 +124,8 @@ namespace GeradorDeTestesWinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
-            btnDuplicarTeste.Enabled = controladorSelecionado is ControladorTeste;
+            btnDuplicarTeste.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
+            btnVisualizarDetalhes.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -127,7 +137,10 @@ namespace GeradorDeTestesWinApp
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
             if (controladorSelecionado is ControladorTeste controladorTeste)
+            {
                 btnDuplicarTeste.ToolTipText = controladorTeste.ToolTipDuplicar;
+                btnVisualizarDetalhes.ToolTipText = controladorTeste.ToolTipVisualizarDetalhes;
+            }
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
