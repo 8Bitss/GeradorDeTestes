@@ -147,7 +147,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             testeDuplicado.Id = idSelecionado;
 
             //Metodo para Verificar se nome existe
-            bool nomeExiste = VerificaEntidadeDuplicada(testeDuplicado, idSelecionado);
+            bool nomeExiste = VerificaEntidadeDuplicada(testeDuplicado, idSelecionado, true);
 
             if (nomeExiste)
             {
@@ -210,7 +210,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             return tabelaTeste;
         }
 
-        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0, bool EhDuplicado = false)
         {
             Teste novoTeste = (Teste)entidade;
 
@@ -221,6 +221,19 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 if (idSelecionado == 0)
                 {
                     if (teste.Titulo.ToUpper() == novoTeste.Titulo.ToUpper())
+                    {
+                        MessageBox.Show(
+                            "Não é possível realizar esta pois já existe um teste com este nome",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning
+                        );
+                        return false;
+                    }
+                }
+                else if(EhDuplicado)
+                {
+                    if(teste.Titulo.ToUpper() == novoTeste.Titulo.ToUpper())
                     {
                         MessageBox.Show(
                             "Não é possível realizar esta pois já existe um teste com este nome",

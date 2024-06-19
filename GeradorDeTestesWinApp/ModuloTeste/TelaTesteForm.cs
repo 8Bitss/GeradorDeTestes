@@ -1,8 +1,6 @@
 ﻿using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
-using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
@@ -21,6 +19,9 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 cmbDisciplinas.SelectedItem = value.Disciplina;
                 cmbMaterias.SelectedItem = value.Materia;
                 txtQtdQuestoes.Value = value.QtdQuestoes;
+
+                if (value.Recuperacao == RecuperacaoEnum.Sim)
+                    checkRecuperacao.Checked = true;
             }
         }
 

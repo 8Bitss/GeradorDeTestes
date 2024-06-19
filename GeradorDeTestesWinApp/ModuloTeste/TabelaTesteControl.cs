@@ -21,9 +21,9 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
             foreach (Teste t in testes)
                 if(t.Materia == null)
-                    grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia , t.QtdQuestoes);
+                    grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia, t.QtdQuestoes, t.Recuperacao);
                 else
-                    grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia.Nome, t.QtdQuestoes);
+                    grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia.Nome, t.QtdQuestoes, t.Recuperacao);
         }
 
         public int ObterRegistroSelecionado()
@@ -39,7 +39,8 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 new DataGridViewTextBoxColumn { DataPropertyName = "Titulo", HeaderText = "Título" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Disciplina", HeaderText = "Disciplina" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Materia", HeaderText = "Matéria" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "QtdQuestoes", HeaderText = "Quantidade de Questões" }
+                new DataGridViewTextBoxColumn { DataPropertyName = "QtdQuestoes", HeaderText = "Quantidade de Questões" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Recuperacao", HeaderText = "Recuperação" }
             };
         }
     }

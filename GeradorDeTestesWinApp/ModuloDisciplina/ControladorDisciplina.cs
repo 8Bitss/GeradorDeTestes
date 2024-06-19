@@ -1,8 +1,6 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
-using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
 using GeradorDeTestesWinApp.ModuloTeste;
-using System.Runtime.CompilerServices;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -185,7 +183,7 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             tabelaDisciplina.AtualizarRegistros(disciplinas);
         }
 
-        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0, bool EhDuplicado = false)
         {
             Disciplina novaDisciplina = (Disciplina)entidade;
 

@@ -183,7 +183,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             tabelaMateria.AtualizarRegistros(materias);
         }
 
-        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0)
+        public override bool VerificaEntidadeDuplicada(EntidadeBase entidade, int idSelecionado = 0, bool EhDuplicado = false)
         {
             Materia novaMateria = (Materia)entidade;
 
