@@ -1,6 +1,8 @@
 ﻿using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
+using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
@@ -58,6 +60,11 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
             int qtdQuestoes = (int)txtQtdQuestoes.Value;
 
+            RecuperacaoEnum recuperacao = RecuperacaoEnum.Nao;
+
+            if (checkRecuperacao.Checked)
+                recuperacao = RecuperacaoEnum.Sim;
+
             List<Questao> questoesAleatorias = new List<Questao>();
 
             foreach (Questao questao in listQuestoes.Items)
@@ -65,7 +72,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
                 questoesAleatorias.Add(questao);
             }
 
-            teste = new Teste(titulo, disciplina, materia, qtdQuestoes, questoesAleatorias);
+            teste = new Teste(titulo, disciplina, materia, qtdQuestoes, questoesAleatorias, recuperacao);
 
             List<string> erros = teste.Validar();
 
@@ -80,6 +87,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         private void cmbDisciplinas_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbMaterias.Items.Clear();
+            listQuestoes.Items.Clear();
 
             cmbMaterias.Enabled = true;
 
@@ -104,11 +112,23 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             Random rand = new Random();
 
             Disciplina disciplina = DisciplinaSelecionada();
-            
-            int contador = 0;
-            int indiceAleatorio = 0;
 
-            if (txtQtdQuestoes.Value > disciplina.Questoes.Count)
+            List<Questao> questoesMateria = disciplina.Questoes;
+
+            List<Questao> questoesFiltradas = new List<Questao>();
+            
+            if(checkRecuperacao.Checked)
+            {
+                questoesFiltradas = questoesMateria;
+            }
+            else
+                questoesFiltradas = FiltrarQuestoesMateria(disciplina, MateriaSelecionada());
+
+            int indiceAleatorio = 0;
+            int i = 0;
+            List<int> indicesUsados = new List<int>();
+
+            if (txtQtdQuestoes.Value > questoesFiltradas.Count)
             {
                 MessageBox.Show
                     (
@@ -120,17 +140,44 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             }
             else
             {
-                foreach (Questao questao in disciplina.Questoes)
-                {
-                    indiceAleatorio = rand.Next(0, disciplina.Questoes.Count);
+                List<Questao> questoesAdicionadas = new List<Questao>();
 
-                    if (contador < txtQtdQuestoes.Value)
+                foreach (Questao questao in questoesFiltradas)
+                {
+                    indiceAleatorio = rand.Next(0, questoesFiltradas.Count);
+
+                    if (questoesFiltradas.Count == txtQtdQuestoes.Value)
                     {
-                        listQuestoes.Items.Add(disciplina.Questoes[indiceAleatorio]);
-                        contador++;
+                        listQuestoes.Items.Add(questao);
                     }
-                    else
-                        return;
+                    else if (questoesAdicionadas.Count < txtQtdQuestoes.Value)
+                    {
+                        foreach (Questao questaoAtual in questoesFiltradas)
+                        {
+                            if (questoesAdicionadas.Count == 0)
+                            {
+                                listQuestoes.Items.Add(questoesFiltradas[indiceAleatorio]);
+                                questoesAdicionadas.Add(questoesFiltradas[indiceAleatorio]);
+                                indicesUsados.Add(indiceAleatorio);
+                                continue;
+                            }
+                            else if (questoesAdicionadas.Count > 0 && questoesAdicionadas.Count < txtQtdQuestoes.Value)
+                            {
+                                if (indiceAleatorio == indicesUsados[i])
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    listQuestoes.Items.Add(questoesFiltradas[indiceAleatorio]);
+                                    questoesAdicionadas.Add(questoesFiltradas[indiceAleatorio]);
+                                    indicesUsados.Add(indiceAleatorio);
+                                }
+                            }
+                            i++;
+                        }
+
+                    }
                 }
             }
         }
@@ -142,6 +189,34 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
             else if (txtQtdQuestoes.Value != 0 && cmbDisciplinas.SelectedItem != null)
                 btnSortearQuestoes.Enabled = true;
+        }
+
+        public List<Questao> FiltrarQuestoesMateria(Disciplina disciplina, Materia materia)
+        {
+            List<Questao> questoesFiltradas = new List<Questao>();
+
+            List<Questao> questoesMateria = disciplina.Questoes;
+
+            Materia materiaSelecionada = MateriaSelecionada();
+
+            foreach (Questao questao in questoesMateria)
+            {
+                if (questao.Materia == materiaSelecionada)
+                {
+                    questoesFiltradas.Add(questao);
+                }
+            }
+
+            return questoesFiltradas;
+
+        }
+
+        private void checkRecuperacao_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkRecuperacao.Checked)
+            {
+                cmbMaterias.Enabled = false;
+            }
         }
     }
 }

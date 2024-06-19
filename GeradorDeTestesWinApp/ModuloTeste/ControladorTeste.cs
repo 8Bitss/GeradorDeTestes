@@ -12,12 +12,14 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         private IRepositorioTeste repositorioTeste;
         private IRepositorioMateria repositorioMateria;
         private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioQuestao repositorioQuestao;
 
-        public ControladorTeste(IRepositorioTeste repositorio, IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
+        public ControladorTeste(IRepositorioTeste repositorio, IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina, IRepositorioQuestao repositorioQuestao)
         {
             repositorioTeste = repositorio;
             this.repositorioMateria = repositorioMateria;
             this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioQuestao = repositorioQuestao;
         }
 
         public override string TipoCadastro { get { return "Testes"; } }
@@ -256,5 +258,41 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             tabelaTeste.AtualizarRegistros(testes);
 
         }
+
+        //public List<Questao> PegarQuestoes(Materia materiaEscolhida, int qtdQuestoes)
+        //{
+        //    Random rand = new Random();
+
+        //    int indiceAleatorio = 0;
+
+
+        //    List<Questao> questoesCadastradas = repositorioQuestao.SelecionarTodos();
+
+        //    List<Questao> questoesMateria = new List<Questao>();
+
+        //    foreach (Questao questao in questoesCadastradas)
+        //    {
+        //        if (questao.Materia == materiaEscolhida)
+        //        {
+        //            questoesMateria.Add(questao);
+        //        }
+        //    }
+
+        //    foreach (Questao questao in questoesCadastradas)
+        //    {
+        //        indiceAleatorio = rand.Next(0, questoesCadastradas.Count);
+
+        //        if (questoesCadastradas.Count == qtdQuestoes)
+        //        {
+        //            questoesMateria.Add(questao);
+        //        }
+        //        else if (questoesCadastradas.Count < qtdQuestoes)
+        //        {
+        //            questoesMateria.Add(questoesCadastradas[indiceAleatorio]);
+        //        }
+        //    }
+
+        //    return questoesMateria;
+        //}
     }
 }

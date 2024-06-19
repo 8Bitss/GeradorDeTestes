@@ -1,5 +1,7 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloDisciplina;
 using GeradorDeTestesWinApp.ModuloMateria;
+using GeradorDeTestesWinApp.ModuloTeste;
 
 namespace GeradorDeTestesWinApp.ModuloQuestao
 {
@@ -10,10 +12,15 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
         private IRepositorioQuestao repositorioQuestao;
         private IRepositorioMateria repositorioMateria;
 
-        public ControladorQuestao(IRepositorioQuestao repositorio, IRepositorioMateria repositorioMateria)
+        private IRepositorioDisciplina repositorioDisciplina;
+        private IRepositorioTeste repositorioTeste;
+
+        public ControladorQuestao(IRepositorioQuestao repositorio, IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina, IRepositorioTeste repositorioTeste)
         {
             repositorioQuestao = repositorio;
             this.repositorioMateria = repositorioMateria;
+            this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioTeste = repositorioTeste;
         }
 
         public override string TipoCadastro { get { return "Questões"; } }
@@ -49,7 +56,8 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             else
                 return;
 
-            novaQuestao.Materia.Disciplina.AdicionarQuestao(novaQuestao);
+            repositorioDisciplina.AdicionarNaLista(novaQuestao.Materia.Disciplina.Questoes, novaQuestao);
+            
 
             CarregarQuestoes();
 
@@ -131,6 +139,25 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning
             );
+
+
+            List<Teste> testesCadastrados = repositorioTeste.SelecionarTodos();
+            int i = 0;
+            foreach (Teste teste in testesCadastrados)
+            {
+                if (questaoSelecionada.Enunciado == teste.Disciplina.Questoes[i].Enunciado)
+                {
+                    MessageBox.Show(
+                        "Não é possível realizar esta ação pois o registro selecionado é usado em Testes.",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
+                i++;
+            }
 
             if (resposta != DialogResult.Yes)
                 return;

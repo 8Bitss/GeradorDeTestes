@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace GeradorDeTestesWinApp.Compartilhado
 {
-    public class RepositorioBaseEmArquivo<T> where T : EntidadeBase
+    public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
     {
-        protected List<T> registros = new List<T>();
+        protected abstract List<T> ObterRegistros();
 
         protected int contadorId = 1;
 
-        private string caminho = string.Empty;
+        protected ContextoDados contexto;
 
-        public RepositorioBaseEmArquivo(string nomeArquivo)
+        public RepositorioBaseEmArquivo(ContextoDados contexto)
         {
-            caminho = $"C:\\temp\\GeradordeTestes\\{nomeArquivo}";
-            registros = DeserializarRegistros();
+            this.contexto = contexto;
         }
 
         public void Cadastrar(T novoRegistro)
         {
             novoRegistro.Id = contadorId++;
 
-            registros.Add(novoRegistro);
+            ObterRegistros().Add(novoRegistro);
 
-            SerializarRegistros();
+            contexto.Gravar();
         }
 
         public bool Editar(int id, T novaEntidade)
@@ -41,72 +34,43 @@ namespace GeradorDeTestesWinApp.Compartilhado
 
             registro.AtualizarRegistro(novaEntidade);
 
-            SerializarRegistros();
+            contexto.Gravar();
 
             return true;
         }
 
-        public bool Excluir(int id)
+        public virtual bool Excluir(int id)
         {
-            bool conseguiuExcluir = registros.Remove(SelecionarPorId(id));
+            bool conseguiuExcluir = ObterRegistros().Remove(SelecionarPorId(id));
 
             if(!conseguiuExcluir)
                 return false;
 
-            SerializarRegistros();
+            contexto.Gravar();
 
             return true;
         }
 
         public List<T> SelecionarTodos()
         {
-            return registros;
+            return ObterRegistros();
         }
 
         public T SelecionarPorId(int id)
         {
-            return registros.Find(x => x.Id == id);
+            return ObterRegistros().Find(x => x.Id == id);
         }
 
         public bool Existe(int id)
         {
-            return registros.Any(x => x.Id == id);
+            return ObterRegistros().Any(x => x.Id == id);
         }
 
-        protected void SerializarRegistros()
+        public void AdicionarNaLista<T>(List<T> lista, T entidade) where T : EntidadeBase
         {
-            FileInfo arquivo = new FileInfo(caminho);
+            lista.Add(entidade);
 
-            arquivo.Directory.Create();
-
-            JsonSerializerOptions options = new JsonSerializerOptions()
-            {
-                WriteIndented = true,
-                ReferenceHandler = ReferenceHandler.Preserve
-            };
-
-            byte[] registrosEmBytes = JsonSerializer.SerializeToUtf8Bytes(registros, options);
-
-            File.WriteAllBytes(caminho , registrosEmBytes);
-        }
-
-        protected List<T> DeserializarRegistros()
-        {
-            FileInfo arquivo = new FileInfo(caminho);
-
-            if (!arquivo.Exists)
-                return new List<T>();
-
-            byte[] registrosEmBytes = File.ReadAllBytes(caminho);
-
-            JsonSerializerOptions options = new JsonSerializerOptions()
-            {
-                ReferenceHandler = ReferenceHandler.Preserve
-            };
-
-            List<T> registros = JsonSerializer.Deserialize<List<T>>(registrosEmBytes , options);
-
-            return registros;
+            contexto.Gravar();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace GeradorDeTestesWinApp.ModuloMateria
             else
                 return;
 
-            novaMateria.Disciplina.AdicionarMaterias(novaMateria);
+            repositorioDisciplina.AdicionarNaLista(novaMateria.Disciplina.Materias, novaMateria);
 
             CarregarMaterias();
 

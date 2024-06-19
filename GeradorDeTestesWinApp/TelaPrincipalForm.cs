@@ -10,6 +10,8 @@ namespace GeradorDeTestesWinApp
     {
         ControladorBase controlador;
 
+        ContextoDados contexto;
+
         #region Repositorios
         IRepositorioDisciplina repositorioDisciplina;
         IRepositorioMateria repositorioMateria;
@@ -26,14 +28,14 @@ namespace GeradorDeTestesWinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            #region Repositorios
-            repositorioDisciplina = new RepositorioDisciplinaEmArquivo();
-            repositorioMateria = new RepositorioMateriaEmArquivo();
-            repositorioQuestao = new RepositorioQuestaoEmArquivo();
-            repositorioTeste = new RepositorioTesteEmArquivo();
-            #endregion
+            contexto = new ContextoDados(carregarDados : true);
 
-            //CadastrarRegistrosTeste();
+            #region Repositorios
+            repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contexto);
+            repositorioMateria = new RepositorioMateriaEmArquivo(contexto);
+            repositorioQuestao = new RepositorioQuestaoEmArquivo(contexto);
+            repositorioTeste = new RepositorioTesteEmArquivo(contexto);
+            #endregion
         }
 
         public void AtualizarRodape(string texto)
@@ -75,14 +77,14 @@ namespace GeradorDeTestesWinApp
 
         private void questoesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
+            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria, repositorioDisciplina, repositorioTeste);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void testesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina);
+            controlador = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -90,7 +92,7 @@ namespace GeradorDeTestesWinApp
 
         private void btnDuplicarTeste_Click(object sender, EventArgs e)
         {
-            ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina);
+            ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina ,repositorioQuestao);
 
             ConfigurarTelaPrincipal(controladorTeste);
 

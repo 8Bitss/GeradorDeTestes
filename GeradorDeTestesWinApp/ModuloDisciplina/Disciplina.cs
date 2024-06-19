@@ -1,8 +1,6 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloMateria;
 using GeradorDeTestesWinApp.ModuloQuestao;
-using GeradorDeTestesWinApp.ModuloTeste;
-using System.Text.Json.Serialization;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -48,31 +46,10 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
             return Nome;
         }
 
-        public void AdicionarMaterias(Materia materiaSelecionada)
-        {
-            Materias.Add(materiaSelecionada);
-        }
-
-        public void AdicionarQuestao(Questao questaoSelecionada)
-        {
-            Questoes.Add(questaoSelecionada);
-        }
-
-        public List<Questao> PegarQuestoes(RepositorioQuestaoEmMemoria repositorioQuestao)
-        {
-            var questoes = repositorioQuestao.SelecionarTodos();
-            foreach (var questao in questoes)
-            {
-                foreach (var materia in Materias)
-                {
-                    if (questao.Materia == materia)
-                    {
-                        AdicionarQuestao(questao);
-                    }
-                }
-            }
-
-            return Questoes;
-        }
+        //public List<Questao> PegarQuestoes(Materia materiaQuestao)
+        //{
+        //    var rebe = this.Questoes.FindAll(x => x.Materia == materiaQuestao);
+        //    return rebe;
+        //}
     }
 }

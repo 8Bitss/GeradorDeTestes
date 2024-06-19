@@ -133,6 +133,7 @@
             checkRecuperacao.TabIndex = 20;
             checkRecuperacao.Text = "Prova de Recuperação";
             checkRecuperacao.UseVisualStyleBackColor = true;
+            checkRecuperacao.CheckedChanged += checkRecuperacao_CheckedChanged;
             // 
             // groupBox1
             // 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GeradorDeTestesWinApp.Compartilhado;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {
@@ -14,5 +10,6 @@ namespace GeradorDeTestesWinApp.ModuloDisciplina
         bool Excluir(int id);
         Disciplina SelecionarPorId(int idSelecionado);
         List<Disciplina> SelecionarTodos();
+        public void AdicionarNaLista<T>(List<T> lista, T entidade) where T : EntidadeBase;
     }
 }

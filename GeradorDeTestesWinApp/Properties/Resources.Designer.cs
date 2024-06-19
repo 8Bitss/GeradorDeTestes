@@ -73,6 +73,16 @@ namespace GeradorDeTestesWinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnAdicionar1 {
+            get {
+                object obj = ResourceManager.GetObject("btnAdicionar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnDuplicarTeste {
             get {
                 object obj = ResourceManager.GetObject("btnDuplicarTeste", resourceCulture);
@@ -96,6 +106,16 @@ namespace GeradorDeTestesWinApp.Properties {
         internal static System.Drawing.Bitmap btnExcluir {
             get {
                 object obj = ResourceManager.GetObject("btnExcluir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnReverterAcao {
+            get {
+                object obj = ResourceManager.GetObject("btnReverterAcao", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

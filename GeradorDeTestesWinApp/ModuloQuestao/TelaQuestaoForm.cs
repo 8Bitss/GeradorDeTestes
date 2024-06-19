@@ -24,10 +24,9 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
                 txtId.Text = value.Id.ToString();
                 txtEnunciado.Text = value.Enunciado;
                 cmbMaterias.SelectedItem = value.Materia;
-                txtAlternativaA.Text = value.Alternativas[0].Resposta;
-                txtAlternativaB.Text = value.Alternativas[1].Resposta;
-                txtAlternativaC.Text = value.Alternativas[2].Resposta;
-                txtAlternativaD.Text = value.Alternativas[3].Resposta; 
+
+                PreencheAlternativasUsadas(value.Alternativas);
+
                 checarRespostaCorreta(value.Alternativas);
             }
         }
@@ -54,6 +53,42 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             }
         }
 
+        private void PreencheAlternativasUsadas(List<Alternativa> alternativas)
+        {
+            foreach(Alternativa alternativa in alternativas)
+            {
+                if(alternativa.Opcao == LetraAlternativaEnum.A)
+                {
+                    txtAlternativaA.Text = alternativa.Resposta;
+                }
+                if(alternativa.Opcao == LetraAlternativaEnum.B)
+                {
+                    txtAlternativaB.Text = alternativa.Resposta;
+                }
+                if(alternativa.Opcao == LetraAlternativaEnum.C)
+                {
+                    txtAlternativaC.Text = alternativa.Resposta;
+                }
+                if(alternativa.Opcao == LetraAlternativaEnum.D)
+                {
+                    txtAlternativaD.Text = alternativa.Resposta;
+                }
+
+                if (alternativa.Opcao == LetraAlternativaEnum.E)
+                {
+                    checkAlternativaE.Enabled = true;
+                    checkAlternativaE.Visible = true;
+                    txtAlternativaE.Visible = true;
+                    txtAlternativaE.Enabled = true;
+                    btnAdicionarCampo.Enabled = false;
+                    btnRemoverE.Enabled = true;
+                    btnRemoverE.Visible = true;
+
+                    txtAlternativaE.Text = alternativa.Resposta;
+                }
+                
+            }
+        }
 
         public TelaQuestaoForm()
         {
@@ -73,16 +108,9 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
             Materia materia = cmbMaterias.SelectedItem as Materia;
             string enunciado = txtEnunciado.Text;
 
-            List<Alternativa> alternativasSelecionadas = new List<Alternativa>()
-            {
-                new (txtAlternativaA.Text, checkAlternativaA.Checked),
-                new (txtAlternativaB.Text, checkAlternativaB.Checked),
-                new (txtAlternativaC.Text, checkAlternativaC.Checked),
-                new (txtAlternativaD.Text, checkAlternativaD.Checked)
-            };
+            List<Alternativa> alternativas = AlternativasEscolhidas();
 
-
-            questao = new Questao(materia, enunciado, alternativasSelecionadas);
+            questao = new Questao(materia, enunciado, alternativas);
 
             List<string> erros = questao.Validar();
 
@@ -93,5 +121,94 @@ namespace GeradorDeTestesWinApp.ModuloQuestao
                 DialogResult = DialogResult.None;
             }
         }
+
+        private List<Alternativa> AlternativasEscolhidas()
+        {
+            List<Alternativa> alternativas = new List<Alternativa>();
+
+            if (checkAlternativaA.Enabled)
+                alternativas.Add(new(LetraAlternativaEnum.A,txtAlternativaA.Text, checkAlternativaA.Checked));
+
+            if (checkAlternativaB.Enabled)
+                alternativas.Add(new(LetraAlternativaEnum.B, txtAlternativaB.Text, checkAlternativaB.Checked));
+
+            if (checkAlternativaC.Enabled)
+                alternativas.Add(new(LetraAlternativaEnum.C, txtAlternativaC.Text, checkAlternativaC.Checked));
+
+            if (checkAlternativaD.Enabled)
+                alternativas.Add(new(LetraAlternativaEnum.D, txtAlternativaD.Text, checkAlternativaD.Checked));
+
+            if (checkAlternativaE.Enabled)
+                alternativas.Add(new(LetraAlternativaEnum.E, txtAlternativaE.Text, checkAlternativaE.Checked));
+
+            return alternativas;
+        }
+
+        #region Configurando Botoes de remover textbox
+        private void btnRemoverA_Click(object sender, EventArgs e)
+        {
+            checkAlternativaA.Enabled = false;
+            txtAlternativaA.Enabled = false;
+        }
+        private void btnRemoverB_Click(object sender, EventArgs e)
+        {
+            checkAlternativaB.Enabled = false;
+            txtAlternativaB.Enabled = false;
+        }
+        private void btnRemoverC_Click(object sender, EventArgs e)
+        {
+            checkAlternativaC.Enabled = false;
+            txtAlternativaC.Enabled = false;
+        }
+        private void btnRemoverD_Click(object sender, EventArgs e)
+        {
+            checkAlternativaD.Enabled = false;
+            txtAlternativaD.Enabled = false;
+        }
+
+        private void btnReverterA_Click(object sender, EventArgs e)
+        {
+            checkAlternativaA.Enabled = true;
+            txtAlternativaA.Enabled = true;
+        }
+
+        private void btnReverterB_Click(object sender, EventArgs e)
+        {
+            checkAlternativaB.Enabled = true;
+            txtAlternativaB.Enabled = true;
+        }
+        private void btnReverterC_Click(object sender, EventArgs e)
+        {
+            checkAlternativaC.Enabled = true;
+            txtAlternativaC.Enabled = true;
+        }
+        private void btnReverterD_Click(object sender, EventArgs e)
+        {
+            checkAlternativaD.Enabled = true;
+            txtAlternativaD.Enabled = true;
+        }
+
+        private void btnAdicionarCampo_Click(object sender, EventArgs e)
+        {
+            checkAlternativaE.Enabled = true;
+            checkAlternativaE.Visible = true;
+            txtAlternativaE.Enabled = true;
+            txtAlternativaE.Visible = true;
+
+            btnAdicionarCampo.Enabled = false;
+            btnRemoverE.Visible = true;
+        }
+
+        private void btnRemoverE_Click(object sender, EventArgs e)
+        {
+            checkAlternativaE.Enabled = false;
+            checkAlternativaE.Visible = false;
+            txtAlternativaE.Enabled = false;
+            txtAlternativaE.Visible = false;
+
+            btnAdicionarCampo.Enabled = true;
+            btnRemoverE.Visible = false;
+        }
+        #endregion
     }
 }

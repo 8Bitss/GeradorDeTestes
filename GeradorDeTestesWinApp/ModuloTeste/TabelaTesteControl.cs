@@ -1,4 +1,5 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
+using GeradorDeTestesWinApp.ModuloMateria;
 
 namespace GeradorDeTestesWinApp.ModuloTeste
 {
@@ -19,7 +20,10 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             grid.Rows.Clear();
 
             foreach (Teste t in testes)
-                grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia.Nome, t.QtdQuestoes);
+                if(t.Materia == null)
+                    grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia , t.QtdQuestoes);
+                else
+                    grid.Rows.Add(t.Id, t.Titulo, t.Disciplina.Nome, t.Materia.Nome, t.QtdQuestoes);
         }
 
         public int ObterRegistroSelecionado()
