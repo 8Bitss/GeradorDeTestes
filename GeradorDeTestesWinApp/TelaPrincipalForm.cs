@@ -92,20 +92,26 @@ namespace GeradorDeTestesWinApp
 
         private void btnDuplicarTeste_Click(object sender, EventArgs e)
         {
-            //ControladorTeste controladorTeste = new ControladorTeste(repositorioTeste, repositorioMateria, repositorioDisciplina, repositorioQuestao);
-
-            //ConfigurarTelaPrincipal(controladorTeste);
-
-            //controladorTeste.DuplicarTeste();
-
             if (controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
                 controladorFuncoesAdicionais.DuplicarTeste();
         }
 
         private void btnVisualizarDetalhes_Click(object sender, EventArgs e)
         {
-            if(controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+            if (controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
                 controladorFuncoesAdicionais.VisualizarDetalhesTeste();
+        }
+
+        private void btnGerarPdf_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+                controladorFuncoesAdicionais.GerarPdfTeste();
+        }
+
+        private void btnGerarGabarito_Click(object sender, EventArgs e)
+        {
+            if (controlador is IControladorFuncoesAdicionais controladorFuncoesAdicionais)
+                controladorFuncoesAdicionais.GerarGabaritoTeste();
         }
 
 
@@ -126,6 +132,8 @@ namespace GeradorDeTestesWinApp
 
             btnDuplicarTeste.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
             btnVisualizarDetalhes.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
+            btnGerarPdf.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
+            btnGerarGabarito.Enabled = controladorSelecionado is IControladorFuncoesAdicionais;
 
             ConfigurarToolTips(controladorSelecionado);
         }
@@ -140,6 +148,8 @@ namespace GeradorDeTestesWinApp
             {
                 btnDuplicarTeste.ToolTipText = controladorTeste.ToolTipDuplicar;
                 btnVisualizarDetalhes.ToolTipText = controladorTeste.ToolTipVisualizarDetalhes;
+                btnGerarPdf.ToolTipText = controladorTeste.ToolTipGerarPdf;
+                btnGerarGabarito.ToolTipText = controladorTeste.ToolTipGerarGabarito;
             }
         }
 

@@ -113,6 +113,26 @@ namespace GeradorDeTestesWinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnGerarGabarito {
+            get {
+                object obj = ResourceManager.GetObject("btnGerarGabarito", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnGerarPdf {
+            get {
+                object obj = ResourceManager.GetObject("btnGerarPdf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnReverterAcao {
             get {
                 object obj = ResourceManager.GetObject("btnReverterAcao", resourceCulture);

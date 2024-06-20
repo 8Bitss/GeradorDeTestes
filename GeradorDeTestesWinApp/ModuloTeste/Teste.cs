@@ -40,17 +40,8 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             Materia = novoTeste.Materia;
             QtdQuestoes = novoTeste.QtdQuestoes;
             Recuperacao = novoTeste.Recuperacao;
+            QuestoesSelecionadas = novoTeste.QuestoesSelecionadas;
         }
-
-        //public void AdicionarDuplicata()
-        //{
-        //    Teste novoTeste = (Teste)novoRegistro;
-
-        //    Titulo = novoTeste.Titulo;
-        //    Disciplina = novoTeste.Disciplina;
-        //    Materia = novoTeste.Materia;
-        //    QtdQuestoes = novoTeste.QtdQuestoes;
-        //}
 
         public override List<string> Validar()
         {

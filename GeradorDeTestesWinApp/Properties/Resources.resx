@@ -136,7 +136,13 @@
   <data name="btnReverterAcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnReverterAcao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnGerarPdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnGerarPdf1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnVisualizarDetalhes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnVisualizarDetalhes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnGerarGabarito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnGerarGabarito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

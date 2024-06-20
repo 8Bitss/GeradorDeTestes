@@ -8,7 +8,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
     public class ControladorTeste : ControladorBase, IControladorFuncoesAdicionais
     {
         private TabelaTesteControl tabelaTeste;
-
+        
         private IRepositorioTeste repositorioTeste;
         private IRepositorioMateria repositorioMateria;
         private IRepositorioDisciplina repositorioDisciplina;
@@ -33,6 +33,10 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         public string ToolTipDuplicar { get { return "Duplicar um teste existente"; } }
 
         public string ToolTipVisualizarDetalhes { get { return "Visualizar detalhes de um teste existente"; } }
+
+        public string ToolTipGerarPdf { get { return "Gerar PDF de um teste existente"; } }
+
+        public string ToolTipGerarGabarito { get { return "Gerar Gabarito de um teste existente"; } }
 
         public override void Adicionar()
         {
@@ -286,17 +290,10 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
             TelaTesteDetalhadoForm telaTesteDetalhado = new TelaTesteDetalhadoForm(testeSelecionado);
             DialogResult resultado = telaTesteDetalhado.ShowDialog();
-            //telaTesteDetalhado = testeSelecionado;
-
-            //DialogResult resultado = telaTesteDetalhado.ShowDialog();
-
-            //if (resultado != DialogResult.OK)
-            //    return;
-
+            
             TelaPrincipalForm
                 .Instancia
                 .AtualizarRodape($"O registro \"{testeSelecionado.Titulo}\" foi visualizado com sucesso!");
-
         }
 
         private void CarregarTestes()
@@ -304,6 +301,49 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             List<Teste> testes = repositorioTeste.SelecionarTodos();
 
             tabelaTeste.AtualizarRegistros(testes);
+        }
+
+        public void GerarPdfTeste()
+        {
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            GeradorPdf geradorPdf = new GeradorPdf(testeSelecionado);
+
+        }
+
+        public void GerarGabaritoTeste()
+        {
+            int idSelecionado = tabelaTeste.ObterRegistroSelecionado();
+
+            Teste testeSelecionado =
+                repositorioTeste.SelecionarPorId(idSelecionado);
+
+            if (testeSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            GeradorPdf geradorGabarito = new GeradorPdf(testeSelecionado, true);
         }
     }
 }

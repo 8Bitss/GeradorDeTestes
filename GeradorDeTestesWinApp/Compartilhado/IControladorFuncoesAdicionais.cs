@@ -1,4 +1,6 @@
-﻿namespace GeradorDeTestesWinApp.Compartilhado
+﻿using GeradorDeTestesWinApp.ModuloTeste;
+
+namespace GeradorDeTestesWinApp.Compartilhado
 {
     public interface IControladorFuncoesAdicionais
     {
@@ -7,8 +9,16 @@
 
         public string ToolTipVisualizarDetalhes { get; }
 
+        public string ToolTipGerarPdf { get; }
+        
+        public string ToolTipGerarGabarito { get; }
+
         void DuplicarTeste();
 
         void VisualizarDetalhesTeste();
+
+        void GerarPdfTeste();
+
+        void GerarGabaritoTeste();
     }
 }
