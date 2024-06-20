@@ -13,7 +13,7 @@ namespace GeradorDeTestesWinApp.ModuloTeste
         public Teste teste;
     
         // Inicializar objeto de documento
-        public static Document document;
+        public static Document document = new Document();
             
         // Adicionar Página
         public Aspose.Pdf.Page page = document.Pages.Add();
@@ -77,6 +77,13 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
                 // Salvar PDF
                 document.Save(System.IO.Path.Combine(_dataDir, $"{teste.Titulo}.pdf"));
+
+                MessageBox.Show(
+                    $"O arquivo: {teste.Titulo}.pdf, foi criado com sucesso!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
             }
             else
             {
@@ -103,6 +110,13 @@ namespace GeradorDeTestesWinApp.ModuloTeste
 
                 // Salvar PDF
                 document.Save(System.IO.Path.Combine(_dataDir, $"{teste.Titulo}_Gabarito.pdf"));
+
+                MessageBox.Show(
+                    $"O arquivo: {teste.Titulo}_Gabarito.pdf, foi criado com sucesso!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
             }
         }
 
@@ -125,6 +139,5 @@ namespace GeradorDeTestesWinApp.ModuloTeste
             for(int i = 0; i < numeroLinhas; i++)
                 page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment());
         }
-
     }
 }
