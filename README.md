@@ -10,7 +10,7 @@ ___
 ## Requisitos Funcionais
 ### 1 - Módulo de Disciplinas
 #### Requisito 1.1: Cadastrar Novas Disciplinas
-Critérios:
+	Critérios:
 - O registro de **Disciplina** é composto por:
 	- Nome
 	- Matérias
@@ -113,10 +113,10 @@ ___
 	Critérios:
 - Deve permitir excluir testes existentes
 #### Requisito 4.4: Visualizar Todos os Testes.
-Critérios:
+	Critérios:
 - Deve exibir: Id, Título, Disciplina, Matéria (ou informar se é recuperação) e Quantidade de Questões
 #### Requisito 4.5: Visualizar Detalhes sobre Testes.
-Critérios:
+	Critérios:
 - Deve ser possível visualizar os testes individualmente, com informações detalhadas incluindo as questões.
 
 #### Requisito 4.6: Gerar PDF dos Testes.
@@ -130,11 +130,11 @@ ___
 ## Requisitos Não Funcionais
 
 ### Persistência das informações
-Critérios:
+	Critérios:
 - Os dados devem ser salvos e recuperados em arquivo.
 
 ### Arquitetural 
-Critérios:
+	Critérios:
 - Deve-se trabalhar utilizando o modelo MVC
 - Exemplo de nomenclatura dentro do projeto: ModuloDisciplina
 
