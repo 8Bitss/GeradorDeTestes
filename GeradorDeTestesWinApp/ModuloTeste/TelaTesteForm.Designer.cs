@@ -72,7 +72,7 @@
             cmbDisciplinas.Location = new Point(98, 81);
             cmbDisciplinas.Name = "cmbDisciplinas";
             cmbDisciplinas.Size = new Size(152, 23);
-            cmbDisciplinas.TabIndex = 15;
+            cmbDisciplinas.TabIndex = 2;
             cmbDisciplinas.SelectedIndexChanged += cmbDisciplinas_SelectedIndexChanged;
             // 
             // lblDisciplina
@@ -93,7 +93,7 @@
             cmbMaterias.Location = new Point(98, 120);
             cmbMaterias.Name = "cmbMaterias";
             cmbMaterias.Size = new Size(152, 23);
-            cmbMaterias.TabIndex = 17;
+            cmbMaterias.TabIndex = 3;
             // 
             // lblMaterias
             // 
@@ -120,7 +120,7 @@
             txtQtdQuestoes.Location = new Point(389, 83);
             txtQtdQuestoes.Name = "txtQtdQuestoes";
             txtQtdQuestoes.Size = new Size(59, 23);
-            txtQtdQuestoes.TabIndex = 19;
+            txtQtdQuestoes.TabIndex = 4;
             txtQtdQuestoes.ValueChanged += txtQtdQuestoes_ValueChanged;
             // 
             // checkRecuperacao
@@ -130,7 +130,7 @@
             checkRecuperacao.Location = new Point(272, 120);
             checkRecuperacao.Name = "checkRecuperacao";
             checkRecuperacao.Size = new Size(176, 24);
-            checkRecuperacao.TabIndex = 20;
+            checkRecuperacao.TabIndex = 5;
             checkRecuperacao.Text = "Prova de Recuperação";
             checkRecuperacao.UseVisualStyleBackColor = true;
             checkRecuperacao.CheckedChanged += checkRecuperacao_CheckedChanged;
@@ -140,9 +140,9 @@
             groupBox1.Controls.Add(listQuestoes);
             groupBox1.Controls.Add(btnSortearQuestoes);
             groupBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(42, 155);
+            groupBox1.Location = new Point(98, 150);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(406, 260);
+            groupBox1.Size = new Size(350, 260);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas";
@@ -153,8 +153,9 @@
             listQuestoes.ItemHeight = 20;
             listQuestoes.Location = new Point(0, 74);
             listQuestoes.Name = "listQuestoes";
-            listQuestoes.Size = new Size(406, 184);
-            listQuestoes.TabIndex = 1;
+            listQuestoes.Size = new Size(350, 184);
+            listQuestoes.TabIndex = 99;
+            listQuestoes.TabStop = false;
             // 
             // btnSortearQuestoes
             // 
@@ -162,7 +163,7 @@
             btnSortearQuestoes.Location = new Point(6, 26);
             btnSortearQuestoes.Name = "btnSortearQuestoes";
             btnSortearQuestoes.Size = new Size(160, 42);
-            btnSortearQuestoes.TabIndex = 0;
+            btnSortearQuestoes.TabIndex = 6;
             btnSortearQuestoes.Text = "Sortear Questões";
             btnSortearQuestoes.UseVisualStyleBackColor = true;
             btnSortearQuestoes.Click += btnSortearQuestoes_Click;
@@ -172,11 +173,11 @@
             btnCancelar.AutoSize = true;
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F);
-            btnCancelar.Location = new Point(417, 437);
+            btnCancelar.Location = new Point(366, 437);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 31);
-            btnCancelar.TabIndex = 25;
+            btnCancelar.TabIndex = 99;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -185,11 +186,11 @@
             btnGravar.AutoSize = true;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F);
-            btnGravar.Location = new Point(330, 437);
+            btnGravar.Location = new Point(279, 437);
             btnGravar.Margin = new Padding(3, 2, 3, 2);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(82, 31);
-            btnGravar.TabIndex = 24;
+            btnGravar.TabIndex = 98;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -207,7 +208,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(509, 479);
+            ClientSize = new Size(511, 479);
             Controls.Add(txtId);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
@@ -221,6 +222,7 @@
             Controls.Add(lblDisciplina);
             Controls.Add(txtTitulo);
             Controls.Add(lbl);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaTesteForm";

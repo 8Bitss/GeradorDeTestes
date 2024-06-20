@@ -45,7 +45,7 @@
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblId.Location = new Point(87, 26);
+            lblId.Location = new Point(83, 26);
             lblId.Name = "lblId";
             lblId.Size = new Size(26, 21);
             lblId.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             lblNome.AutoSize = true;
             lblNome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNome.Location = new Point(57, 56);
+            lblNome.Location = new Point(53, 56);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(56, 21);
             lblNome.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             lblDisciplina.AutoSize = true;
             lblDisciplina.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDisciplina.Location = new Point(33, 86);
+            lblDisciplina.Location = new Point(29, 86);
             lblDisciplina.Name = "lblDisciplina";
             lblDisciplina.Size = new Size(80, 21);
             lblDisciplina.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             lblSerie.AutoSize = true;
             lblSerie.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSerie.Location = new Point(65, 114);
+            lblSerie.Location = new Point(61, 114);
             lblSerie.Name = "lblSerie";
             lblSerie.Size = new Size(48, 21);
             lblSerie.TabIndex = 3;
@@ -86,11 +86,11 @@
             btnCancelar.AutoSize = true;
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F);
-            btnCancelar.Location = new Point(367, 195);
+            btnCancelar.Location = new Point(349, 167);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 31);
-            btnCancelar.TabIndex = 6;
+            btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -99,11 +99,11 @@
             btnGravar.AutoSize = true;
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F);
-            btnGravar.Location = new Point(280, 195);
+            btnGravar.Location = new Point(262, 167);
             btnGravar.Margin = new Padding(3, 2, 3, 2);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(82, 31);
-            btnGravar.TabIndex = 5;
+            btnGravar.TabIndex = 4;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -111,7 +111,7 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(119, 28);
+            txtId.Location = new Point(115, 28);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.Size = new Size(53, 23);
@@ -120,21 +120,21 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(119, 58);
+            txtNome.Location = new Point(115, 58);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(316, 23);
-            txtNome.TabIndex = 8;
+            txtNome.TabIndex = 0;
             // 
             // rdb1Serie
             // 
             rdb1Serie.AutoSize = true;
             rdb1Serie.Font = new Font("Segoe UI", 10.2F);
-            rdb1Serie.Location = new Point(119, 114);
+            rdb1Serie.Location = new Point(115, 114);
             rdb1Serie.Margin = new Padding(3, 2, 3, 2);
             rdb1Serie.Name = "rdb1Serie";
             rdb1Serie.Size = new Size(73, 23);
-            rdb1Serie.TabIndex = 11;
+            rdb1Serie.TabIndex = 2;
             rdb1Serie.TabStop = true;
             rdb1Serie.Text = "1ª Série";
             rdb1Serie.UseVisualStyleBackColor = true;
@@ -143,11 +143,11 @@
             // 
             rdb2Serie.AutoSize = true;
             rdb2Serie.Font = new Font("Segoe UI", 10.2F);
-            rdb2Serie.Location = new Point(198, 114);
+            rdb2Serie.Location = new Point(194, 114);
             rdb2Serie.Margin = new Padding(3, 2, 3, 2);
             rdb2Serie.Name = "rdb2Serie";
             rdb2Serie.Size = new Size(73, 23);
-            rdb2Serie.TabIndex = 12;
+            rdb2Serie.TabIndex = 3;
             rdb2Serie.TabStop = true;
             rdb2Serie.Text = "2ª Série";
             rdb2Serie.UseVisualStyleBackColor = true;
@@ -156,16 +156,16 @@
             // 
             cmbDisciplinas.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDisciplinas.FormattingEnabled = true;
-            cmbDisciplinas.Location = new Point(119, 86);
+            cmbDisciplinas.Location = new Point(115, 86);
             cmbDisciplinas.Name = "cmbDisciplinas";
             cmbDisciplinas.Size = new Size(152, 23);
-            cmbDisciplinas.TabIndex = 13;
+            cmbDisciplinas.TabIndex = 1;
             // 
             // TelaMateriaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(461, 235);
+            ClientSize = new Size(463, 208);
             Controls.Add(cmbDisciplinas);
             Controls.Add(rdb2Serie);
             Controls.Add(rdb1Serie);

@@ -1,6 +1,8 @@
 ﻿using GeradorDeTestesWinApp.Compartilhado;
 using GeradorDeTestesWinApp.ModuloQuestao;
 using GeradorDeTestesWinApp.ModuloTeste;
+using System.Globalization;
+using System.Text;
 
 namespace GeradorDeTestesWinApp.ModuloDisciplina
 {

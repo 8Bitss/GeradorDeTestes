@@ -45,7 +45,7 @@
             btnFechar.AutoSize = true;
             btnFechar.DialogResult = DialogResult.Cancel;
             btnFechar.Font = new Font("Segoe UI", 12F);
-            btnFechar.Location = new Point(419, 555);
+            btnFechar.Location = new Point(349, 494);
             btnFechar.Margin = new Padding(3, 2, 3, 2);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(82, 31);
@@ -57,7 +57,7 @@
             // 
             groupBox1.Controls.Add(listQuestoesSelecionadas);
             groupBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(53, 203);
+            groupBox1.Location = new Point(25, 191);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(406, 260);
             groupBox1.TabIndex = 34;
@@ -71,13 +71,13 @@
             listQuestoesSelecionadas.Location = new Point(0, 34);
             listQuestoesSelecionadas.Name = "listQuestoesSelecionadas";
             listQuestoesSelecionadas.Size = new Size(406, 224);
-            listQuestoesSelecionadas.TabIndex = 1;
+            listQuestoesSelecionadas.TabIndex = 12;
             // 
             // lblMaterias
             // 
             lblMaterias.AutoSize = true;
             lblMaterias.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMaterias.Location = new Point(30, 166);
+            lblMaterias.Location = new Point(30, 135);
             lblMaterias.Name = "lblMaterias";
             lblMaterias.Size = new Size(73, 21);
             lblMaterias.TabIndex = 29;
@@ -87,7 +87,7 @@
             // 
             lblDisciplina.AutoSize = true;
             lblDisciplina.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDisciplina.Location = new Point(23, 114);
+            lblDisciplina.Location = new Point(23, 83);
             lblDisciplina.Name = "lblDisciplina";
             lblDisciplina.Size = new Size(80, 21);
             lblDisciplina.TabIndex = 27;
@@ -97,7 +97,7 @@
             // 
             lbl.AutoSize = true;
             lbl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl.Location = new Point(53, 59);
+            lbl.Location = new Point(53, 28);
             lbl.Name = "lbl";
             lbl.Size = new Size(50, 20);
             lbl.TabIndex = 25;
@@ -107,7 +107,7 @@
             // 
             lblTituloSelecionado.AutoSize = true;
             lblTituloSelecionado.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTituloSelecionado.Location = new Point(109, 59);
+            lblTituloSelecionado.Location = new Point(109, 28);
             lblTituloSelecionado.Name = "lblTituloSelecionado";
             lblTituloSelecionado.Size = new Size(133, 20);
             lblTituloSelecionado.TabIndex = 36;
@@ -117,7 +117,7 @@
             // 
             lblDisciplinaSelecionada.AutoSize = true;
             lblDisciplinaSelecionada.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDisciplinaSelecionada.Location = new Point(109, 115);
+            lblDisciplinaSelecionada.Location = new Point(109, 84);
             lblDisciplinaSelecionada.Name = "lblDisciplinaSelecionada";
             lblDisciplinaSelecionada.Size = new Size(182, 20);
             lblDisciplinaSelecionada.TabIndex = 37;
@@ -127,7 +127,7 @@
             // 
             lblMateriaSelecionada.AutoSize = true;
             lblMateriaSelecionada.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMateriaSelecionada.Location = new Point(109, 166);
+            lblMateriaSelecionada.Location = new Point(109, 135);
             lblMateriaSelecionada.Name = "lblMateriaSelecionada";
             lblMateriaSelecionada.Size = new Size(169, 20);
             lblMateriaSelecionada.TabIndex = 38;
@@ -138,7 +138,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnFechar;
-            ClientSize = new Size(513, 597);
+            ClientSize = new Size(460, 536);
             Controls.Add(lblMateriaSelecionada);
             Controls.Add(lblDisciplinaSelecionada);
             Controls.Add(lblTituloSelecionado);

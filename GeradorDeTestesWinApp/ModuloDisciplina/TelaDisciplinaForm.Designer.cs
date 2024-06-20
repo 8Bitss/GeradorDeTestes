@@ -112,6 +112,7 @@
             Controls.Add(lblId);
             Controls.Add(txtNome);
             Controls.Add(txtId);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
